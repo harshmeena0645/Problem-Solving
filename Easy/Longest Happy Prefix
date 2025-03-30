@@ -1,0 +1,25 @@
+Longest Happy Prefix
+
+Sample Input 0
+level
+Sample Output 0
+l
+
+Sample Input 1
+ababab
+Sample Output 1
+abab
+
+
+Code-1:
+def pre_suf(s):
+    n=len(s)
+    for i in range(n-1,0,-1):
+        prefix=s[:i]
+        suffix=s[-i:]
+        if prefix==suffix:
+            return prefix
+    return ""
+
+s=str(input())
+print(pre_suf(s))
