@@ -1,0 +1,36 @@
+Maneuvering a cave
+
+Input Format
+The two integer inputs represent the number of rows and columns.
+Output Format
+Integer value represents the number of ways to reach the destination
+
+Sample Input 0
+4
+4
+Sample Output 0
+20
+Sample Input 1
+7
+7
+Sample Output 1
+924
+
+
+Code-1:
+def factorial(n):
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+def unique_paths(m, n):  
+    if m <= 0 or n <= 0:
+        return 0
+    
+    total_moves = m + n - 2
+    down_moves = m - 1
+    return factorial(total_moves) // (factorial(down_moves) * factorial(total_moves - down_moves))
+m = int(input())
+n = int(input())
+print(unique_paths(m, n))
