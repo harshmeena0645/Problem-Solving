@@ -1,0 +1,31 @@
+Longest Valid Parentheses
+
+
+Example 1:
+Input: s = "(()"
+Output: 2
+Explanation: The longest valid parentheses substring is "()".
+
+Example 2:
+Input: s = ")()())"
+Output: 4
+Explanation: The longest valid parentheses substring is "()()".
+
+Example 3:
+Input: s = ""
+Output: 0
+
+
+Code-1:
+class Solution:
+    def longestValidParentheses(self, s: str) -> int:
+        stack=[]
+        l=['0']*len(s)
+        for ind,i in enumerate(s):
+            if i=='(':
+                stack.append(ind)
+            else:
+                if stack:
+                    l[stack.pop()]='1'
+                    l[ind]='1'
+        return max(len(i) for i in ''.join(l).split('0'))
