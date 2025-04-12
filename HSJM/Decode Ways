@@ -8,15 +8,11 @@ def count_decodings(s):
     dp[1] = 1  # first char is valid
     
     for i in range(2, n + 1):
-        one_digit = int(s[i-1])
-        two_digits = int(s[i-2:i])
-        
-        if 1 <= one_digit <= 9:
+        if 1 <= int(s[i-1]) <= 9:
             dp[i] += dp[i-1]
         
-        if 10 <= two_digits <= 26:
+        if 10 <= int(s[i-2:i]) <= 26:
             dp[i] += dp[i-2]
-    
     return dp[n]
 
 # Test case
