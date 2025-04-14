@@ -12,7 +12,6 @@ Sample Input 1
 Sample Output 1
 13
 
-
 Code-1:
 def josephus(n, k):
     result = 0
