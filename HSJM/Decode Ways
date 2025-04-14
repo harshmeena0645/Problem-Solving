@@ -15,6 +15,5 @@ def count_decodings(s):
             dp[i] += dp[i-2]
     return dp[n]
 
-# Test case
 s = "123"
 print("Total ways:", count_decodings(s))   # 3
