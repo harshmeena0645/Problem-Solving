@@ -1,14 +1,11 @@
 def smallest_number(l):
-    # Convert numbers to strings
     l = list(map(str, l))
     
     # Custom sort using the rule: compare x+y and y+x
     l.sort(key=lambda x: x*10)
     
-    # Remove leading zeros (like in case of all zeros)
     result = ''.join(l).lstrip('0')
     
-    # If result is empty (all were zeros), return '0'
     return result if result else '0'
 
 # Test cases
