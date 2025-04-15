@@ -1,0 +1,26 @@
+def find_right_node(l, f):
+    l = [None if x == 'null' else x for x in l]
+
+    level = 0
+    index = 0
+
+    while index < len(l):
+        count = 2 ** level
+        current_level = l[index: index + count]
+
+        if f in current_level:
+            pos = current_level.index(f)
+            if pos + 1 < len(current_level) and current_level[pos + 1] is not None:
+                return current_level[pos + 1]
+            else:
+                return 'null'
+        
+        index += count
+        level += 1
+
+    return 'null'
+
+# Test Case
+l = [4, 6, 7, 'null', 8, 3]
+f = 8
+print(find_right_node(l, f))   # Output: 3
