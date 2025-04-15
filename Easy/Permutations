@@ -28,3 +28,19 @@ class Solution(object):
         for i in xrange(len(nums)):
             self.dfs(nums[:i]+nums[i+1:], path+[nums[i]], res)
 
+
+
+Permutation Formula:
+
+n_P_r = n! / (n-r)! 
+
+
+Combination Formula:
+
+n_C_r = n! / r! (n-r)!
+
+Where:
+
+n = total number of items
+
+r = number of items to arrange
