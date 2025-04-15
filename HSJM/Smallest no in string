@@ -1,0 +1,20 @@
+def smallest_number(l):
+    # Convert numbers to strings
+    l = list(map(str, l))
+    
+    # Custom sort using the rule: compare x+y and y+x
+    l.sort(key=lambda x: x*10)
+    
+    # Remove leading zeros (like in case of all zeros)
+    result = ''.join(l).lstrip('0')
+    
+    # If result is empty (all were zeros), return '0'
+    return result if result else '0'
+
+# Test cases
+n = 5
+l1 = [9, 90, 999, 9999, 99999]
+print(smallest_number(l1))  # Output: "909999999999999"
+
+l2 = [4, 0, 55, 33, 777]
+print(smallest_number(l2))  # Output: "33455777"
