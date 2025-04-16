@@ -1,0 +1,40 @@
+Minimum Time to Make Rope Colorful
+
+Input: colors = "abaac", neededTime = [1,2,3,4,5]
+Output: 3
+
+Input: colors = "abc", neededTime = [1,2,3]
+Output: 0
+
+Input: colors = "aabaa", neededTime = [1,2,3,4,1]
+Output: 2
+
+class Solution(object):
+    def minCost(self, colors, neededTime):
+        totalTime = 0
+        i = 0
+        j = 0
+        
+        while i < len(neededTime) and j < len(neededTime):
+            currTotal = 0
+            currMax = 0
+            while j < len(neededTime) and colors[i] == colors[j]:
+                currTotal += neededTime[j]
+                currMax = max(currMax, neededTime[j])
+                j += 1
+            totalTime += currTotal - currMax
+            i = j
+        return totalTime
+
+class Solution(object):
+    def minCost(self, colors, neededTime):
+        n=len(colors)
+        time=0
+        pre_max=0
+        for i in range(n):
+            if i>0 and colors[i] != colors[i-1]:
+                pre_max=0
+            curr = neededTime[i]
+            time += min(pre_max,curr)
+            pre_max = max(pre_max,curr)
+        return time
