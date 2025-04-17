@@ -1,0 +1,23 @@
+Longest Palindrome by Concatenating Two Letter Words
+
+Input: words = ["lc","cl","gg"]
+Output: 6
+
+Input: words = ["ab","ty","yt","lc","cl","ab"]
+Output: 8
+
+Input: words = ["cc","ll","xx"]
+Output: 2
+
+class Solution(object):
+    def longestPalindrome(self, words):
+        counter = Counter(words)
+        res = 0
+        mid = 0
+        for word in counter.keys():
+            if word[0]==word[1]:
+                res += counter[word] if counter[word]%2==0 else counter[word]-1
+                mid |= counter[word]%2
+            elif word[::-1] in counter:
+                res += min(counter[word],counter[word[::-1]])
+        return (res + mid) * 2
