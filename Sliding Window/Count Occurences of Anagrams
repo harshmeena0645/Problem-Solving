@@ -1,0 +1,52 @@
+Count Occurences of Anagrams
+
+Input: txt = "forxxorfxdofr", pat = "for"
+Output: 3
+Explanation: for, orf and ofr appears in the txt, hence answer is 3.
+
+Input: txt = "aabaabaa", pat = "aaba"
+Output: 4
+Explanation: aaba is present 4 times in txt.
+
+class Solution:
+    def search(self, pat, txt):
+        k = len(pat)
+        n = len(txt)
+        result = 0
+        
+        def build_map(s):
+            d = {}
+            for ch in s:
+                if ch in d:
+                    d[ch] += 1
+                else:
+                    d[ch] = 1
+            return d
+
+        pat_map = build_map(pat)
+        freq_map = build_map(txt[:k])
+
+        # Compare first window
+        if freq_map == pat_map:
+            result += 1
+
+        # Slide the window
+        for i in range(k, n):
+            new_char = txt[i]
+            old_char = txt[i - k]
+
+            # Add new char
+            if new_char in freq_map:
+                freq_map[new_char] += 1
+            else:
+                freq_map[new_char] = 1
+
+            # Remove old char
+            freq_map[old_char] -= 1
+            if freq_map[old_char] == 0:
+                del freq_map[old_char]
+
+            if freq_map == pat_map:
+                result += 1
+
+        return result
