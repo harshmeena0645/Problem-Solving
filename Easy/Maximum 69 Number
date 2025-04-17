@@ -1,0 +1,22 @@
+Maximum 69 Number
+
+# change at most 1 digit from 6 to 9 or 9 to 6
+Input: num = 9669
+Output: 9969
+
+Input: num = 9996
+Output: 9999
+
+Input: num = 9999
+Output: 9999
+
+class Solution(object):
+    def maximum69Number (self, num):
+        n=num
+        st=str(num)
+        l=list(st)
+        for i in range(len(l)):
+            if l[i]=='6':
+                l[i]='9'
+                break
+        return int("".join(l))
