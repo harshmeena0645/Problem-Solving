@@ -1,0 +1,12 @@
+Minimum Rounds to Complete All Tasks
+
+Input: tasks = [2,2,3,3,2,4,4,4,4,4]
+Output: 4
+
+Input: tasks = [2,3,3]
+Output: -1
+
+class Solution(object):
+    def minimumRounds(self, tasks):
+        freq = Counter(tasks).values()
+        return -1 if 1 in freq else sum((a + 2) // 3 for a in freq)
