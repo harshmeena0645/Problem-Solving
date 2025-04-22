@@ -1,5 +1,6 @@
 Contains Duplicate II
 
+arr[i]==arr[j]  abs(i-j)<=k
 Input: nums = [1,2,3,1], k = 3
 Output: true
 
