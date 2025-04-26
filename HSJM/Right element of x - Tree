@@ -19,7 +19,7 @@ def find_right_node(l, f):
 
     return 'null'
 
-# Test Case
+
 l = [4, 6, 7, 'null', 8, 3]
 f = 8
 print(find_right_node(l, f))   # Output: 3
