@@ -13,11 +13,10 @@ def find_right_node(l, f):
                 return current_level[pos + 1]
             else:
                 return 'null'
-        
         index += count
         level += 1
-
     return 'null'
+
 
 
 l = [4, 6, 7, 'null', 8, 3]
