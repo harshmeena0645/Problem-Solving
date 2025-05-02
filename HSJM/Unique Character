@@ -1,0 +1,8 @@
+def print_unique_characters(s):
+    for char in s:
+        if s.count(char) == 1:
+            print(char, end=' ')
+
+user_input = input("Enter a string: ")
+print("Characters that appear only once:")
+print_unique_characters(user_input)
