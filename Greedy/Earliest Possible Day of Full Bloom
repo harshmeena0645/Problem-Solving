@@ -1,6 +1,7 @@
 Earliest Possible Day of Full Bloom
 
 count start from 0
+
 Input: plantTime = [1,4,3], growTime = [2,3,1]
 Output: 9
 Explanation: The grayed out pots represent planting days, colored pots represent growing days, and the flower represents the day it blooms.
