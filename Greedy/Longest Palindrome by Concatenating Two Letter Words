@@ -9,6 +9,8 @@ Output: 8
 Input: words = ["cc","ll","xx"]
 Output: 2
 
+
+
 class Solution(object):
     def longestPalindrome(self, words):
         counter = Counter(words)
