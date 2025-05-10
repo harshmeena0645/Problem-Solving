@@ -8,6 +8,8 @@ Of all the ways, "aaccba" is the lexicographically smallest.
 Input: palindrome = "a"
 Output: ""
 
+
+
 class Solution(object):
     def breakPalindrome(self, palindrome):
         n = len(palindrome)
