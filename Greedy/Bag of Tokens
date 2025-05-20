@@ -12,8 +12,6 @@ Output: 2
 
 
 
-
-
 class Solution(object):
     def bagOfTokensScore(self, tokens, power):
         tokens=sorted(tokens)
