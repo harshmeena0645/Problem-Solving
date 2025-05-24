@@ -12,6 +12,8 @@ Output: ""
 
 
 
+
+
 class Solution(object):
     def breakPalindrome(self, palindrome):
         n = len(palindrome)
