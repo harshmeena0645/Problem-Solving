@@ -10,8 +10,6 @@ Input: tokens = [100,200,300,400], power = 200
 Output: 2
 
 
-
-
 class Solution(object):
     def bagOfTokensScore(self, tokens, power):
         tokens=sorted(tokens)
