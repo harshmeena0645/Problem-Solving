@@ -1,0 +1,31 @@
+Dutch National Flag Algorithm - Sort 0s,1s,2s
+
+
+Input: arr[] = [0, 1, 2, 0, 1, 2]
+Output: [0, 0, 1, 1, 2, 2]
+Explanation: 0s 1s and 2s are segregated into ascending order.
+
+Input: arr[] = [0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1]
+Output: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2]
+Explanation: 0s 1s and 2s are segregated into ascending order.
+
+
+def sort_0(arr):
+    low, mid, high = 0, 0, len(arr) - 1
+    
+    while mid <= high:
+        if arr[mid] == 0:
+            arr[low], arr[mid] = arr[mid], arr[low]
+            low += 1
+            mid += 1
+        elif arr[mid] == 1:
+            mid += 1
+        else:
+            arr[mid], arr[high] = arr[high], arr[mid]
+            high -= 1
+    return arr
+
+n = int(input())
+arr = list(map(int, input().split()))
+sorted_arr = sort_0(arr)
+print(*sorted_arr)
