@@ -1,0 +1,22 @@
+Array Leaders
+
+Input: arr = [16, 17, 4, 3, 5, 2]
+Output: [17, 5, 2]
+Explanation: Note that there is nothing greater on the right side of 17, 5 and, 2.
+
+Input: arr = [10, 4, 2, 4, 1]
+Output: [10, 4, 4, 1]
+Explanation: Note that both of the 4s are in output, as to be a leader an equal element is also allowed on the right. side
+
+
+class Solution:
+    def leaders(self, arr):
+        n=len(arr)
+        ans=[arr[-1]]
+        box=arr[-1]
+        for i in range(n-2,-1,-1):
+            if arr[i] >= box:
+                ans.append(arr[i])
+                box=arr[i]
+        leader=ans[::-1]
+        return leader
