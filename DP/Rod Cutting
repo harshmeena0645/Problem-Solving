@@ -1,0 +1,29 @@
+Rod Cutting
+
+
+Given a rod of length N and array prices of length N denoting the cost of pieces of the rod of length 1 to N. Find the maximum amount that can be made if the rod is cut up optimally.
+
+Input:
+N=4
+prices[] = [3, 5, 4, 20]
+Output: 20
+
+
+def rod_cutting(n, price):
+    memo = [-1] * (n + 1)
+    def solve(length):
+        if length == 0:
+            return 0
+        if memo[length] != -1:
+            return memo[length]
+        ans = 0
+        for i in range(1, length + 1):
+            ans = max(ans, price[i] + solve(length - i))
+        memo[length] = ans
+        return ans
+    return solve(n)
+
+n = int(input("Enter rod length: "))
+price = [0]  # dummy zero to make price[1..n] indexing easy
+price += list(map(int, input("Enter prices: ").split()))
+print("Maximum profit:", rod_cutting(n, price))
