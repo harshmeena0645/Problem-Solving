@@ -1,0 +1,32 @@
+More than n/k Occurrences
+
+
+Input: arr = [3, 1, 2, 2, 1, 2, 3, 3], k = 4
+Output: 2
+Explanation: In the given array, 3 and 2 are the only elements that appears more than n/k times.
+
+Input: arr = [2, 3, 3, 2], k = 3
+Output: 2
+Explanation: In the given array, 3 and 2 are the only elements that appears more than n/k times. So the count of elements are 2.
+
+Input: arr = [1, 4, 7, 7], k = 2
+Output: 0
+Explanation: In the given array, no element appears more than n/k times.
+
+
+class Solution:
+    #Function to find all elements in array that appear more than n/k times.
+    def countOccurence(self,arr, k):
+        n=len(arr)
+        threshold=n//k
+        freq={}
+            
+        for num in arr:
+            freq[num] = freq.get(num, 0) + 1
+            
+        count = 0
+        for value in freq.values():
+            if value > threshold:
+                count += 1
+    
+        return count
