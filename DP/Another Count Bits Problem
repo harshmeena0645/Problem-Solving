@@ -1,0 +1,18 @@
+Another Count Bits Problem
+
+Print the number of set bits each from 1 to N
+
+input:
+N=5
+Output:
+1 1 2 1 2
+
+
+def count_ones_upto_n(n):
+    dp = [0] * (n + 1)
+    for i in range(1, n + 1):
+        dp[i] = dp[i // 2] + (i % 2)
+    return dp[1:]  # skip dp[0] if not needed
+
+n = int(input("Enter n: "))
+print(count_ones_upto_n(n))
