@@ -20,3 +20,5 @@ class Solution:
                 box=arr[i]
         leader=ans[::-1]
         return leader
+
+Time Complexity - O(n)
