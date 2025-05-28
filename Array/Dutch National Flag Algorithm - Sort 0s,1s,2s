@@ -29,3 +29,6 @@ n = int(input())
 arr = list(map(int, input().split()))
 sorted_arr = sort_0(arr)
 print(*sorted_arr)
+
+
+Time Complexity - O(n)
