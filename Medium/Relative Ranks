@@ -1,0 +1,42 @@
+Relative Ranks
+
+array element is the score of nth athelete
+The 1st place "Gold Medal".
+The 2nd place "Silver Medal".
+The 3rd place "Bronze Medal".
+For the xth place athlete's rank is "x"
+Return an array answer of size n where answer[i] is the rank of the ith athlete.
+
+Sample Input
+5
+5 4 3 2 1
+Sample Output
+Gold Medal Silver Medal Bronze Medal 4 5
+
+Explanation: The placements are [1st, 2nd, 3rd, 4th, 5th]
+
+
+def findRelativeRanks(score):
+    n = len(score)
+    
+    score_index = list(enumerate(score))
+    
+    score_index.sort(key=lambda x: -x[1])
+
+    result = [''] * n
+    
+    for i, (idx, _) in enumerate(score_index):
+        if i == 0:
+            result[idx] = "Gold Medal"
+        elif i == 1:
+            result[idx] = "Silver Medal"
+        elif i == 2:
+            result[idx] = "Bronze Medal"
+        else:
+            result[idx] = str(i + 1)
+    return result
+
+n = int(input())
+score = list(map(int, input().split()))
+ranks = findRelativeRanks(score)
+print(" ".join(ranks))
