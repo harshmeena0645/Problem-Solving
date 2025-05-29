@@ -1,23 +1,22 @@
 Maneuvering a cave
 
-Input Format
-The two integer inputs represent the number of rows and columns.
-Output Format
-Integer value represents the number of ways to reach the destination
+Input :rows and columns
+Output :number of ways to reach the destination
 
-Sample Input 0
+Input :
 4
 4
-Sample Output 0
+Output :
 20
-Sample Input 1
+
+Input :
 7
 7
-Sample Output 1
+Output :
 924
 
 
-Code-1:
+
 def factorial(n):
     result = 1
     for i in range(2, n + 1):
