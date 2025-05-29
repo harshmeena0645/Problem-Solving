@@ -1,0 +1,55 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def add_node(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+    def sort_linked_list(self):
+        values = []
+        current = self.head
+        while current:
+            values.append(current.data)
+            current = current.next
+
+        values.sort()
+
+        current = self.head
+        for val in values:
+            current.data = val
+            current = current.next
+
+def create_linked_list():
+    n = int(input("Enter number of nodes: "))
+    ll = LinkedList()
+    for _ in range(n):
+        data = int(input("Enter data: "))
+        ll.add_node(data)
+    return ll
+
+ll = create_linked_list()
+print("Original Linked List:")
+ll.print_list()
+
+ll.sort_linked_list()
+print("Sorted Linked List:")
+ll.print_list()
