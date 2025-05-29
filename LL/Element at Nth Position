@@ -1,0 +1,84 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def add_node(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+    def insert_at_nth_position(self, data, position):
+        new_node = Node(data)
+        if position == 1:
+            new_node.next = self.head
+            self.head = new_node
+        else:
+            current = self.head
+            for _ in range(position - 2):
+                if not current:
+                    print("Invalid position")
+                    return
+                current = current.next
+            if not current:
+                print("Invalid position")
+                return
+            new_node.next = current.next
+            current.next = new_node
+
+    def delete_at_nth_position(self, position):
+        if not self.head:
+            print("List is empty. Deletion not possible.")
+            return
+        if position == 1:
+            self.head = self.head.next
+        else:
+            current = self.head
+            for _ in range(position - 2):
+                if not current or not current.next:
+                    print("Invalid position")
+                    return
+                current = current.next
+            if not current.next:
+                print("Invalid position")
+                return
+            current.next = current.next.next
+
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+def create_linked_list():
+    n = int(input("Enter the number of nodes: "))
+    linked_list = LinkedList()
+    
+    for _ in range(n):
+        data = input("Enter the data for the node: ")
+        linked_list.add_node(data)
+    
+    return linked_list
+
+
+linked_list = create_linked_list()
+print("Original linked list:")
+linked_list.print_list()
+
+pos = int(input("Enter position to insert 'X': "))
+linked_list.insert_at_nth_position('X', pos)
+linked_list.print_list()
+
+pos = int(input("Enter position to delete: "))
+linked_list.delete_at_nth_position(pos)
+linked_list.print_list()
