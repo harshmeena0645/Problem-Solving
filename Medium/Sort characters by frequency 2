@@ -1,0 +1,36 @@
+Sort characters by frequency 2
+
+
+Sample Input 0
+tree
+Sample Output 0
+eert
+Sample Input 1
+
+Aabb
+Sample Output 1
+bbAa
+Explanation 1
+
+Explanation: "bbaA" is also a valid answer, but "Aabb" is incorrect.
+Note that 'A' and 'a' are treated as two different characters.
+
+
+def frequencySort(s):
+    freq = {}
+    for char in s:
+        if char in freq:
+            freq[char] += 1
+        else:
+            freq[char] = 1
+    
+    sorted_chars = sorted(freq.items(), key=lambda x: (-x[1], x[0]))
+    
+    result = ""
+    for char, count in sorted_chars:
+        result += char * count
+    
+    return result
+
+s = input()
+print(frequencySort(s))
