@@ -1,0 +1,39 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def add_node(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+    def print_list(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+def create_linked_list():
+    n = int(input("Enter the number of nodes: "))
+    linked_list = LinkedList()
+    
+    for _ in range(n):
+        data = input("Enter the data for the node: ")
+        linked_list.add_node(data)
+    
+    return linked_list
+
+linked_list = create_linked_list()
+print("The linked list is:")
+linked_list.print_list()
