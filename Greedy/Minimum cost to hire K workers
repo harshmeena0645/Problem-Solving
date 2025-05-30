@@ -1,0 +1,89 @@
+Minimum cost to hire K workers
+
+There are n workers. You are given two integer arrays quality and wage where quality[i] is the quality of the ith worker and wage[i] 
+is the minimum wage expectation for the ith worker.
+We want to hire exactly k workers to form a paid group. To hire a group of k workers, we must pay them according to the following rules:
+Every worker in the paid group should be paid in the ratio of their quality compared to other workers in the paid group.
+Every worker in the paid group must be paid at least their minimum wage expectation.
+Given the integer k, return the least amount of money needed to form a paid group satisfying the above conditions. Answers within 10^-5 of the 
+actual answer will be accepted.
+
+Input:
+3
+10 20 5
+3
+70 50 30
+2
+Output:
+105.00000
+Explanation: We pay 70 to 0th worker and 35 to 2nd worker.
+
+Input:
+5
+3 1 10 10 1
+5
+4 8 2 2 7
+3
+Output:
+30.66667
+Explanation: We pay 4 to 0th worker, 13.33333 to 2nd and 3rd workers separately
+
+
+
+
+def mincostToHireWorkers(quality, wage, k):
+    n = len(quality)
+
+    workers = []
+    for i in range(n):
+        ratio = wage[i] / quality[i]
+        workers.append((ratio, quality[i]))
+
+    workers.sort()
+
+    selected_qualities = []
+    quality_sum = 0
+    min_cost = float('inf')
+
+    for ratio, q in workers:
+        inserted = False
+        for i in range(len(selected_qualities)):
+            if q > selected_qualities[i]:
+                selected_qualities.insert(i, q)
+                inserted = True
+                break
+        if not inserted:
+            selected_qualities.append(q)
+
+        quality_sum += q
+
+        if len(selected_qualities) > k:
+            quality_sum -= selected_qualities[0]
+            selected_qualities.pop(0)
+
+        if len(selected_qualities) == k:
+            cost = quality_sum * ratio
+            if cost < min_cost:
+                min_cost = cost
+
+    return "{:.5f}".format(min_cost)
+
+
+n=int(input())
+quality=list(map(int,input().split()))
+m=int(input())
+wage=list(map(int,input().split()))
+k=int(input())
+print(mincostToHireWorkers(quality, wage, k))
+
+
+
+
+Summary:
+| Step               | Time Complexity          | Space Complexity |
+| ------------------ | ------------------------ | ---------------- |
+| Ratio Calculation  | O(n)                     | O(n)             |
+| Sorting            | O(n log n)               | O(n)             |
+| Simulated Max-Heap | O(n × k)                 | O(k)             |
+| Total              | O(n log n + n × k)       | O(n + k)         |
+
