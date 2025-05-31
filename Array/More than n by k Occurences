@@ -18,7 +18,6 @@ Explanation: No elements
 
 
 class Solution:
-    #Function to find all elements in array that appear more than n/k times.
     def countOccurence(self,arr, k):
         n=len(arr)
         threshold=n//k
