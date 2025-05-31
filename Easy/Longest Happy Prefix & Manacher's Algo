@@ -1,17 +1,13 @@
 Longest Happy Prefix / Manacher's Algorithm
 
-Sample Input 0
-level
-Sample Output 0
-l
+Input: level
+Output: l
 
-Sample Input 1
-ababab
-Sample Output 1
-abab
+Input: ababab
+Output: abab
 
 
-Code-1:
+
 def pre_suf(s):
     n=len(s)
     for i in range(n-1,0,-1):
