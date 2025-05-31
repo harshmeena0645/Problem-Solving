@@ -14,6 +14,7 @@ Output: 25
 Explanation: The subarray {5, 4, 1, 7, 8} has the largest sum 25.
 
 
+
 class Solution:
     def maxSubArraySum(self, arr):
         max_sum=arr[0]
@@ -26,18 +27,6 @@ class Solution:
         return max_sum
 
 
-class Solution:
-    def maxSubArraySum(self,arr):
-        sum=0
-        cm=arr[0]
-        for i in arr:
-            sum+=i
-            if sum>cm:
-                cm=sum
-            if sum<0:
-                sum=0
-        
-        return cm
 
 
 Time Complexity - O(n)
