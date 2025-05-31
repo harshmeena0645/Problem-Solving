@@ -1,13 +1,13 @@
 Dutch National Flag Algorithm - Sort 0s,1s,2s
 
 
-Input: arr[] = [0, 1, 2, 0, 1, 2]
+arr[] = [0, 1, 2, 0, 1, 2]
 Output: [0, 0, 1, 1, 2, 2]
-Explanation: 0s 1s and 2s are segregated into ascending order.
 
-Input: arr[] = [0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1]
+
+arr[] = [0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1]
 Output: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2]
-Explanation: 0s 1s and 2s are segregated into ascending order.
+
 
 
 def sort_0(arr):
@@ -29,6 +29,7 @@ n = int(input())
 arr = list(map(int, input().split()))
 sorted_arr = sort_0(arr)
 print(*sorted_arr)
+
 
 
 Time Complexity - O(n)
