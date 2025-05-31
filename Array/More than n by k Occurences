@@ -1,17 +1,20 @@
 More than n/k Occurrences
 
+n=len(arr)
 
-Input: arr = [3, 1, 2, 2, 1, 2, 3, 3], k = 4
+arr = [3, 1, 2, 2, 1, 2, 3, 3], k = 4
 Output: 2
-Explanation: In the given array, 3 and 2 are the only elements that appears more than n/k times.
+Explanation: 3 and 2 are the only elements that appears more than n/k times.So the count of elements are 2.
 
-Input: arr = [2, 3, 3, 2], k = 3
+
+arr = [2, 3, 3, 2], k = 3
 Output: 2
-Explanation: In the given array, 3 and 2 are the only elements that appears more than n/k times. So the count of elements are 2.
 
-Input: arr = [1, 4, 7, 7], k = 2
+
+arr = [1, 4, 7, 7], k = 2
 Output: 0
-Explanation: In the given array, no element appears more than n/k times.
+Explanation: No elements
+
 
 
 class Solution:
