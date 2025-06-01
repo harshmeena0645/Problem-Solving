@@ -1,0 +1,25 @@
+Josepheus problem
+
+Input:
+100
+2
+Output:
+73
+
+Input:
+14
+2
+Output:
+13
+
+
+
+def josephus(n, k):
+    result = 0
+    for i in range(2, n + 1):
+        result = (result + k) % i
+    return result + 1
+
+n = int(input())
+k = int(input())
+print(josephus(n,k))
