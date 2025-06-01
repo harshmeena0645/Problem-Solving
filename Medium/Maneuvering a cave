@@ -1,7 +1,7 @@
 Maneuvering a cave
 
 Input :rows and columns
-Output :number of ways to reach the destination
+Output :number of ways to reach destination
 
 Input :
 4
@@ -30,6 +30,7 @@ def unique_paths(m, n):
     total_moves = m + n - 2
     down_moves = m - 1
     return factorial(total_moves) // (factorial(down_moves) * factorial(total_moves - down_moves))
+
 m = int(input())
 n = int(input())
 print(unique_paths(m, n))
