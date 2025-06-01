@@ -24,5 +24,4 @@ def find_missing_number(arr):
 
 n = int(input())
 arr = list(map(int, input().split()))
-
 print(find_missing_number(arr))
