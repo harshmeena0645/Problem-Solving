@@ -28,7 +28,7 @@ def findRelativeRanks(score):
     score_index.sort(key=lambda x: -x[1])
     result = [''] * n
     
-    for i, (idx, _) in enumerate(score_index):
+    for i,(idx, _) in enumerate(score_index):
         if i == 0:
             result[idx] = "Gold Medal"
         elif i == 1:
