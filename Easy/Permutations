@@ -14,7 +14,7 @@ Input: nums = [1]
 Output: [[1]]
 
 
-Code-1:
+
 class Solution(object):
     def permute(self, nums):
         res = []
@@ -40,7 +40,5 @@ Combination Formula:
 n_C_r = n! / r! (n-r)!
 
 Where:
-
 n = total number of items
-
 r = number of items to arrange
