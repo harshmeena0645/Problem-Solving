@@ -1,5 +1,16 @@
 Minimum Rounds to Complete All Tasks
 
+You're given a list of tasks, where each number represents a type of task.
+
+Each round must consist of either:
+2 tasks of the same type.
+3 tasks of the same type.
+
+
+Your goal:
+Complete all tasks using the minimum number of rounds.
+If it's not possible, return -1.
+
 Input: tasks = [2,2,3,3,2,4,4,4,4,4]
 Output: 4
 
