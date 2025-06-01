@@ -6,7 +6,19 @@ Output: 4
 Input: tasks = [2,3,3]
 Output: -1
 
-class Solution(object):
-    def minimumRounds(self, tasks):
-        freq = Counter(tasks).values()
-        return -1 if 1 in freq else sum((a + 2) // 3 for a in freq)
+
+
+
+from collections import Counter
+
+def minimumRounds(tasks):
+    task_counts = Counter(tasks)
+    total_rounds = 0
+
+    for count in task_counts.values():
+        if count == 1:
+            return -1
+        rounds = (count + 2) // 3
+        total_rounds += rounds
+
+    return total_rounds
