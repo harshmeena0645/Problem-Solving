@@ -7,7 +7,7 @@ The 3rd place "Bronze Medal".
 For the xth place athlete's rank is "x"
 Return an array answer of size n where answer[i] is the rank of the ith athlete.
 
-Sample Input
+Input:
 5
 5 4 3 2 1
 Output: Gold Medal Silver Medal Bronze Medal 4 5
@@ -15,7 +15,7 @@ Explanation: The placements are [1st, 2nd, 3rd, 4th, 5th]
 
 Summary:
 Sorting-based solution
-Time complexity: O(n log n) because of sorting
+Time complexity: O(n logn) because of sorting
 Space complexity: O(n)
 
 
@@ -23,9 +23,7 @@ def findRelativeRanks(score):
     n = len(score)
     
     score_index = list(enumerate(score))
-    
     score_index.sort(key=lambda x: -x[1])
-
     result = [''] * n
     
     for i, (idx, _) in enumerate(score_index):
