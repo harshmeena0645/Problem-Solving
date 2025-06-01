@@ -1,18 +1,19 @@
 Josepheus problem
 
-Sample Input 0
+Input:
 100
 2
-Sample Output 0
+Output:
 73
 
-Sample Input 1
+Input:
 14
 2
-Sample Output 1
+Output:
 13
 
-Code-1:
+
+
 def josephus(n, k):
     result = 0
     for i in range(2, n + 1):
