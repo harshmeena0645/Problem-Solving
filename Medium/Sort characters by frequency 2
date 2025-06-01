@@ -1,16 +1,11 @@
 Sort characters by frequency 2
 
 
-Sample Input 0
-tree
-Sample Output 0
-eert
-Sample Input 1
+Input: tree
+Output: eert
 
-Aabb
-Sample Output 1
-bbAa
-Explanation 1
+Input: Aabb
+Output: bbAa
 
 Explanation: "bbaA" is also a valid answer, but "Aabb" is incorrect.
 Note that 'A' and 'a' are treated as two different characters.
