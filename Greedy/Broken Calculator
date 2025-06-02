@@ -1,16 +1,21 @@
 Broken Calculator
 
-Input: startValue = 2, target = 3
+Two Operations:
+1. Double Operation (x2)
+2. Decrement Operation (-1)
+
+startValue = 2, target = 3
 Output: 2
 Explanation: Use double operation and then decrement operation {2 -> 4 -> 3}.
 
-Input: startValue = 5, target = 8
+startValue = 5, target = 8
 Output: 2
-Explanation: Use decrement and then double {5 -> 4 -> 8}.
+Explanation: Use decrement and then double {5 -> 4 -> 8}
 
 Input: startValue = 3, target = 10
 Output: 3
-Explanation: Use double, decrement and double {3 -> 6 -> 5 -> 10}.
+Explanation: Use double, decrement and double {3 -> 6 -> 5 -> 10}
+
 
 class Solution:
   def brokenCalc(self, x: int, y: int) -> int:
@@ -20,6 +25,8 @@ class Solution:
       y += y % 2
       y //= 2
     return steps + (x - y)
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
 
 class Solution(object):
     def brokenCalc(self, startValue, target):
