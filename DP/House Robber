@@ -1,18 +1,20 @@
 House Robber
 
-Sample Input 0
+Do not robe adjacent house and he want to robe max of money
+
+Input:
 4
 11 12 13 11
-Sample Output 0
+Output:
 24
 
-Sample Input 1
+Input:
 4
 4 3 2 11
-Sample Output 1
+Output:
 15
 
-Code-1:
+
 n = int(input())  
 l = list(map(int, input().split()))
 if n == 0:
