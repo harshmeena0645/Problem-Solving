@@ -1,0 +1,25 @@
+Sum of all Substring of number
+
+
+Given a string s consisting of digits (like "123"), you are to find the sum of all possible substrings.
+
+For example:
+"123" has substrings: "1", "2", "3", "12", "23", "123".
+
+Their integer values are: 1 + 2 + 3 + 12 + 23 + 123 = 164.
+
+
+
+class Solution:
+    def sumSubstrings(self, s):
+        n = len(s)
+        total = 0      
+        prev = 0      
+        
+        for i in range(n):
+            num = int(s[i])
+            curr = prev * 10 + num * (i + 1)
+            total += curr
+            prev = curr
+            
+        return total
