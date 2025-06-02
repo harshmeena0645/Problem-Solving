@@ -1,7 +1,8 @@
 Rod Cutting
 
 
-Given a rod of length N and array prices of length N denoting the cost of pieces of the rod of length 1 to N. Find the maximum amount that can be made if the rod is cut up optimally.
+Given rod of length N and array prices denoting the cost of pieces of rod of length 1 to N.
+Find the maximum amount that can be made if the rod is cut up optimally.
 
 Input:
 N=4
