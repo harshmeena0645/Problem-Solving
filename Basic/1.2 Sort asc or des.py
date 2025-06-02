@@ -21,3 +21,13 @@ thislist.sort(key = str.lower)
 print(thislist)
 
 output ['banana', 'cherry', 'Kiwi', 'Orange']
+
+
+
+def myfunc(n):
+return abs(n - 50)
+thislist = [100, 50, 65, 82, 23]
+thislist.sort(key = myfunc)
+print(thislist)
+
+output [50, 65, 23, 82, 100]
