@@ -1,31 +1,31 @@
 Trapping Rain Water
 
 
-height = [0,1,0,2,1,0,1,3,2,1,2,1]
+h = [0,1,0,2,1,0,1,3,2,1,2,1]
 Output: 6
 
-height = [4,2,0,3,2,5]
+h = [4,2,0,3,2,5]
 Output: 9
 
 
 
 class Solution(object):
-    def trap(self, height):
-        if not height or len(height) < 3:
+    def trap(self, h):
+        if not h or len(h) < 3:
             return 0
 
-        left, right = 0, len(height) - 1
-        left_max, right_max = height[left], height[right]
-        trapped_water = 0
+        l, r = 0, len(h) - 1
+        left, right = h[l], h[r]
+        trapped = 0
 
-        while left < right:
-            if left_max < right_max:
-                left += 1
-                left_max = max(left_max, height[left])
-                trapped_water += max(0, left_max - height[left])
+        while l < r:
+            if left < right:
+                l += 1
+                left = max(left, h[l])
+                trapped += max(0, left - h[l])
             else:
-                right -= 1
-                right_max = max(right_max, height[right])
-                trapped_water += max(0, right_max - height[right])
-        return trapped_water
+                r -= 1
+                right = max(right, h[r])
+                trapped += max(0, right - h[r])
+        return trapped
 
