@@ -1,14 +1,13 @@
 Break a Palindrome
 
-Input: palindrome = "abccba"
+
+palindrome = "abccba"
 Output: "aaccba"
 Explanation: There are many ways to make "abccba" not a palindrome, such as "zbccba", "aaccba", and "abacba".
 Of all the ways, "aaccba" is the lexicographically smallest.
 
-Input: palindrome = "a"
+palindrome = "a"
 Output: ""
-
-
 
 
 
