@@ -1,0 +1,19 @@
+Lowest Common Ancestor
+
+def findLCA(self, root, p, q):
+        if root is None:
+            return None
+        if root.item == p or root.item == q:
+            return root
+
+        left_lca = self.findLCA(root.left, p, q)
+        right_lca = self.findLCA(root.right, p, q)
+
+        if left_lca and right_lca:
+            return root
+
+        return left_lca if left_lca else right_lca
+
+    def common(self, p, q):
+        lca = self.findLCA(self.root, p, q)
+        return lca.item if lca else None
