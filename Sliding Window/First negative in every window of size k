@@ -1,6 +1,10 @@
 First negative in every window of size k
 
 
+find the first negative number in every window of size k.
+If there is no negative number in that window, return 0.
+
+
 arr[] = [-8, 2, 3, -6, 10] ,k = 2
 Output: [-8, 0, -6, -6]
 
