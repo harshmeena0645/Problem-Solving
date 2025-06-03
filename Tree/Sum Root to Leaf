@@ -11,5 +11,5 @@ def sumRootToLeaf(self, node, curr_sum):
         
         return self.sumRootToLeaf(node.left, curr_sum) + self.sumRootToLeaf(node.right, curr_sum)
 
-    def totalSum(self):
-        return self.sumRootToLeaf(self.root, 0)
+def totalSum(self):
+    return self.sumRootToLeaf(self.root, 0)
