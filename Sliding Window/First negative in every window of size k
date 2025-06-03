@@ -18,23 +18,21 @@ class Solution:
     def firstNegInt(self, arr, k): 
         n = len(arr)
         result = []
-        negatives = []
+        negative = []
         i = 0  
 
         for j in range(n):
             if arr[j] < 0:
-                negatives.append(arr[j])
+                negative.append(arr[j])
     
-            # When we reach a window size of k
             if j - i + 1 == k:
-                if negatives:
-                    result.append(negatives[0])
+                if negative:
+                    result.append(negative[0])
                 else:
                     result.append(0)
     
-                # Before sliding the window, remove the element going out of the window
-                if negatives and arr[i] == negatives[0]:
-                    negatives.pop(0)
+                if negative and arr[i] == negative[0]:
+                    negative.pop(0)
                 i += 1
     
         return result
