@@ -13,6 +13,8 @@ class Solution:
     def search(self, pat, txt):
         k = len(pat)
         n = len(txt)
+        if k > n:
+            return 0
         result = 0
         
         def build_map(s):
