@@ -1,23 +1,15 @@
 Permutations of a String 2
 
 
-Write a program to create all permutations of an input string and remove duplicates, if present. This means you have to shuffle all letters from the input in all possible orders.
-
-Input Format
-String S
-
-Output Format
-All permutations in diffferent line
-
-Sample Input 0
+Input:
 ab
-Sample Output 0
+Output:
 ab
 ba
 
-Sample Input 1
+Input:
 ABC
-Sample Output 1
+Output:
 ABC
 ACB
 BAC
@@ -43,6 +35,5 @@ s = list(input().strip())
 res = []
 seen = set()
 permute(s, 0, len(s)-1, res, seen)
-
 for p in res:
     print(p)
