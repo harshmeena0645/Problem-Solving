@@ -1,0 +1,51 @@
+Sum of Factorial of digits
+
+
+Let us define A(n) for positive integer N as a sum of factorials of its digits. For example, A(154) = 1!+ 5! +4! = 145. Given a number 'X', you need to print the minimum number L, such that A(L) = X. If no such L exists, then print -1.
+
+Input Format
+First-line contains 'T' - the number of test cases. Then each line contains an integer 'X'.
+
+Output Format
+Print the answer for each value 'X'.
+
+Sample Input 0
+1
+40321
+Sample Output 0
+18
+Explanation 0
+A(18) = 1!+ 8! = 40321 and 18 is the smallest element for which A(18) is 40321. Note, that A(80) = A(81) is also 40321. Among them, 18 is the smallest number.
+
+Sample Input 1
+1
+120
+Sample Output 1
+5
+
+
+
+import math
+def smallest_L_for_X(X):
+    # Precompute factorials of digits 0 to 9
+    factorials = [math.factorial(i) for i in range(10)]
+    
+    digits = []
+    
+    # Start from digit 9 to 1 to minimize digit count (and L)
+    for d in range(9, 0, -1):
+        while X >= factorials[d]:
+            X -= factorials[d]
+            digits.append(d)
+    
+    if X == 0:
+        # Form smallest number from digits
+        digits.sort()
+        return int(''.join(map(str, digits)))
+    else:
+        return -1
+
+T = int(input())
+for _ in range(T):
+    X = int(input())
+    print(smallest_L_for_X(X))
