@@ -1,0 +1,81 @@
+Binary Tree - Mirror the Batting Lineup
+
+Sample Input 0
+7
+1 2 3 4 5 6 7
+Sample Output 0
+1 3 2 7 6 5 4
+
+
+Sample Input 1
+5
+10 20 30 40 50
+Sample Output 1
+10 30 20 50 40
+
+Code-1:
+def mirror(l):
+    length = len(l)
+    if length == 0:
+        return []
+
+    i = 0
+    while (2 ** i) - 1 < length:
+        start = (2 ** i) - 1
+        end = min((2 ** (i + 1)) - 1, length)
+        l[start:end] = l[start:end][::-1]
+        i += 1
+    return l
+
+n = int(input())
+l = list(map(int, input().split()))
+print(*mirror(l))
+
+
+Code-2:
+class TreeNode:
+    def __init__(self, value=0):
+        self.val = value
+        self.left = None
+        self.right = None
+
+def insert_level_order(arr, root, i, n):
+    if i < n:
+        temp = TreeNode(arr[i])
+        root = temp
+        root.left = insert_level_order(arr, root.left, 2 * i + 1, n)
+        root.right = insert_level_order(arr, root.right, 2 * i + 2, n)
+    return root
+
+def invert_tree(root):
+    if root is None:
+        return None
+    root.left, root.right = root.right, root.left
+    invert_tree(root.left)
+    invert_tree(root.right)
+    return root
+
+def level_order_traversal(root):
+    if not root:
+        return []
+    
+    result = []
+    queue = [root]
+    
+    while queue:
+        node = queue.pop(0)
+        result.append(node.val)
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+    return result
+
+n = int(input())
+arr = list(map(int, input().split()))
+
+root = None
+root = insert_level_order(arr, root, 0, n)
+root = invert_tree(root)
+result = level_order_traversal(root)
+print(" ".join(map(str, result)))
