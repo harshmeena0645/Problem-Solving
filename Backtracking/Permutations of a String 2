@@ -1,0 +1,48 @@
+Permutations of a String 2
+
+
+Write a program to create all permutations of an input string and remove duplicates, if present. This means you have to shuffle all letters from the input in all possible orders.
+
+Input Format
+String S
+
+Output Format
+All permutations in diffferent line
+
+Sample Input 0
+ab
+Sample Output 0
+ab
+ba
+
+Sample Input 1
+ABC
+Sample Output 1
+ABC
+ACB
+BAC
+BCA
+CBA
+CAB
+
+
+
+def permute(s, l, r, res, seen):
+    if l == r:
+        perm = ''.join(s)
+        if perm not in seen:
+            res.append(perm)
+            seen.add(perm)
+        return
+    for i in range(l, r+1):
+        s[l], s[i] = s[i], s[l]  # swap
+        permute(s, l+1, r, res, seen)
+        s[l], s[i] = s[i], s[l]  # backtrack
+
+s = list(input().strip())
+res = []
+seen = set()
+permute(s, 0, len(s)-1, res, seen)
+
+for p in res:
+    print(p)
