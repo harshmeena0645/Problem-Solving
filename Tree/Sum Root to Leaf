@@ -1,0 +1,15 @@
+123 --> 12+13=25
+
+def sumRootToLeaf(self, node, curr_sum):
+        if not node:
+            return 0
+
+        curr_sum = curr_sum * 10 + node.item
+
+        if not node.left and not node.right:
+            return curr_sum
+        
+        return self.sumRootToLeaf(node.left, curr_sum) + self.sumRootToLeaf(node.right, curr_sum)
+
+    def totalSum(self):
+        return self.sumRootToLeaf(self.root, 0)
