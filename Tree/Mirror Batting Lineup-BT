@@ -62,7 +62,6 @@ def invert_tree(root):
 def level_order_traversal(root):
     if not root:
         return []
-    
     result = []
     queue = [root]
     
@@ -77,7 +76,6 @@ def level_order_traversal(root):
 
 n = int(input())
 arr = list(map(int, input().split()))
-
 root = None
 root = insert_level_order(arr, root, 0, n)
 root = invert_tree(root)
