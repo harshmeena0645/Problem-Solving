@@ -11,9 +11,9 @@ Output: 4
 
 class Solution:
     def search(self, pat, txt):
-        k = len(pat)
-        n = len(txt)
-        if k > n:
+        p = len(pat)
+        t = len(txt)
+        if p > t:
             return 0
         result = 0
         
@@ -27,16 +27,16 @@ class Solution:
             return d
 
         pat_map = build_map(pat)
-        freq_map = build_map(txt[:k])
+        freq_map = build_map(txt[:p])
 
         # Compare first window
         if freq_map == pat_map:
             result += 1
 
         # Slide the window
-        for i in range(k, n):
+        for i in range(p,t):
             new = txt[i]
-            old = txt[i - k]
+            old = txt[i - p]
 
             # Add new
             if new in freq_map:
