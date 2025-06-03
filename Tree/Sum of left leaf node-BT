@@ -1,0 +1,95 @@
+Sum of left leaf node-BT
+//leaf node = No Child (left=None,Right=None)
+
+Sample Input 0
+7
+3 9 20 null null 15 7
+Sample Output 0
+24
+Explanation 0
+
+  3
+ / \
+9  20
+   / \
+  15 7
+So, 9 + 15 = 24.
+
+Sample Input 1
+7
+5 3 8 2 4 6 10
+Sample Output 1
+8  (2+6)
+
+
+Code-1:
+class Node:
+    def __init__(self, item=None, left=None, right=None):
+        self.item = item
+        self.left = left
+        self.right = right
+
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+    
+    def insertElements(self, elements):
+        if not elements:
+            return None
+        self.root = Node(elements[0])
+        queue = [self.root]  
+
+        i = 1  
+        while i < len(elements):  
+            curr = queue.pop(0)  
+
+            if i < len(elements) and elements[i] is not None:  
+                curr.left = Node(elements[i])  
+                queue.append(curr.left)  
+            i += 1  
+
+            if i < len(elements) and elements[i] is not None:  
+                curr.right = Node(elements[i])  
+                queue.append(curr.right)  
+            i += 1  
+
+    def sum_left_leaf_nodes(self):
+        return self._sum_left_leaf_nodes(self.root)
+        
+    def _sum_left_leaf_nodes(self, root):
+        if root is None:
+            return 0
+        total = 0
+        if root.left and root.left.left is None and root.left.right is None:
+            total += root.left.item
+        total += self._sum_left_leaf_nodes(root.left)
+        total += self._sum_left_leaf_nodes(root.right)
+        return total
+
+n = int(input())
+values = input().split()
+int_values = [int(val) if val != "null" else None for val in values]
+bt = BinaryTree()
+bt.insertElements(int_values)
+print(bt.sum_left_leaf_nodes())
+
+
+
+
+
+Sum Of Left Nodes of last level
+
+Code 1-
+def sum_left_leaf_nodes(self):
+        return self._sum_left_leaf_nodes(self.root)
+        
+    def _sum_left_leaf_nodes(self, root):
+        if root is None:
+            return 0
+        total = 0
+        # Check if left child has a leaf
+        if root.left and root.left.left is None and root.left.right is None:
+            total += root.left.item
+        total += self._sum_left_leaf_nodes(root.left)
+        total += self._sum_left_leaf_nodes(root.right)
+        return total
