@@ -14,13 +14,6 @@ Output:
    / \
   15  7
 
-Input:
-7
-1 2 3 null null 4 5
-Output:
-3
-
-
 
 class Node:
     def __init__(self, key):
