@@ -1,12 +1,11 @@
 Sum of left leaf node-BT
 //leaf node = No Child (left=None,Right=None)
 
-Sample Input 0
+Input:
 7
 3 9 20 null null 15 7
-Sample Output 0
+Output:
 24
-Explanation 0
 
   3
  / \
@@ -15,14 +14,14 @@ Explanation 0
   15 7
 So, 9 + 15 = 24.
 
-Sample Input 1
+Input:
 7
 5 3 8 2 4 6 10
-Sample Output 1
+Output:
 8  (2+6)
 
 
-Code-1:
+
 class Node:
     def __init__(self, item=None, left=None, right=None):
         self.item = item
