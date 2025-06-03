@@ -29,7 +29,7 @@ class Solution:
             char = s[j - 1]
             if char in need and need[char] > 0:
                 missing -= 1
-            need[char] = need.get(char, 0) - 1
+            need[char] = need.get(char,0) - 1
             
             if missing == 0:
                 while i < j and need.get(s[i], 0) < 0:
