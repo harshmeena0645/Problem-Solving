@@ -1,0 +1,80 @@
+Binary Search Tree - Building Observation System in a Smart City
+Left view of the tree
+
+Sample Input 0
+6
+10 5 15 2 7 12
+Sample Output 0
+10
+5
+2
+
+Sample Input 1
+7
+20 10 5 15 25 30 3
+Sample Output 1
+20
+10
+5
+3
+
+
+Code-1:
+def left_view(l):
+    ans=[]
+    ans.append(l[0])
+    t=l[0]
+    for i in l:
+        if t>i:
+            t=i
+            ans.append(i)
+    for i in range(0,len(ans)):
+        print(ans[i])
+n = int(input())
+l = list(map(int, input().split()))
+left_view(l)
+
+
+
+Code-2:  
+class Node:
+    def __init__(self, item):
+        self.item = item
+        self.left = None
+        self.right = None
+
+def insert(root, data):
+    if root is None:
+        return Node(data)
+    if data < root.item:
+        root.left = insert(root.left, data)
+    else:
+        root.right = insert(root.right, data)
+    return root
+
+def left_view(root):
+    if not root:
+        return
+    queue = [(root, 0)]
+    max_level = -1
+
+    while queue:
+        node, level = queue.pop(0)
+
+        if level > max_level:
+            print(node.item)
+            max_level = level
+
+        if node.left:
+            queue.append((node.left, level + 1))
+        if node.right:
+            queue.append((node.right, level + 1))
+
+n = int(input())
+values = list(map(int, input().split()))
+
+root = None
+for val in values:
+    root = insert(root, val)
+
+left_view(root)
