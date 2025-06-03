@@ -1,18 +1,17 @@
-Binary Search Tree - Building Observation System in a Smart City
 Left view of the tree
 
-Sample Input 0
+Input:
 6
 10 5 15 2 7 12
-Sample Output 0
+Output:
 10
 5
 2
 
-Sample Input 1
+Input:
 7
 20 10 5 15 25 30 3
-Sample Output 1
+Output:
 20
 10
 5
@@ -34,7 +33,7 @@ n = int(input())
 l = list(map(int, input().split()))
 left_view(l)
 
-
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
 
 Code-2:  
 class Node:
