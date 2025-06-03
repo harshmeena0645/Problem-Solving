@@ -1,0 +1,95 @@
+Rat in the maze 1
+
+
+A Maze is given as N*N binary matrix of blocks where source block is the upper left most block i.e., maze[0][0] and destination block is lower rightmost block i.e., maze[N-1][N-1]. A rat starts from source and has to reach the destination. The rat can move only in two directions: forward and down.
+In the maze matrix, 0 means the block is a dead end and 1 means the block can be used in the path from source to destination. Note that this is a simple version of the typical Maze problem. For example, a more complex version can be that the rat can move in 4 directions and a more complex version can be with a limited number of moves.
+Input Format
+
+First line row value
+Second line col value
+Thrid line start taking matrix
+Constraints
+
+Time:- 1 Sec
+Output Format
+
+Path of the rat in the form of matrx
+Sample Input 0
+
+4
+4
+1 0 0 0
+1 1 0 1
+0 1 0 0
+1 1 1 1
+Sample Output 0
+
+1 0 0 0 
+1 1 0 0 
+0 1 0 0 
+0 1 1 1 
+Sample Input 1
+
+4
+4
+1 0 0 1
+1 1 0 1
+0 1 0 0
+1 1 1 1
+Sample Output 1
+
+1 0 0 0 
+1 1 0 0 
+0 1 0 0 
+0 1 1 1 
+
+
+
+
+def is_safe(maze, x, y, n):
+    return 0 <= x < n and 0 <= y < n and maze[x][y] == 1
+
+def solve_maze_util(maze, x, y, sol, n):
+    # If destination is reached
+    if x == n - 1 and y == n - 1 and maze[x][y] == 1:
+        sol[x][y] = 1
+        return True
+
+    if is_safe(maze, x, y, n):
+        sol[x][y] = 1
+
+        # Move right
+        if solve_maze_util(maze, x, y + 1, sol, n):
+            return True
+
+        # Move down
+        if solve_maze_util(maze, x + 1, y, sol, n):
+            return True
+
+        # Backtrack
+        sol[x][y] = 0
+        return False
+
+    return False
+
+def solve_maze(maze, n):
+    sol = [[0] * n for _ in range(n)]
+
+    # If start or end is blocked
+    if maze[0][0] == 0 or maze[n-1][n-1] == 0 or not solve_maze_util(maze, 0, 0, sol, n):
+        for _ in range(n):
+            print('0 ' * n)
+        return
+
+    for row in sol:
+        print(' '.join(str(x) for x in row))
+
+# Input Reading
+n = int(input())
+_ = int(input())  # Ignored, as maze is square (n x n)
+maze = []
+for _ in range(n):
+    row = list(map(int, input().split()))
+    maze.append(row)
+
+solve_maze(maze, n)
