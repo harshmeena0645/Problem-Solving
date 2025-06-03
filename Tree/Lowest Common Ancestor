@@ -14,6 +14,6 @@ def findLCA(self, root, p, q):
 
         return left_lca if left_lca else right_lca
 
-    def common(self, p, q):
-        lca = self.findLCA(self.root, p, q)
-        return lca.item if lca else None
+def common(self, p, q):
+    lca = self.findLCA(self.root, p, q)
+    return lca.item if lca else None
