@@ -9,10 +9,9 @@ def find_repeat_and_missing(arr):
     S_actual = sum(arr)
     S2_actual = sum(x * x for x in arr)
     
-    diff = S_actual - S       # A - B
-    diff_sq = S2_actual - S2  # A^2 - B^2
+    diff = S_actual - S
+    diff_sq = S2_actual - S2
     
-    # A + B = diff_sq / diff
     sum_ = diff_sq // diff
     
     A = (diff + sum_) // 2
@@ -20,6 +19,7 @@ def find_repeat_and_missing(arr):
     
     return [A, B]
 
-# Example usage
+
 arr = [3, 1, 2, 5, 3]
-print(find_repeat_and_missing(arr))  # Output: [3, 4]
+print(find_repeat_and_missing(arr))  
+# Output: [3, 4]
