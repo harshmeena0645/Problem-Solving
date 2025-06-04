@@ -1,19 +1,16 @@
 Longest subarray with sum divisible by K
 
-Given an array arr[] and a positive integer k, find the length of the longest subarray with the sum of the elements divisible by k.
-Note: If there is no subarray with sum divisible by k, then return 0.
-
-Examples :
-
-Input: arr[] = [2, 7, 6, 1, 4, 5], k = 3
+arr[] = [2, 7, 6, 1, 4, 5], k = 3
 Output: 4
 Explanation: The subarray [7, 6, 1, 4] has sum = 18, which is divisible by 3.
-Input: arr[] = [-2, 2, -5, 12, -11, -1, 7], k = 3
+
+arr[] = [-2, 2, -5, 12, -11, -1, 7], k = 3
 Output: 5
-Explanation: The subarray [2, -5, 12, -11, -1] has sum = -3, which is divisible by 3.
-Input: arr[] = [1, 2, -2], k = 2
+[2, -5, 12, -11, -1]--> sum= -3,divisible by 3.
+
+arr[] = [1, 2, -2], k = 2
 Output: 2
-Explanation: The subarray is [2, -2] has sum = 0, which is divisible by 2.
+[2, -2] has sum = 0,divisible by 2.
 
 
 class Solution:
@@ -24,14 +21,12 @@ class Solution:
         
         for i, num in enumerate(arr):
             prefix_sum += num
-            # remainder can be negative, adjust to positive
             rem = prefix_sum % k
             
             if rem == 0:
                 max_len = max(max_len, i + 1)
             
             if rem in remainder_index:
-                # Subarray length between previous index +1 and current i
                 length = i - remainder_index[rem]
                 if length > max_len:
                     max_len = length
