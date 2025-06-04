@@ -4,7 +4,7 @@ Interesting Queries
 Given an array nums of n elements and q queries . Each query consists of two integers l and r . You task is to find the number of elements of nums[] in range [l,r] which occur atleast k times.
  
 
-Input: nums = {1,1,2,1,3}, Queries = {{1,5},
+nums = {1,1,2,1,3}, Queries = {{1,5},
 {2,4}}, k = 1
 Output: {3,2}
 Explanation: For the 1st query, from l=1 to r=5
@@ -13,9 +13,7 @@ For the second query, from l=2 to r=4, 1 and 2 have
 the frequency atleast 1.
  
 
-Example 2:
-
-Input: nums = {1,2,3,1}, Queries = {{1,4},
+nums = {1,2,3,1}, Queries = {{1,4},
 {2,4},{4,4}, k = 2
 Output: {1,0,0}
 Explanation: For the 1st query, from l=1 to r=4
@@ -27,19 +25,16 @@ the frequency atleast 2.
 
 
 import math
-
 class Solution:
     def solveQueries(self, nums, Queries, k):
         n = len(nums)
         q = len(Queries)
         block_size = int(math.sqrt(n))
         
-        # Convert to 0-based indexing for convenience
         queries = []
         for i, (l, r) in enumerate(Queries):
             queries.append((l-1, r-1, i))
         
-        # Sort queries according to Mo's algorithm
         queries.sort(key=lambda x: (x[0]//block_size, x[1]))
         
         freq = [0] * 1001  # as nums[i] <= 10^3
@@ -62,7 +57,6 @@ class Solution:
                 count_at_least_k -= 1
             freq[val] -= 1
         
-        # Process all queries
         for L, R, idx in queries:
             while currentR < R:
                 currentR += 1
@@ -82,7 +76,5 @@ class Solution:
         return answers
 
 Complexity:
-Time complexity: approx O((n + q) * sqrt(n)) which fits the expected constraints.
-
-Space complexity: O(n) for frequency arrays and outputs.
-
+Time complexity: approx O((n + q) * sqrt(n))
+Space complexity: O(n)
