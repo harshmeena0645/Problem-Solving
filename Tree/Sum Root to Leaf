@@ -1,4 +1,5 @@
 123 --> 12+13=25
+1 2 3 4 5 6 7 --> 124 + 125 + 136 + 137 = 522
 
 def sumRootToLeaf(self, node, curr_sum):
         if not node:
