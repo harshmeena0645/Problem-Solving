@@ -1,0 +1,67 @@
+BST - Finding the Cheapest Product
+
+In an e-commerce application, products are stored in a binary search tree (BST) based on their prices. Each node in the BST represents a product with its price. Your task is to help the inventory management system find the product with the minimum price, which is essential for promotional offers. By efficiently locating the lowest-priced product, the system can quickly determine which products to discount.
+
+Given a BST where each node contains a product's price, write a program that finds and returns the node with the minimum value.
+
+Input Format
+
+The first line contains an integer nnn, the number of products (or prices) to be added to the Binary Search Tree.
+The second line contains nnn space-separated integers representing the prices of the products.
+Constraints
+
+NA
+
+Output Format
+
+Print a single line indicating the minimum price found in the Binary Search Tree.
+
+Sample Input 0
+
+5
+150 200 50 300 100
+Sample Output 0
+
+50
+Explanation 0
+
+In this example, the user enters 5 as the number of products.
+The prices entered are 150,200,50,300,
+The program constructs the Binary Search Tree with these prices and finds that the minimum price is 50.
+It then outputs: 50.
+Sample Input 1
+
+4
+300 150 200 100
+Sample Output 1
+
+100
+
+class Node:
+    def __init__(self, price):
+        self.price = price
+        self.left = None
+        self.right = None
+
+def insert(root, price):
+    if root is None:
+        return Node(price)
+    if price < root.price:
+        root.left = insert(root.left, price)
+    else:
+        root.right = insert(root.right, price)
+    return root
+
+def find_min(root):
+    while root.left:
+        root = root.left
+    return root.price
+
+n = int(input())
+prices = list(map(int, input().split()))
+
+root = None
+for price in prices:
+    root = insert(root, price)
+    
+print(find_min(root))
