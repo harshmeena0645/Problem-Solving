@@ -1,0 +1,97 @@
+Summing Employee Salaries within a Specific Range-BST
+
+In a large company, each employee has a unique salary. The employees are organized in a Binary Search Tree (BST) based on their salaries, where each node contains the employee's salary. The left child of a node has a salary smaller than the current node, and the right child contains salaries greater than the current node.
+
+The HR department needs a way to calculate the sum of employee salaries that fall within a specific range, i.e., between Salary1 and Salary2 (both inclusive).
+
+Your task is to write a Java program to sum up the employee salaries that fall within this given range. This information can be used by management to identify how much total salary is spent within certain ranges for reporting purposes.
+
+Input Format
+
+The first line contains an integer n, representing the number of employees to be inserted into the Binary Search Tree (BST).
+The second line contains n space-separated integers, representing the employee salaries.
+The third line contains two integers Salary1and Salary2, representing the range of salaries.
+Constraints
+
+The BST must maintain its property of the left child being smaller and the right child being larger.
+You can assume that the input employee salaries are unique.
+Output Format
+
+Print the total sum of the employee salaries that lie within the given range [Salary1,Salary2]
+
+Sample Input 0
+
+6
+50000 40000 60000 30000 45000 55000
+40000 60000
+Sample Output 0
+
+250000
+Explanation 0
+
+The BST is constructed with employee salaries as follows:
+
+              50000
+
+            /        \
+
+          40000    60000
+
+        /      \    /
+
+       30000 45000 55000
+The sum of the employee salaries between 40000 and 60000 is 40000+45000+50000+55000+60000= 250000
+
+Sample Input 1
+
+5
+70000 60000 80000 50000 75000
+60000 75000
+Sample Output 1
+
+205000
+
+
+class Node:
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
+
+def insert(root, key):
+    if root is None:
+        return Node(key)
+    if key < root.key:
+        root.left = insert(root.left, key)
+    else:
+        root.right = insert(root.right, key)
+    return root
+
+def range_sum_bst(root, low, high):
+    if root is None:
+        return 0
+    if low <= root.key <= high:
+        return root.key + range_sum_bst(root.left, low, high) + range_sum_bst(root.right, low, high)
+    elif root.key < low:
+        return range_sum_bst(root.right, low, high)
+    else:
+        return range_sum_bst(root.left, low, high)
+    
+n = int(input())
+salaries = list(map(int, input().split()))
+salary1, salary2 = map(int, input().split())
+root = None
+for salary in salaries:
+    root = insert(root, salary)
+print(range_sum_bst(root, salary1, salary2))
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+
+n=int(input())
+l=list(map(int,input().split()))
+s,e=map(int,input().split())
+sum=0
+for i in l:
+    if s<=i<=e:
+        sum+=i
+print(sum)
