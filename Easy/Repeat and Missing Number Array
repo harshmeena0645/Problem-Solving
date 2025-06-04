@@ -1,0 +1,25 @@
+Repeat and Missing Number Array
+
+
+def find_repeat_and_missing(arr):
+    n = len(arr)
+    S = n * (n + 1) // 2
+    S2 = n * (n + 1) * (2 * n + 1) // 6
+    
+    S_actual = sum(arr)
+    S2_actual = sum(x * x for x in arr)
+    
+    diff = S_actual - S       # A - B
+    diff_sq = S2_actual - S2  # A^2 - B^2
+    
+    # A + B = diff_sq / diff
+    sum_ = diff_sq // diff
+    
+    A = (diff + sum_) // 2
+    B = sum_ - A
+    
+    return [A, B]
+
+# Example usage
+arr = [3, 1, 2, 5, 3]
+print(find_repeat_and_missing(arr))  # Output: [3, 4]
