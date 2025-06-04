@@ -1,0 +1,80 @@
+Maximum and minimum of an array using minimum number of comparisons
+
+To find the maximum and minimum of an array using the minimum number of comparisons, we can use the Pairwise Comparison Approach.
+
+✅ Optimal Approach (Pairwise Comparison):
+Compare elements in pairs.
+For each pair, we perform:
+  1 comparison between the two to find smaller and larger.
+  Then compare:
+    The smaller with the current min
+    The larger with the current max
+This approach gives:
+  3 comparisons per 2 elements, instead of 2 comparisons per element.
+
+🔢 Number of Comparisons:
+If n is even: 1.5 * (n - 1) comparisons.
+If n is odd: 3 * (n - 1)/2 comparisons.
+
+
+def get_min_max(arr):
+    n = len(arr)
+
+    # If even number of elements
+    if n % 2 == 0:
+        if arr[0] > arr[1]:
+            max_val = arr[0]
+            min_val = arr[1]
+        else:
+            max_val = arr[1]
+            min_val = arr[0]
+        i = 2
+    else:
+        # If odd number of elements
+        max_val = min_val = arr[0]
+        i = 1
+
+    # Compare in pairs
+    while i < n - 1:
+        if arr[i] > arr[i+1]:
+            max_val = max(max_val, arr[i])
+            min_val = min(min_val, arr[i+1])
+        else:
+            max_val = max(max_val, arr[i+1])
+            min_val = min(min_val, arr[i])
+        i += 2
+
+    return min_val, max_val
+
+# Example usage
+arr1 = [3, 5, 4, 1, 9]
+arr2 = [22, 14, 8, 17, 35, 3]
+
+print("Array 1 →", arr1)
+mn, mx = get_min_max(arr1)
+print("Minimum element is:", mn)
+print("Maximum element is:", mx)
+
+print("\nArray 2 →", arr2)
+mn, mx = get_min_max(arr2)
+print("Minimum element is:", mn)
+print("Maximum element is:", mx)
+
+
+
+🧠 Time Complexity:
+O(n) (linear)
+Comparisons minimized to about 3n/2 instead of 2n.
+
+✅ 1. Inbuilt max() and min()
+Python's min() and max() each loop through the entire list once.
+So, for n elements:
+min() → n - 1 comparisons
+max() → n - 1 comparisons
+Total = 2n - 2 comparisons
+
+✅ 2. Pairwise Comparison (Optimal Algorithm)
+This approach reduces the number of comparisons to ~1.5n
+For example:
+For n = 6, min() & max() → 10 comparisons
+Pairwise method → only 9 comparisons
