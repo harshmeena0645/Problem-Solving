@@ -1,0 +1,126 @@
+During a cricket strategy session, the coach organizes players in a binary tree to simulate a match scenario based on batting strengths and positions. To analyze patterns in the line-up, the coach decides to observe players’ batting order in a zigzag pattern, alternating between left-to-right and right-to-left traversal at each level of the tree.
+
+Your task is to help the coach by implementing a function that outputs the batting order based on this zigzag level order traversal. This traversal starts at the root (top of the tree) and alternates the direction of traversal for each subsequent level.
+
+Input Format
+
+The first line contains the number of nodes in the binary tree.
+The second line contains the values of the nodes in level-order traversal.
+Constraints
+
+NA
+
+Output Format
+
+The output should display the zigzag traversal of the binary tree, with each level printed on a new line.
+
+Sample Input 0
+
+7
+1 2 3 4 5 6 7
+Sample Output 0
+
+1
+3 2
+4 5 6 7
+Explanation 0
+
+The binary tree structure is represented as follows:
+
+    1
+
+   / \
+
+  2   3
+
+ / \ / \
+
+4  5 6 7
+The zigzag traversal is performed as follows:
+
+Level 1 (left-to-right): 1
+Level 2 (right-to-left): 3 2
+Level 3 (left-to-right): 4 5 6 7
+Thus, the output is:
+1
+
+3 2
+
+4 5 6 7
+
+Sample Input 1
+
+5
+10 20 30 40 50
+Sample Output 1
+
+10
+30 20
+40 50
+
+
+
+class Node:
+    def __init__(self, item=None):
+        self.item = item
+        self.left = None
+        self.right = None
+
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+
+    def insertElements(self, elements):
+        if not elements:
+            return None
+        self.root = Node(elements[0])
+        queue = [self.root]
+        
+        i = 1
+        while i < len(elements):
+            curr = queue.pop(0)
+            
+            if i < len(elements) and elements[i] is not None:
+                curr.left = Node(elements[i])
+                queue.append(curr.left)
+            i += 1
+            
+            if i < len(elements) and elements[i] is not None:
+                curr.right = Node(elements[i])
+                queue.append(curr.right)
+            i += 1
+
+    def zigzagTraversal(self):
+        if not self.root:
+            return
+
+        queue = [self.root]
+        left_to_right = True
+
+        while queue:
+            level_size = len(queue)
+            level_values = []
+
+            for _ in range(level_size):
+                node = queue.pop(0)
+                level_values.append(node.item)
+
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+
+            if not left_to_right:
+                level_values.reverse()
+
+            print(" ".join(map(str, level_values)))
+            left_to_right = not left_to_right
+
+n = int(input())
+values = input().split()
+int_values = [int(val) if val != "null" else None for val in values]
+
+bt = BinaryTree()
+bt.insertElements(int_values)
+
+bt.zigzagTraversal()
