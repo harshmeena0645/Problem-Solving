@@ -14,13 +14,11 @@ class Solution:
         n = len(nums)
         result = [1] * n
         
-        # Calculate prefix products
         prefix = 1
         for i in range(n):
             result[i] = prefix
             prefix *= nums[i]
         
-        # Calculate suffix products and multiply with prefix products in result
         suffix = 1
         for i in range(n - 1, -1, -1):
             result[i] *= suffix
