@@ -1,5 +1,5 @@
 Trapping Rain Water
-
+#Two Pointer
 
 h = [0,1,0,2,1,0,1,3,2,1,2,1]
 Output: 6
@@ -29,3 +29,7 @@ class Solution(object):
                 trapped += max(0, right - h[r])
         return trapped
 
+
+Complexity
+Time complexity: O(n)
+Space complexity: O(1)
