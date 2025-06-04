@@ -12,7 +12,7 @@ Explanation: Smallest positive missing number is 1.
 arr[] = [5, 3, 2, 5, 1]
 Output: 4
 
---x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+
 
 class Solution:
      def missingNumber(self,arr):
@@ -26,12 +26,13 @@ class Solution:
 Time Complexity - O(n)
 Space - O(n)
 
+
 --x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+
 
 class Solution:
     def missingNumber(self, arr):
         n = len(arr)
-        
         j = 0
         for i in range(n):
             if arr[i] <= 0:
