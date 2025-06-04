@@ -1,0 +1,73 @@
+Leftmost Element-BT
+
+def left_most(arr):
+    l = len(arr)
+    if l == 0:
+        return -1
+    if l == 1:
+        return arr[0]
+
+    i = 0
+    while (2 ** (i + 1)) - 1 < l:
+        i += 1
+
+    leftmost_index = 2 ** i - 1
+    return arr[leftmost_index]
+
+n = int(input())
+arr = list(map(int, input().split()))
+print(left_most(arr))
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+def build_tree(values):
+    if not values:
+        return None
+
+    root = TreeNode(values[0])
+    queue = [root]
+    index = 1
+
+    while queue and index < len(values):
+        node = queue.pop(0)
+
+        if index < len(values):
+            node.left = TreeNode(values[index])
+            queue.append(node.left)
+            index += 1
+
+        if index < len(values):
+            node.right = TreeNode(values[index])
+            queue.append(node.right)
+            index += 1
+
+    return root
+
+def leftmost_in_last_row(root):
+    if not root:
+        return None
+
+    queue = [root]
+    while queue:
+        next_level = []
+        for i in range(len(queue)):
+            node = queue[i]
+            if node.left:
+                next_level.append(node.left)
+            if node.right:
+                next_level.append(node.right)
+        if not next_level:
+            return queue[0].val
+        queue = next_level
+
+n = int(input())
+values = list(map(int, input().split()))
+
+root = build_tree(values)
+print(leftmost_in_last_row(root))
