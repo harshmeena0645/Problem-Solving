@@ -1,0 +1,45 @@
+Kth Smallest
+Difficulty: MediumAccuracy: 35.17%Submissions: 692K+Points: 4Average Time: 25m
+Given an array arr[] and an integer k where k is smaller than the size of the array, your task is to find the kth smallest element in the given array.
+
+Follow up: Don't solve it using the inbuilt sort function.
+
+Examples :
+
+Input: arr[] = [7, 10, 4, 3, 20, 15], k = 3
+Output: 7
+Explanation: 3rd smallest element in the given array is 7.
+Input: arr[] = [2, 3, 1, 20, 15], k = 4 
+Output: 15
+Explanation: 4th smallest element in the given array is 15.
+
+
+class Solution:
+    def kthSmallest(self, arr, k):
+        def quickSelect(arr, low, high, k):
+            if low <= high:
+                pivot_index = partition(arr, low, high)
+                if pivot_index == k - 1:
+                    return arr[pivot_index]
+                elif pivot_index > k - 1:
+                    return quickSelect(arr, low, pivot_index - 1, k)
+                else:
+                    return quickSelect(arr, pivot_index + 1, high, k)
+
+        def partition(arr, low, high):
+            pivot = arr[high]
+            i = low
+            for j in range(low, high):
+                if arr[j] < pivot:
+                    arr[i], arr[j] = arr[j], arr[i]
+                    i += 1
+            arr[i], arr[high] = arr[high], arr[i]
+            return i
+
+        return quickSelect(arr, 0, len(arr) - 1, k)
+
+
+⏱ Time Complexity:
+Average: O(n)
+
+Worst-case: O(n²) (very rare, depends on pivot choice)
