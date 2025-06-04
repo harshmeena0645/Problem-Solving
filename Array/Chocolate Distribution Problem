@@ -1,20 +1,25 @@
 Chocolate Distribution Problem
 
-Given an array arr[] of n integers where arr[i] represents the number of chocolates in ith packet. Each packet can have a variable number of chocolates. There are m students, the task is to distribute chocolate packets such that: 
-
+arr is chocolate count in each packet
+m students
 Each student gets exactly one packet.
-The difference between the maximum and minimum number of chocolates in the packets given to the students is minimized.
-Examples:
+find diff in max or min which is minimized
 
-Input: arr = [3, 4, 1, 9, 56, 7, 9, 12], m = 5
+arr = [3, 4, 1, 9, 56, 7, 9, 12], m = 5
 Output: 6
-Explanation: The minimum difference between maximum chocolates and minimum chocolates is 9 - 3 = 6 by choosing following m packets :[3, 4, 9, 7, 9].
-Input: arr = [7, 3, 2, 4, 9, 12, 56], m = 3
+sort array = arr = [1, 3, 4, 7, 9, 9, 12, 56]
+Select any m consecutive subarray
+[1, 3, 4, 7, 9] → diff = 9 - 1 = 8
+[3, 4, 7, 9, 9] → diff = 9 - 3 = 6 ✅ (minimum)
+[4, 7, 9, 9, 12] → diff = 12 - 4 = 8
+[7, 9, 9, 12, 56] → diff = 56 - 7 = 49
+➡️ Answer = 6
+
+arr = [7, 3, 2, 4, 9, 12, 56], m = 3
 Output: 2
-Explanation: The minimum difference between maximum chocolates and minimum chocolates is 4 - 2 = 2 by choosing following m packets :[3, 2, 4].
+
 Input: arr = [3, 4, 1, 9, 56], m = 5
 Output: 55
-Explanation: With 5 packets for 5 students, each student will receive one packet, so the difference is 56 - 1 = 55.
 
 
 class Solution:
