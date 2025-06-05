@@ -1,4 +1,4 @@
-Print all the duplicate characters in a string
+Print all duplicate characters in string
 
 
 S = "geeksforgeeks"
@@ -12,7 +12,6 @@ s, count = 2
 def printDuplicates(str):
     char_list = list(str)
     char_list.sort()
-    
     i = 0
     while i < len(char_list):
         count = 1
@@ -27,8 +26,6 @@ def printDuplicates(str):
 str = "test string"
 printDuplicates(str)
 
-Output
-s, count = 2
-t, count = 3
+
 Time Complexity: O(N*logN)
 Auxiliary Space: O(1)
