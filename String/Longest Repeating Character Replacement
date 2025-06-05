@@ -14,9 +14,9 @@ Output: 4 (AABBBBA)
 
 class Solution(object):
     def characterReplacement(self, s, k):
-        count = [0] * 26  # For 'A' to 'Z'
+        count = [0] * 26
         left = 0
-        max_count = 0  # Max frequency of a single character in the window
+        max_count = 0
         result = 0
 
         for right in range(len(s)):
@@ -24,7 +24,6 @@ class Solution(object):
             count[index] += 1
             max_count = max(max_count, count[index])
 
-            # If we need more than k replacements, shrink window
             while (right - left + 1) - max_count > k:
                 count[ord(s[left]) - ord('A')] -= 1
                 left += 1
