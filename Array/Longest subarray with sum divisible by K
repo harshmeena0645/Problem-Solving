@@ -15,7 +15,7 @@ Output: 2
 
 class Solution:
     def longestSubarrayDivK(self, arr, k):
-        remainder_index = {}
+        index = {}
         prefix_sum = 0
         max_len = 0
         
@@ -24,14 +24,14 @@ class Solution:
             rem = prefix_sum % k
             
             if rem == 0:
-                max_len = max(max_len, i + 1)
+                max_len = max(max_len, i+1)
             
-            if rem in remainder_index:
-                length = i - remainder_index[rem]
+            if rem in index:
+                length = i - index[rem]
                 if length > max_len:
                     max_len = length
             else:
-                remainder_index[rem] = i
+                index[rem] = i
         
         return max_len
 
