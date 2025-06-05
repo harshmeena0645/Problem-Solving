@@ -59,3 +59,15 @@ class Solution:
             j -= 1
         
         return res 
+
+
+Overall Time Complexity:
+Counting frequencies: O(n)
+
+Frequency check: O(n)
+
+Backward scanning: O(n)
+
+Other operations: O(1)
+
+Total time complexity: O(n)
