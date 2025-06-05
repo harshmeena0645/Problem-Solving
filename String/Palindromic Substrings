@@ -1,0 +1,41 @@
+Palindromic Substrings
+
+Given a string s, return the number of palindromic substrings in it.
+
+A string is a palindrome when it reads the same backward as forward.
+
+A substring is a contiguous sequence of characters within the string.
+
+ 
+
+Example 1:
+
+Input: s = "abc"
+Output: 3
+Explanation: Three palindromic strings: "a", "b", "c".
+Example 2:
+
+Input: s = "aaa"
+Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+
+
+class Solution:
+    def countSubstrings(self, S: str) -> int:
+        ans, n, i = 0, len(S), 0
+        while (i < n):
+            j, k = i - 1, i
+            
+            while k < n - 1 and S[k] == S[k + 1]:  
+                k += 1
+
+            ans += (k - j) * (k - j + 1) // 2 
+
+            i, k = k + 1, k + 1
+
+            while j >= 0 and k < n and S[k] == S[j]:
+                j -= 1
+                k += 1
+                ans += 1
+
+        return ans
