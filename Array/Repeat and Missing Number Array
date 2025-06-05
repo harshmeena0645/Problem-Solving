@@ -17,7 +17,7 @@ def find_repeat_and_missing(arr):
     A = (diff + sum_) // 2
     B = sum_ - A
     
-    return [A, B]
+    return [B, A]
 
 
 arr = [3, 1, 2, 5, 3]
