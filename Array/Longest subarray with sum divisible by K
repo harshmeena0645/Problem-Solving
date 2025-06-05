@@ -2,11 +2,11 @@ Longest subarray with sum divisible by K
 
 arr[] = [2, 7, 6, 1, 4, 5], k = 3
 Output: 4
-Explanation: The subarray [7, 6, 1, 4] has sum = 18, which is divisible by 3.
+Subarray [7,6,1,4]--> sum = 18,divisible by 3
 
 arr[] = [-2, 2, -5, 12, -11, -1, 7], k = 3
 Output: 5
-[2, -5, 12, -11, -1]--> sum= -3,divisible by 3.
+[2,-5,12,-11,-1]--> sum= -3,divisible by 3.
 
 arr[] = [1, 2, -2], k = 2
 Output: 2
