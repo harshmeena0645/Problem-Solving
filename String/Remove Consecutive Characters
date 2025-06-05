@@ -23,3 +23,17 @@ Explanation:
 The character 'd' at index 5 is the same as 'd' at index 4, so it is removed.
 No other consecutive duplicates exist.
 The final string is "abcdcba".
+
+
+class Solution:
+    def removeConsecutiveCharacter(self, s):
+        if not s:
+            return ""
+        
+        result = s[0] 
+        
+        for i in range(1, len(s)):
+            if s[i] != s[i - 1]:
+                result += s[i]
+        
+        return result
