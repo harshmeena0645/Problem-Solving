@@ -1,16 +1,16 @@
 Count Palindromic Subsequences
 
-Given a string s, you have to find the number of palindromic subsequences (need not necessarily be distinct) present in the string s. 
+number of palindromic subsequences (need not necessarily be distinct)
 
-Examples:
-
-Input: s = "abcd"
+s = "abcd"
 Output: 4
 Explanation: palindromic subsequence are : 'a' ,'b', 'c' ,'d'
-Input: s = "aab"
+
+s = "aab"
 Output: 4
 Explanation: palindromic subsequence are : 'a', 'a', 'b', 'aa'
-Input: s = "b"
+
+s = "b"
 Output: 1
 Explanation: palindromic subsequence are : 'b'
 
