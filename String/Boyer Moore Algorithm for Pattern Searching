@@ -46,3 +46,8 @@ def search(txt, pat):
 
 # Example usage:
 search("ABAAABCD", "ABC")
+
+
+🕒 Time Complexity:
+Best case: O(n/m)
+Worst case: O(mn), but in practice it performs much better than naive search.
