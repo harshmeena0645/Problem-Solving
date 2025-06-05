@@ -11,6 +11,15 @@ Output: 4
 
 def quickselect(nums, k):
     k = len(nums) - k
+    left, right = 0, len(nums) - 1
+    while left <= right:
+        pivot_index = partition(left, right)
+        if pivot_index == k:
+            return nums[pivot_index]
+        elif pivot_index < k:
+            left = pivot_index + 1
+        else:
+            right = pivot_index - 1
 
     def partition(left, right):
         pivot = nums[right]
@@ -21,16 +30,6 @@ def quickselect(nums, k):
                 p_index += 1
         nums[p_index], nums[right] = nums[right], nums[p_index]
         return p_index
-
-    left, right = 0, len(nums) - 1
-    while left <= right:
-        pivot_index = partition(left, right)
-        if pivot_index == k:
-            return nums[pivot_index]
-        elif pivot_index < k:
-            left = pivot_index + 1
-        else:
-            right = pivot_index - 1
 
 nums1 = list(map(int,input().split()))
 k1 = int(input())
