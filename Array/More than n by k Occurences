@@ -6,10 +6,8 @@ arr = [3, 1, 2, 2, 1, 2, 3, 3], k = 4
 Output: 2
 Explanation: 3 and 2 are elements appears more than n/k times. Count of elements are 2
 
-
 arr = [2, 3, 3, 2], k = 3
 Output: 2
-
 
 arr = [1, 4, 7, 7], k = 2
 Output: 0
@@ -20,8 +18,7 @@ class Solution:
     def countOccurence(self,arr, k):
         n=len(arr)
         threshold=n//k
-        freq={}
-            
+        freq={}   
         for num in arr:
             freq[num] = freq.get(num,0) + 1
             
