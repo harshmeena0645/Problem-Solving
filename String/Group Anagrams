@@ -19,5 +19,6 @@ Output: [["a"]]
                 anagram_map[key].append(word)
             else:
                 anagram_map[key] = [word]
+            # {"abt": ["bat"], "aet": ["eat", "tea", "ate"], "ant": ["tan","nat"]}
 
         return list(anagram_map.values())
