@@ -1,4 +1,4 @@
-minimum number of merge operations to make an array palindrome
+minimum number of merge operations to make palindrome
 
 "merging" (of two adjacent elements)and replace with their sum
 
