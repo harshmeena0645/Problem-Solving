@@ -37,8 +37,7 @@ k1 = int(input())
 print(quickselect(nums1, k1))
 
 
-
-Why is Quickselect optimal?
+Complexity:-
 Time: O(n)
 Space: O(1)
 
