@@ -18,3 +18,23 @@ class Solution(object):
                 if not prefix:
                     return ""
         return prefix
+
+Input:
+strs = ["flower", "flow", "flight"]
+Step 1:
+Initialize prefix = "flower"
+
+First iteration:
+string = "flow"
+"flow".startswith("flower") ❌ → Reduce prefix = "flowe"
+"flow".startswith("flowe") ❌ → Reduce prefix = "flow"
+"flow".startswith("flow") ✅ → OK, move to next
+
+Second iteration:
+string = "flight"
+"flight".startswith("flow") ❌ → reduce → "flo"
+"flight".startswith("flo") ❌ → reduce → "fl"
+"flight".startswith("fl") ✅ → Done
+
+Final Output:
+"fl"
