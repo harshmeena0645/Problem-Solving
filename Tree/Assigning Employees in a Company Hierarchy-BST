@@ -1,56 +1,23 @@
 Assigning Employees in a Company Hierarchy-BST
 
-You are working on an employee hierarchy management system for a company where each employee is assigned a unique employee ID. This hierarchy is represented as a Binary Search Tree (BST), where each node in the BST represents an employee. The left child of the node contains employees with IDs smaller than the current employee, and the right child contains employees with IDs greater than the current employee.
 
-Your task is to find the inorder successor of a given employee in the company. The inorder successor of a node in a BST is the next node in inorder traversal of the BST. In other words, it's the node with the smallest key greater than the key of the given node.
+Print the inorder successor
 
-You need to write a program to find and print the inorder successor of a specified employee based on their employee ID.
-
-Input Format
-
-The first line contains an integer nnn, representing the number of employees (nodes) to be inserted into the BST.
-The second line contains nnn space-separated integers, representing the employee IDs.
-The third line contains a single integer, representing the employee ID for which you need to find the inorder successor.
-Constraints
-
-The BST maintains the property where the left subtree of a node contains values less than the node's value, and the right subtree contains values greater than the node's value.
-
-Output Format
-
-Print the inorder successor of the employee. If the employee has no inorder successor, print No Inorder Successor.
-
-Sample Input 0
-
+Input:
 6
 20 10 30 5 15 25
 15
-Sample Output 0
-
+Output:
 20
-Explanation 0
+--> 20 is the smallest number greater than 15
 
-The Binary Search Tree is constructed as follows:
-
-image
-
-The inorder successor of node 15 is node 20 because 20 is the smallest number greater than 15.
-
-Sample Input 1
-
+Input:
 3
 100 50 150
 150
-Sample Output 1
-
+Output:
 No Inorder Successor
-Explanation 1
-
-The Binary Search Tree is constructed as follows:
-
-image
-
-The node with ID 150 has no inorder successor, as it is the largest element in the BST.Hence it is printing " No Inorder Successor".
-
+--> It is the largest element in BST
 
 
 class Node:
