@@ -4,7 +4,7 @@ n=len(arr)
 
 arr = [3, 1, 2, 2, 1, 2, 3, 3], k = 4
 Output: 2
-Explanation: 3 and 2 are the only elements that appears more than n/k times.So the count of elements are 2.
+Explanation: 3 and 2 are elements appears more than n/k times. Count of elements are 2
 
 
 arr = [2, 3, 3, 2], k = 3
@@ -16,7 +16,6 @@ Output: 0
 Explanation: No elements
 
 
-
 class Solution:
     def countOccurence(self,arr, k):
         n=len(arr)
@@ -24,7 +23,7 @@ class Solution:
         freq={}
             
         for num in arr:
-            freq[num] = freq.get(num, 0) + 1
+            freq[num] = freq.get(num,0) + 1
             
         count = 0
         for value in freq.values():
