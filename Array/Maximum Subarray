@@ -19,7 +19,6 @@ Output:
 23
 
 
-Code-1:
 def max_subarray(l):
     max_sum=l[0]
     curr_sum=l[0]
