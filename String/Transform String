@@ -1,31 +1,21 @@
 Transform String
 
-Given two strings A and B. Find the minimum number of steps required to transform string A into string B. The only allowed operation for the transformation is selecting a character from string A and inserting it in the beginning of string A.
+Minimum number of step required to change A to B
+Only allowed operation for the transformation is selecting a character from string A and inserting it in the beginning of string A.
+If not Possible -1.
 
-Example 1:
-
-Input:
 A = "abd"
 B = "bad"
 Output: 1
-Explanation: The conversion can take place in
-1 operation: Pick 'b' and place it at the front.
-Example 2:
+Only 1 operation:Pick 'b' and place it at the front.
 
-Input:
 A = "GeeksForGeeks"
 B = "ForGeeksGeeks"
 Output: 3
-Explanation: The conversion can take
-place in 3 operations:
-Pick 'r' and place it at the front.
-A = "rGeeksFoGeeks"
-Pick 'o' and place it at the front.
-A = "orGeeksFGeeks"
-Pick 'F' and place it at the front.
-A = "ForGeeksGeeks"
-Your Task: 
-You dont need to read input or print anything. Complete the function transform() which takes two strings A and B as input parameters and returns the minimum number of steps required to transform A into B. If transformation is not possible return -1.
+Pick 'r' and place in front "rGeeksFGeeks"
+Pick 'o' and place in front "orGeeksFGeeks"
+Pick 'F'and place in front "ForGeeksGeeks"
+
 
 
 class Solution:
@@ -63,11 +53,7 @@ class Solution:
 
 Overall Time Complexity:
 Counting frequencies: O(n)
-
 Frequency check: O(n)
-
 Backward scanning: O(n)
-
 Other operations: O(1)
-
 Total time complexity: O(n)
