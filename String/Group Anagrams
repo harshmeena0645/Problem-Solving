@@ -14,7 +14,6 @@ Output: [["a"]]
         anagram_map = {}
 
         for word in strs:
-            # Sort the word to use as a key
             key = ''.join(sorted(word))
             if key in anagram_map:
                 anagram_map[key].append(word)
