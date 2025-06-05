@@ -7,7 +7,6 @@ Given two numbers say a and b, mark the multiples of 2 and 5 between a and b usi
 
 Note : We have to mark the multiples i.e save (key, value) pairs in memory such that each key either have value as 1 or 0 representing as multiple of 2 or 5 or not respectively. 
 
-Examples :  
 
 Input : 2 10
 Output : 2 4 5 6 8 10
@@ -18,8 +17,6 @@ Output: 60 62 64 65 66 68 70 72 74 75 76 78
 
 
 import math
-
-# Driver code
 a = 2
 b = 10
 size = abs(b - a) + 1
@@ -40,7 +37,7 @@ for i in range(a, b + 1):
 
 Output
 MULTIPLES of 2 and 5:
-2 4 5 6 8 10 
-Time Complexity: O(|b - a|)
+2 4 5 6 8 10
 
+Time Complexity: O(|b - a|)
 Auxiliary space: O(|b - a|)
