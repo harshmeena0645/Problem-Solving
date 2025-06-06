@@ -1,6 +1,6 @@
 Word Search
 
-The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+Find every character of word in board matrix and you can use one character one time only and you only able to go at adjacent character like up, down, left, right, diagonal
 
 board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
 Output: true
@@ -10,6 +10,8 @@ Output: true
 
 board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
 Output: false
+
+word = "ABCA" --> false 
 
 
 class Solution:
