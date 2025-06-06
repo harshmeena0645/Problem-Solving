@@ -1,23 +1,23 @@
 Max rectangle
 
-Given a binary matrix mat[][] of size n * m. Find the maximum area of a rectangle formed only of 1s in the given matrix.
+mat[][] of size n * m
+ Find the maximum area of a rectangle formed only of 1s in the given matrix.
 
-Examples:
-
-Input: mat[][] = [[0, 1, 1, 0],
-                [1, 1, 1, 1],
-                [1, 1, 1, 1],
-                [1, 1, 0, 0]]
+mat[][] = [[0, 1, 1, 0],
+           [1, 1, 1, 1],
+           [1, 1, 1, 1],
+           [1, 1, 0, 0]]
 Output: 8
-Explanation: The largest rectangle with only 1’s is from (1, 0) to (2, 3) which is
+Explanation:
 [1, 1, 1, 1]
 [1, 1, 1, 1]
 and area is 4 *2 = 8.
-Input: mat[][] = [[0, 1, 1],
-                [1, 1, 1],
-                [0, 1, 1]]
+
+mat[][] = [[0, 1, 1],
+           [1, 1, 1],
+           [0, 1, 1]]
 Output: 6
-Explanation: The largest rectangle with only 1’s is from (0, 1) to (2, 2) which is
+Explanation:
 [1, 1]
 [1, 1]
 [1, 1]
@@ -33,7 +33,15 @@ class Solution:
         m = len(mat[0])
         max_area = 0
 
-        # Helper to find largest rectangle in histogram
+        heights = [0] * m
+        for row in mat:
+            for j in range(m):
+                if row[j] == 0:
+                    heights[j] = 0
+                else:
+                    heights[j] += 1
+            max_area = max(max_area, largest_histogram_area(heights))
+
         def largest_histogram_area(heights):
             stack = []
             max_area = 0
@@ -46,17 +54,7 @@ class Solution:
                     max_area = max(max_area, height * width)
                 stack.append(i)
             
-            heights.pop()  # Restore original list
+            heights.pop()
             return max_area
-
-        # Step 1: Treat each row as histogram base
-        heights = [0] * m
-        for row in mat:
-            for j in range(m):
-                if row[j] == 0:
-                    heights[j] = 0
-                else:
-                    heights[j] += 1
-            max_area = max(max_area, largest_histogram_area(heights))
 
         return max_area
