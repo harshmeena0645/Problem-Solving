@@ -45,15 +45,6 @@ class Solution:
             return
         rows, cols = len(mat), len(mat[0])
 
-        def dfs(r, c):
-            if r < 0 or c < 0 or r >= rows or c >= cols or mat[r][c] != 'O':
-                return
-            mat[r][c] = 'T'  # Temporarily mark as not to be flipped
-            dfs(r + 1, c)
-            dfs(r - 1, c)
-            dfs(r, c + 1)
-            dfs(r, c - 1)
-
         for i in range(rows):
             if mat[i][0] == 'O':
                 dfs(i, 0)
@@ -72,5 +63,13 @@ class Solution:
                     mat[i][j] = 'X'
                 elif mat[i][j] == 'T':
                     mat[i][j] = 'O'
+        def dfs(r, c):
+            if r < 0 or c < 0 or r >= rows or c >= cols or mat[r][c] != 'O':
+                return
+            mat[r][c] = 'T'  # Temporarily mark as not to be flipped
+            dfs(r + 1, c)
+            dfs(r - 1, c)
+            dfs(r, c + 1)
+            dfs(r, c - 1)
 
         return mat
