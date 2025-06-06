@@ -26,12 +26,10 @@ class Solution(object):
                 if matrix[i][0] == 0 or matrix[0][j] == 0:
                     matrix[i][j] = 0
 
-        # Zero out first row if needed
         if first_row_zero:
             for j in range(c):
                 matrix[0][j] = 0
 
-        # Zero out first column if needed
         if first_col_zero:
             for i in range(r):
                 matrix[i][0] = 0
