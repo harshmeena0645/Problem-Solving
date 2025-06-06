@@ -43,7 +43,6 @@ class Solution:
     def fill(self, mat):
         if not mat:
             return
-
         rows, cols = len(mat), len(mat[0])
 
         def dfs(r, c):
@@ -55,7 +54,6 @@ class Solution:
             dfs(r, c + 1)
             dfs(r, c - 1)
 
-        # Step 1: Traverse border and mark connected 'O's
         for i in range(rows):
             if mat[i][0] == 'O':
                 dfs(i, 0)
@@ -68,7 +66,6 @@ class Solution:
             if mat[rows - 1][j] == 'O':
                 dfs(rows - 1, j)
 
-        # Step 2: Flip surrounded 'O's to 'X', and 'T's back to 'O'
         for i in range(rows):
             for j in range(cols):
                 if mat[i][j] == 'O':
