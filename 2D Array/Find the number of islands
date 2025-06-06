@@ -13,10 +13,10 @@ grid[][] = [['L', 'L', 'W', 'W', 'W'],
             ['L', 'W', 'L', 'L', 'W']]
 Output: 4
 
-grid[][] = [['W', 'L', 'L', 'L', 'W', 'W', 'W'], ['W', 'W', 'L', 'L', 'W', 'L', 'W']]
+grid[][] = 
+[['W', 'L', 'L', 'L', 'W', 'W', 'W'],
+ ['W', 'W', 'L', 'L', 'W', 'L', 'W']]
 Output: 2
-Expanation:
-The image below shows 2 islands in the grid.
 
 
 
@@ -24,13 +24,10 @@ class Solution:
     def numIslands(self, grid):
         rows = len(grid)
         cols = len(grid[0])
-        
-        
-        def dfs(i, j):
-            
+
+        def dfs(i, j):   
             if i < 0 or j < 0 or i >= rows or j >= cols or grid[i][j] == 0:
                 return
-            
             grid[i][j] = 0
 
             dfs(i - 1, j)  
@@ -43,8 +40,6 @@ class Solution:
             dfs(i + 1, j + 1) 
         
         island_count = 0
-        
-        
         for i in range(rows):
             for j in range(cols):
                 if grid[i][j] == 1:
