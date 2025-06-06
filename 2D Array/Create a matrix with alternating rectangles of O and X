@@ -1,0 +1,137 @@
+Create a matrix with alternating rectangles of O and X
+
+Write a code which inputs two numbers m and n and creates a matrix of size m x n (m rows and n columns) in which every elements is either X or 0. The Xs and 0s must be filled alternatively, the matrix should have outermost rectangle of Xs, then a rectangle of 0s, then a rectangle of Xs, and so on.
+
+Examples:  
+
+Input: m = 3, n = 3
+Output: Following matrix 
+X X X
+X 0 X
+X X X
+
+Input: m = 4, n = 5
+Output: Following matrix
+X X X X X
+X 0 0 0 X
+X 0 0 0 X
+X X X X X
+
+Input:  m = 5, n = 5
+Output: Following matrix
+X X X X X
+X 0 0 0 X
+X 0 X 0 X
+X 0 0 0 X
+X X X X X
+
+Input:  m = 6, n = 7
+Output: Following matrix
+X X X X X X X
+X 0 0 0 0 0 X
+X 0 X X X 0 X
+X 0 X X X 0 X
+X 0 0 0 0 0 X
+X X X X X X X 
+
+
+# Python3 program to Create a matrix with
+# alternating rectangles of O and X
+
+# Function to print alternating rectangles 
+# of 0 and X 
+def fill0X(m, n):
+    
+    # k - starting row index 
+    # m - ending row index 
+    # l - starting column index 
+    # n - ending column index 
+    # i - iterator 
+    i, k, l = 0, 0, 0
+
+    # Store given number of rows and 
+    # columns for later use 
+    r = m
+    c = n 
+
+    # A 2D array to store the output 
+    # to be printed 
+    a = [[None] * n for i in range(m)] 
+    x = 'X' # Initialize the character to
+            # be stored in a[][] 
+
+    # Fill characters in a[][] in spiral form. 
+    # Every iteration fills one rectangle of 
+    # either Xs or Os 
+    while k < m and l < n:
+        
+        # Fill the first row from the 
+        # remaining rows
+        for i in range(l, n):
+            a[k][i] = x 
+        k += 1
+
+        # Fill the last column from 
+        # the remaining columns
+        for i in range(k, m):
+            a[i][n - 1] = x 
+        n -= 1
+
+        # Fill the last row from the 
+        # remaining rows 
+        if k < m:
+            for i in range(n - 1, l - 1, -1):
+                a[m - 1][i] = x 
+            m -= 1
+
+        # Print the first column from 
+        # the remaining columns 
+        if l < n:
+            for i in range(m - 1, k - 1, -1):
+                a[i][l] = x 
+            l += 1
+
+        # Flip character for next iteration
+        x = 'X' if x == '0' else '0'
+
+    # Print the filled matrix 
+    for i in range(r):
+        for j in range(c):
+            print(a[i][j], end = " ")
+        print()
+
+if __name__ == '__main__':
+    
+    print("Output for m = 5, n = 6") 
+    fill0X(5, 6) 
+
+    print("Output for m = 4, n = 4") 
+    fill0X(4, 4) 
+
+    print("Output for m = 3, n = 4") 
+    fill0X(3, 4)
+    
+
+
+
+
+Output
+Output for m = 5, n = 6
+ X X X X X X
+ X 0 0 0 0 X
+ X 0 X X 0 X
+ X 0 0 0 0 X
+ X X X X X X
+
+Output for m = 4, n = 4
+ X X X X
+ X 0 0 X
+ X 0 0 X
+ X X X X
+
+Output for m = 3, n = 4
+ X X X X
+ X 0 0 X
+ X X X X
+Time Complexity: O(mn) 
+Auxiliary Space: O(mn)
