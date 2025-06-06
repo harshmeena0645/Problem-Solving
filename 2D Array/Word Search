@@ -15,6 +15,11 @@ word = "ABCA" --> false
 
 
 class Solution:
+    for i in range(len(board)):
+            for j in range(len(board[0])):
+                if backtrack(i, j, 0):
+                    return True
+
     def exist(self, board, word):
         def backtrack(i, j, k):
             if k == len(word):
@@ -31,8 +36,4 @@ class Solution:
             board[i][j] = temp
             return False
         
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                if backtrack(i, j, 0):
-                    return True
         return False
