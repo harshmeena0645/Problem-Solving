@@ -1,8 +1,6 @@
 Common element in all rows of a given row-wise sorted matrix
 
-Given a matrix where every row is sorted in increasing order. Write a function that finds and returns a common element in all rows. If there is no common element, then returns -1. 
-Example: 
- 
+finds and returns a common element in all rows. If there is no common element, then returns -1. 
 
 mat[4][5] = { {1, 2, 3, 4, 5},
               {2, 4, 5, 8, 10},
@@ -42,12 +40,8 @@ def findCommon(mat):
         if (eq_count == M):
             return mat[min_row][column[min_row]]
     return -1
-# -1 for No common element
 
 
 
-
-Output
-Common element is 5
 Time complexity: O(M x N).
 Auxiliary Space: O(M)
