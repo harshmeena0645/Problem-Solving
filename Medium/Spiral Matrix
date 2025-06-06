@@ -51,3 +51,7 @@ n = int(input())
 m = int(input())
 matrix = [list(map(int, input().split())) for _ in range(n)]
 spiral_ord(matrix)
+
+
+📈 Time Complexity: O(m * n)
+🧠 Space Complexity: O(1)
