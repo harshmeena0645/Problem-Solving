@@ -45,7 +45,7 @@ class Solution:
         def largest_histogram_area(heights):
             stack = []
             max_area = 0
-            heights.append(0)  # Add a zero height to flush the stack
+            heights.append(0)
 
             for i, h in enumerate(heights):
                 while stack and heights[stack[-1]] > h:
