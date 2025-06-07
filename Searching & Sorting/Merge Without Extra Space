@@ -24,13 +24,11 @@ Output:
 2 3
 
 
-
 class Solution:
     def mergeArrays(self, a, b):
         n = len(a)
         m = len(b)
         gap = nextGap(n + m)
-
         while gap > 0:
             i = 0
             while i + gap < n:
