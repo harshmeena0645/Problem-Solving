@@ -1,6 +1,6 @@
 Common in 3 Sorted Arrays
 
-Given three sorted arrays, print all common elements in ascending order. 
+Print all common elements in ascending order.
 If no such elements return [-1]
 
 
