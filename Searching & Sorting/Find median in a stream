@@ -5,12 +5,12 @@ Median - Sort then middle number
 arr[] = [5, 15, 1, 3, 2, 8]
 Output: [5.0, 10.0, 5.0, 4.0, 3.0, 4.0] 
 Explanation: 
-After reading 1st element of stream – 5 -> median = 5.0
-After reading 2nd element of stream – 5, 15 -> median = (5+15)/2 = 10.0 
-After reading 3rd element of stream – 5, 15, 1 -> median = 5.0
-After reading 4th element of stream – 5, 15, 1, 3 ->  median = (3+5)/2 = 4.0
-After reading 5th element of stream – 5, 15, 1, 3, 2 -> median = 3.0
-After reading 6th element of stream – 5, 15, 1, 3, 2, 8 ->  median = (3+5)/2 = 4.0
+1st element – 5 -> median = 5.0
+2nd element – 5, 15 -> median = (5+15)/2 = 10.0 
+3rd element – 5, 15, 1 -> median = 5.0
+4th element – 5, 15, 1, 3 -> (3+5)/2 = 4.0
+5th element – 5, 15, 1, 3, 2 -> median = 3.0
+6th element – 5, 15, 1, 3, 2, 8 -> (3+5)/2 = 4.0
 
 arr[] = [2, 2, 2, 2]
 Output: [2.0, 2.0, 2.0, 2.0]
@@ -28,7 +28,6 @@ class Solution:
         max_heap = []
         min_heap = []
         medians = []
-
         for num in arr:
             heapq.heappush(max_heap, -num)
 
@@ -40,7 +39,7 @@ class Solution:
             if len(max_heap) == len(min_heap):
                 median = (-max_heap[0] + min_heap[0]) / 2.0
             else:
-                median = -max_heap[0] * 1.0  # float for consistent output
+                median = -max_heap[0] * 1.0
 
             medians.append(median)
 
