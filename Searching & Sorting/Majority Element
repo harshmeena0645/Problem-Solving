@@ -17,12 +17,10 @@ Output: -1
 Explanation: Since, no element is present more than 2/2 times, so there is no majority element.
 
 
-
 class Solution:
     def majorityElement(self, arr):
         count = 0
         candidate = None
-
         for num in arr:
             if count == 0:
                 candidate = num
