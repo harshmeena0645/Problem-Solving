@@ -1,18 +1,22 @@
 Common in 3 Sorted Arrays
 
-Given three sorted arrays in non-decreasing order, print all common elements in non-decreasing order across these arrays. If there are no such elements return an empty array. In this case, the output will be -1.
+Given three sorted arrays, print all common elements in ascending order. 
+If no such elements return [-1]
 
-Note: can you handle the duplicates without using any additional Data Structure?
 
-Examples :
-
-Input: arr1 = [1, 5, 10, 20, 40, 80] , arr2 = [6, 7, 20, 80, 100] , arr3 = [3, 4, 15, 20, 30, 70, 80, 120]
+arr1 = [1, 5, 10, 20, 40, 80],
+arr2 = [6, 7, 20, 80, 100],
+arr3 = [3, 4, 15, 20, 30, 70, 80, 120]
 Output: [20, 80]
-Explanation: 20 and 80 are the only common elements in arr, brr and crr.
-Input: arr1 = [1, 2, 3, 4, 5] , arr2 = [6, 7] , arr3 = [8,9,10]
+
+arr1 = [1, 2, 3, 4, 5],
+arr2 = [6, 7],
+arr3 = [8,9,10]
 Output: [-1]
-Explanation: There are no common elements in arr, brr and crr.
-Input: arr1 = [1, 1, 1, 2, 2, 2], B = [1, 1, 2, 2, 2], arr3 = [1, 1, 1, 1, 2, 2, 2, 2]
+
+arr1 = [1, 1, 1, 2, 2, 2], 
+aar2 = [1, 1, 2, 2, 2],
+arr3 = [1, 1, 1, 1, 2, 2, 2, 2]
 Output: [1, 2]
 Explanation: We do not need to consider duplicates
 
@@ -24,9 +28,7 @@ class Solution:
         result = []
         
         while i < n1 and j < n2 and k < n3:
-            # If all elements are equal
             if arr1[i] == arr2[j] == arr3[k]:
-                # To avoid duplicates in result
                 if len(result) == 0 or result[-1] != arr1[i]:
                     result.append(arr1[i])
                 val = arr1[i]
@@ -37,7 +39,6 @@ class Solution:
                 while k < n3 and arr3[k] == val:
                     k += 1
             else:
-                # Move the pointer of the smallest element
                 if arr1[i] < arr2[j]:
                     i += 1
                 elif arr2[j] < arr3[k]:
