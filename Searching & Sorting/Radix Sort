@@ -1,6 +1,5 @@
 Radix Sort
 
-
 N = 4
 arr[] = {1, 9, 345, 2}
 Output: 1 2 9 345
@@ -32,7 +31,6 @@ def countingSort(arr, exp):
         output[count[index] - 1] = arr[i]
         count[index] -= 1
         i -= 1
-
     for i in range(n):
         arr[i] = output[i]
 
