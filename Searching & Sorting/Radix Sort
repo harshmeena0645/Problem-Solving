@@ -1,28 +1,14 @@
 Radix Sort
 
-Given an array arr[] of positive integer size N, use Radix Sort Algorithm to sort arr[] in ascending order.
 
-Example 1:
-
-Input :
 N = 4
 arr[] = {1, 9, 345, 2}
-
 Output: 1 2 9 345
 
-Example 2:
-
-Input :
 N = 10
 arr[] = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+Output: 1 2 3 4 5 6 7 8 9 10 
 
-Output: 1 2 3 4 5 6 7 8 9 10
-
-Your Task:  
-You dont need to read input or print anything. Complete the function radixSort() which takes arr[] and N as input parameters and sorts arr[] in-place. 
-
-
-# User function Template for python3
 
 def countingSort(arr, exp):
     n = len(arr)
@@ -62,5 +48,5 @@ def radixSort(arr, n):
 
 
 
-Expected Time Complexity: O(N * K) where K is the number of bits required to store each key.
-Expected Auxiliary Space: O(N + K)
+Time Complexity: O(N * K)
+Auxiliary Space: O(N + K)
