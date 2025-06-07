@@ -1,28 +1,25 @@
 Pair Given Difference
 
-Given an array, arr[] and an integer x, return true if there exists a pair of elements in the array whose absolute difference is x, otherwise, return false.
 
-Examples:
-
-Input: arr[] = [5, 20, 3, 2, 5, 80], x = 78
+arr[] = [5, 20, 3, 2, 5, 80], x = 78
 Output: true
 Explanation: Pair (2, 80) have an absolute difference of 78.
-Input: arr[] = [90, 70, 20, 80, 50], x = 45
+
+arr[] = [90, 70, 20, 80, 50], x = 45
 Output: false
 Explanation: There is no pair with absolute difference of 45.
-Input: arr[] = [1], x = 1
+
+arr[] = [1], x = 1
 Output: false
 
 
 from typing import List
-
 class Solution:
-    def findPair(self, arr: List[int], x: int) -> int:
+    def findPair(self, arr, x):
         seen = set()
-        
         for num in arr:
             if (num + x) in seen or (num - x) in seen:
-                return 1  # return 1 if such a pair exists
+                return 1
             seen.add(num)
         
-        return 0  # return 0 if no such pair exists
+        return 0
