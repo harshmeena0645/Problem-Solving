@@ -24,8 +24,6 @@ class Solution:
         prefix_sum = 0
         count = 0
         freq = defaultdict(int)
-        
-        # Initialize with prefix sum 0 seen once
         freq[0] = 1
         
         for num in arr:
