@@ -1,0 +1,44 @@
+Make all array elements equal with minimum cost
+
+Given an array of size n, the task is to make the value of all elements equal with minimum cost. The cost of changing a value from x to y is abs(x - y).
+
+Examples : 
+
+Input: arr[] = [1, 100, 101]
+Output: 100
+Explanation: We can change all its values to 100 with minimum cost,
+|1 - 100| + |100 - 100| + |101 - 100| = 100
+
+Input: arr[] = [4, 6]
+Output: 2
+Explanation: We can change all its values to 5 with minimum cost,
+|4 - 5| + |5 - 6| = 2
+
+Input: arr[] = [5, 5, 5, 5]
+Output: 0
+Explanation: All the values are already equal.
+
+[Naive Approach] Using 2 Nested Loops - O(n^2) time and O(1) space
+
+
+def minCost(arr):
+    n = len(arr)
+    ans = float('inf')
+
+    # Try each element as the target value
+    for i in range(n):
+        currentCost = 0
+
+        # Calculate cost of making all 
+        # elements equal to arr[i]
+        for j in range(n):
+            currentCost += abs(arr[j] - arr[i])
+
+        # Update minimum cost if current cost is lower
+        ans = min(ans, currentCost)
+
+    return ans
+
+if __name__ == "__main__":
+    arr = [1, 100, 101]
+    print(minCost(arr))
