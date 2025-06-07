@@ -1,19 +1,12 @@
 Counting Sort
 
-Given a string arr consisting of lowercase english letters, arrange all its letters in lexicographical order using Counting Sort.
-
 N = 5
 S = "edsab"
-Output:
-abdes
+Output: abdes
 
 N = 13
 S = "geeksforgeeks"
-Output:
-eeeefggkkorss
-
-
-countSort() that takes string arr as a parameter and returns the sorted string.    
+Output: eeeefggkkorss
 
 
 class Solution:
@@ -21,11 +14,9 @@ class Solution:
         freq = [0] * 26
         for ch in arr:
             freq[ord(ch) - ord('a')] += 1
-
         result = []
         for i in range(26):
             result.append(chr(i + ord('a')) * freq[i])
-        
         return ''.join(result)
 
 
