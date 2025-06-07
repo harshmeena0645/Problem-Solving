@@ -20,12 +20,11 @@ class Solution:
         low = 0
         high = len(arr) - 1
         res = -1
-        
         while low <= high:
             mid = (low + high) // 2
             if arr[mid] >= x:
                 res = mid
-                high = mid - 1  # try to find a smaller index
+                high = mid - 1
             else:
                 low = mid + 1
         
