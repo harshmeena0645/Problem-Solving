@@ -1,8 +1,8 @@
 4 Sum - All Quadruples
 
-Given an array arr[] of integers and another integer target. Find all unique quadruples from the given array that sums up to target.
+Find all unique 4 integer that sums up to target.
+All quadruples should be internally Sorted
 
-Note: All the quadruples should be internally sorted, ie for any quadruple [q1, q2, q3, q4] it should be : q1 <= q2 <= q3 <= q4.
 
 arr[] = [0, 0, 2, 1, 1], target = 3
 Output: [0, 0, 1, 2] 
@@ -13,8 +13,7 @@ Output: [[2, 3, 8, 10], [2, 4, 7, 10], [3, 5, 7, 8]]
 Explanation: Sum of 2, 3, 8, 10 is 23, sum of 2, 4, 7, 10 is 23 and sum of 3, 5, 7, 8 is also 23.
 
 arr[] = [0, 0, 2, 1, 1], target = 2
-Output: [0, 0, 1, 1] 
-Explanation: Sum of 0, 0, 1, 1 is equal to 2.
+Output: [0, 0, 1, 1]
 
 
 class Solution:
@@ -25,17 +24,16 @@ class Solution:
 
         for i in range(n):
             if i > 0 and arr[i] == arr[i-1]:
-                continue  # Skip duplicates for i
+                continue
             for j in range(i+1, n):
                 if j > i+1 and arr[j] == arr[j-1]:
-                    continue  # Skip duplicates for j
+                    continue
                 left = j + 1
                 right = n - 1
                 while left < right:
                     total = arr[i] + arr[j] + arr[left] + arr[right]
                     if total == target:
                         res.append([arr[i], arr[j], arr[left], arr[right]])
-                        # Skip duplicates
                         while left < right and arr[left] == arr[left + 1]:
                             left += 1
                         while left < right and arr[right] == arr[right - 1]:
