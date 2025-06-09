@@ -1,0 +1,64 @@
+Tug of War
+
+Given an array arr[] of size n, the task is to divide it into two subsets such that the absolute difference between the sum of elements in the two subsets.
+
+If n is even, both subsets must have exactly n/2 elements.
+If n is odd, one subset must have (n−1)/2 elements and the other must have (n+1)/2 elements.
+Examples:
+
+Input: arr[] = [3, 4, 5, -3, 100, 1, 89, 54, 23, 20]
+Output: 
+3 5 -3 89 54 
+4 100 1 23 20 
+Explanation: The absolute difference between the two subsets is 0.
+
+Input: arr[] = [23, 45, -34, 12, 0, 98, -99, 4, 189, -1, 4]
+Output: 
+23 0 -99 4 189 4 
+45 -34 12 98 -1 
+Explanation: The absolute difference between the two subsets is 1, which is minimum.
+
+
+
+class Solution:
+    def tugOfWar(self, arr):
+        n = len(arr)
+        total_sum = sum(arr)
+        min_diff = [float('inf')]
+        result = [[]]
+
+        # Required size of subset1
+        if n % 2 == 0:
+            subset_size = n // 2
+        else:
+            subset_size = n // 2
+
+        def backtrack(index, count, curr_sum, selected):
+            if count == subset_size:
+                other_sum = total_sum - curr_sum
+                diff = abs(curr_sum - other_sum)
+                if diff < min_diff[0]:
+                    min_diff[0] = diff
+                    result[0] = selected[:]
+                return
+
+            if index == n:
+                return
+
+            # Include current element
+            selected.append(arr[index])
+            backtrack(index + 1, count + 1, curr_sum + arr[index], selected)
+            selected.pop()
+
+            # Exclude current element
+            backtrack(index + 1, count, curr_sum, selected)
+
+        backtrack(0, 0, 0, [])
+
+        # Prepare both subsets
+        subset1 = result[0]
+        subset2 = arr[:]
+        for val in subset1:
+            subset2.remove(val)
+
+        return subset1, subset2
