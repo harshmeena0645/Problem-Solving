@@ -19,6 +19,15 @@ Output:
 3 5
 
 
+def combination_sum(arr, target):
+    arr.sort()
+    result = []
+    find_combinations(arr, target, 0, [], result)
+    if not result:
+        print("Empty")
+    else:
+        for comb in result:
+            print(*comb)
 
 def find_combinations(arr, target, start, path, result):
     if target == 0:
@@ -31,16 +40,6 @@ def find_combinations(arr, target, start, path, result):
         find_combinations(arr, target - arr[i], i, path, result)
         path.pop()
 
-def combination_sum(arr, target):
-    arr.sort()
-    result = []
-    find_combinations(arr, target, 0, [], result)
-    
-    if not result:
-        print("Empty")
-    else:
-        for comb in result:
-            print(*comb)
 
 n = int(input())
 arr = list(map(int, input().split()))
