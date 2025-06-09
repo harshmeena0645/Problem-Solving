@@ -25,6 +25,8 @@ class Solution(object):
         return [ ["."*i + "Q" + "."*(n-i-1) for i in sol] for sol in result]
 
 
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+
 
 Example 1:
 Input: n = 4
