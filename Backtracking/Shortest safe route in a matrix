@@ -3,7 +3,7 @@ Shortest safe route in matrix
 Cells 0 --> landmines (marked as 0)
 Cells 1 --> safe to traverse
 Find shortest safe route from any cell in the leftmost column to any cell in the rightmost column.
-Cannot move diagonally, and you must avoid both the landmines and their adjacent cells (up, down, left, right), as they are also unsafe.
+Cannot move diagonally, and you must avoid both the landmines and their adjacent cells (up,down,left,right), as they are also unsafe.
 
 
 mat = [1, 0, 1, 1, 1],
