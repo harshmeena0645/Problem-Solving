@@ -19,20 +19,19 @@ class Solution:
     def allPalindromicPerms(self, S):
         res = []
         
-        def is_palindrome(s):
-            return s == s[::-1]
-        
         def backtrack(start, path):
             if start == len(S):
                 res.append(path[:])
                 return
-            
             for end in range(start + 1, len(S) + 1):
                 prefix = S[start:end]
                 if is_palindrome(prefix):
                     path.append(prefix)
                     backtrack(end, path)
                     path.pop()
+
+        def is_palindrome(s):
+            return s == s[::-1]
         
         backtrack(0, [])
         return res
