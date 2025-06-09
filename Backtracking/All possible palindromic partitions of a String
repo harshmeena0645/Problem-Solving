@@ -1,5 +1,7 @@
 All possible palindromic partitions of String
 
+Every substring is a palindrome.
+You return all possible ways to do this.
 
 S = "geeks"
 Output:
