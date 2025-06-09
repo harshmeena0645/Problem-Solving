@@ -1,12 +1,10 @@
 M-Coloring Problem
 
-You are given an undirected graph consisting of V vertices and E edges represented by a list edges[][], along with an integer m. Your task is to determine whether it is possible to color the graph using at most m different colors such that no two adjacent vertices share the same color. Return true if the graph can be colored with at most m colors, otherwise return false.
+Undirected Graph V vertices and E edges represented by a list edges[][], along with an integer m. Your task is to determine whether it is possible to color the graph using at most m different colors such that no two adjacent vertices share the same color.
 
 Note: The graph is indexed with 0-based indexing.
 
-Examples:
-
-Input: V = 4, edges[][] = [[0, 1], [1, 3], [2, 3], [3, 0], [0, 2]], m = 3
+V = 4, edges[][] = [[0, 1], [1, 3], [2, 3], [3, 0], [0, 2]], m = 3
 Output: true
 Explanation: It is possible to color the given graph using 3 colors, for example, one of the possible ways vertices can be colored as follows:
 
@@ -21,33 +19,30 @@ Explanation: It is not possible to color the given graph using only 2 colors bec
 
 class Solution:
     def graphColoring(self, V, edges, m):
-        # Step 1: Build the adjacency list
         graph = [[] for _ in range(V)]
         for u, v in edges:
             graph[u].append(v)
             graph[v].append(u)
 
-        colors = [0] * V  # color of each vertex, 0 means uncolored
+        colors = [0] * V 
 
-        # Helper function to check if we can color vertex with a given color
         def isSafe(vertex, c):
             for neighbor in graph[vertex]:
                 if colors[neighbor] == c:
                     return False
             return True
 
-        # Recursive backtracking function to try coloring vertices
+ 
         def dfs(vertex):
             if vertex == V:
-                return True  # All vertices colored successfully
+                return True
 
-            for c in range(1, m + 1):  # Try colors from 1 to m
+            for c in range(1, m + 1):
                 if isSafe(vertex, c):
                     colors[vertex] = c
                     if dfs(vertex + 1):
                         return True
-                    colors[vertex] = 0  # Backtrack
-
-            return False  # No valid color found
+                    colors[vertex] = 0
+            return False
 
         return dfs(0)
