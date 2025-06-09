@@ -1,0 +1,56 @@
+All possible palindromic partitions of a String
+
+Given a String S, Find all possible Palindromic partitions of the given String.
+ 
+
+Example 1:
+
+Input:
+S = "geeks"
+Output:
+g e e k s
+g ee k s
+Explanation:
+All possible palindromic partitions
+are printed.
+Example 2:
+
+Input:
+S = "madam"
+Output:
+m a d a m
+m ada m
+madam
+
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function allPalindromicPerms() which takes a String S as input parameter and returns a list of lists denoting all the possible palindromic partitions in the order of their appearance in the original string.
+
+
+# User function Template for python3
+
+class Solution:
+    def allPalindromicPerms(self, S):
+        res = []
+        
+        def is_palindrome(s):
+            return s == s[::-1]
+        
+        def backtrack(start, path):
+            if start == len(S):
+                res.append(path[:])
+                return
+            
+            for end in range(start + 1, len(S) + 1):
+                prefix = S[start:end]
+                if is_palindrome(prefix):
+                    path.append(prefix)
+                    backtrack(end, path)
+                    path.pop()  # backtrack
+        
+        backtrack(0, [])
+        return res
+
+
+
+Expected Time Complexity: O(N*2N)
+Expected Auxiliary Space: O(N2), where N is the length of the String
