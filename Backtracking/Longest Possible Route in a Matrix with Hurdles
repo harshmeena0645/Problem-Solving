@@ -1,43 +1,38 @@
-Longest Possible Route in a Matrix with Hurdles
+Longest Possible Route in Matrix with Hurdles
 
-Given an N x M matrix, with a few hurdles(denoted by 0) arbitrarily placed, calculate the length of the longest possible route possible from source(xs,ys) to a destination(xd,yd) within the matrix. We are allowed to move to only adjacent cells which are not hurdles. The route cannot contain any diagonal moves and a location once visited in a particular path cannot be visited again.If it is impossible to reach the destination from the source return -1.
+N x M matrix
+hurdles-->denoted by 0 
+source(xs,ys) to a destination(xd,yd)
+Move Up, Down, Left, Right Not Diagonal
+If Not possible to reach the destination from the source return -1.
 
- 
 
-Example 1:
-
-Input:
 {xs,ys} = {0,0}
 {xd,yd} = {1,7}
 matrix = 1 1 1 1 1 1 1 1 1 1
          1 1 0 1 1 0 1 1 0 1
          1 1 1 1 1 1 1 1 1 1
 Output: 24
-Explanation:
 
- 
 
-Example 2:
-
-Input: 
 {xs,ys} = {0,3}
 {xd,yd} = {2,2}
 matrix = 1 0 0 1 0
          0 0 0 1 0
          0 1 1 0 0
 Output: -1
-Explanation:
-We can see that it is impossible to
-reach the cell (2,2) from (0,3).
-Your Task:
-You don't need to read input or print anything. Your task is to complete the function longestPath() which takes matrix ,source and destination as input parameters and returns an integer denoting the longest path.
 
 
 from typing import List
-
 class Solution:
-    def longestPath(self, mat: List[List[int]], n: int, m: int, xs: int, ys: int, xd: int, yd: int) -> int:
-        # Directions: Up, Down, Left, Right
+    if mat[xs][ys] == 0 or mat[xd][yd] == 0:
+            return -1
+        
+        visited = [[False for _ in range(m)] for _ in range(n)]
+        ans = dfs(xs, ys, visited, 0)
+        return ans if ans != -1 else -1
+
+    def longestPath(self, mat, n, m, xs, ys, xd, yd):
         dir_x = [-1, 1, 0, 0]
         dir_y = [0, 0, -1, 1]
         
@@ -45,7 +40,6 @@ class Solution:
             return (0 <= x < n and 0 <= y < m and mat[x][y] == 1 and not visited[x][y])
         
         def dfs(x, y, visited, path_len):
-            # If destination is reached
             if x == xd and y == yd:
                 return path_len
             
@@ -59,17 +53,10 @@ class Solution:
                     length = dfs(nx, ny, visited, path_len + 1)
                     max_len = max(max_len, length)
             
-            visited[x][y] = False  # Backtrack
+            visited[x][y] = False
             return max_len
         
-        if mat[xs][ys] == 0 or mat[xd][yd] == 0:
-            return -1
-        
-        visited = [[False for _ in range(m)] for _ in range(n)]
-        ans = dfs(xs, ys, visited, 0)
-        return ans if ans != -1 else -1
 
 
-
-Expected Time Complexity: O(2^(N*M))
-Expected Auxiliary Space: O(N*M)
+Time Complexity: O(2^(N*M))
+Auxiliary Space: O(N*M)
