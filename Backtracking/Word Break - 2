@@ -3,19 +3,19 @@ Word Break - 2
 Given a string s and a dictionary dict[] of valid words, you need to return all possible ways to break the string s into sentence such that each word in the sentence is a valid dictionary word.
 You are allowed to use a valid word multiple times in the sentence.
 
-Examples:
-
-Input: s = "likegfg", dict[] = ["lik", "like", "egfg", "gfg"]
+s = "likegfg"
+dict[] = ["lik", "like", "egfg", "gfg"]
 Output: 
 "lik egfg"
 "like gfg"
 Explanation: All the words in the given sentences are present in the dictionary.
-Input: s = "geeksforgeeks", dict[] = ["for", "geeks"]
+
+s = "geeksforgeeks"
+dict[] = ["for", "geeks"]
 Output: "geeks for geeks"
 Explanation: The string "geeksforgeeks" can be broken into valid words from the dictionary in one way.
 
 
-# User function Template for python3
 class Solution:
     def wordBreak(self, dict, s):
         word_set = set(dict)
@@ -24,7 +24,6 @@ class Solution:
         def dfs(index):
             if index == len(s):
                 return [""]
-
             if index in memo:
                 return memo[index]
 
