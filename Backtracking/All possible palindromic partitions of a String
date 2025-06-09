@@ -38,5 +38,6 @@ class Solution:
 
 
 
-Expected Time Complexity: O(N*2N)
-Expected Auxiliary Space: O(N2), where N is the length of the String
+Time Complexity: O(N*2N)
+Auxiliary Space: O(N2)
+(N is the length of the String)
