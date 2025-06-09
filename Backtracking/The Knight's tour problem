@@ -1,22 +1,26 @@
 The Knight's tour problem
 
-Given an n × n chessboard with a Knight starting at the top-left corner (position (0, 0)). The task is to determine a valid Knight's Tour where where the Knight visits each cell exactly once following the standard L-shaped moves of a Knight in chess.
-If a valid tour exists, print an n × n grid where each cell contains the step number (starting from 0) at which the Knight visits that cell. If no tour is possible, print -1.
+n × n
+Knight starting at position (0, 0)
+Task to determine valid Knight's Tour
+visits each cell exactly once
+L-shaped moves
+If a valid tour exists, print an n × n grid where each cell contains the step number (starting from 0) at which the Knight visits that cell.
+It's important to visit every cell
+If no tour is possible, print -1.
 
-Examples:
 
-Input: n = 5
+n = 5
 Output:  
-0 5 14 9 20 
-13 8 19 4 15 
-18 1 6 21 10 
-7 12 23 16 3 
-24 17 2 11 22 
-Explanation: The output represents one valid Knight's Tour on a 5x5 board. The number in each cell indicates the order in which it is visited starting from (0, 0) as step 0. 
+ 0  5  14   9  20 
+13  8  19   4  15 
+18  1   6  21  10 
+ 7 12  23  16   3 
+24 17   2  11  22  
+
 
 Input: n = 3
 Output: -1
-Explanation: It is not possible to find a valid Knight's Tour on a 3x3 chessboard since the Knight cannot visit all 9 cells exactly once without revisiting or getting stuck.
 
 
 
@@ -24,24 +28,22 @@ def knightTour(n):
     board = [[-1 for _ in range(n)] for _ in range(n)]
     dx = [2, 1, -1, -2, -2, -1, 1, 2]
     dy = [1, 2, 2, 1, -1, -2, -2, -1]
-
-    board[0][0] = 0  # Start from (0,0)
+    board[0][0] = 0
     if knightTourUtil(0, 0, 1, n, board, dx, dy):
         return board
     return [[-1]]
 def knightTourUtil(x, y, step, n, board, dx, dy):
-    if step == n * n:  # All cells visited
+    if step == n * n:
         return True
 
-    for i in range(8):  # Try all knight moves
+    for i in range(8):
         nx, ny = x + dx[i], y + dy[i]
         if isSafe(nx, ny, n, board):
-            board[nx][ny] = step  # Mark move
+            board[nx][ny] = step
             if knightTourUtil(nx, ny, step + 1, n, board, dx, dy):
                 return True
-            board[nx][ny] = -1  # Backtrack
+            board[nx][ny] = -1
 
     return False
 def isSafe(x, y, n, board):
-    # Check if (x, y) is inside board and not visited
     return x >= 0 and y >= 0 and x < n and y < n and board[x][y] == -1
