@@ -24,7 +24,7 @@ Output:
 from typing import List
 from collections import deque
 class Solution:
-    def findShortestPath(self, mat: List[List[int]]) -> int:
+    def findShortestPath(self, mat):
         r, c = len(mat), len(mat[0])
         directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
         
