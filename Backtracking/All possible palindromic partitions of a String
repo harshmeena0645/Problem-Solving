@@ -18,6 +18,7 @@ madam
 class Solution:
     def allPalindromicPerms(self, S):
         res = []
+        backtrack(0, [])
         
         def backtrack(start, path):
             if start == len(S):
@@ -32,8 +33,7 @@ class Solution:
 
         def is_palindrome(s):
             return s == s[::-1]
-        
-        backtrack(0, [])
+
         return res
 
 
