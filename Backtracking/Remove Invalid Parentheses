@@ -1,0 +1,79 @@
+Remove Invalid Parentheses
+
+You are given a string S that contains parentheses and letters. You have to remove the minimum number of invalid parentheses to make the input string valid.
+
+Return all the possible results in the sorted order.
+
+Example 1:
+
+Input: S = "()())()"
+Output: ["(())()","()()()"]
+Example 2:
+
+Input: S = "(a)())()"
+Output: ["(a())()","(a)()()"]
+Example 3:
+
+Input: S = ")("
+Output: [""]
+
+Your Task:  
+You don't need to read input or print anything. Your task is to complete the function removeInvalidParentheses() which takes the string S as an input parameter and returns an array of strings representing all the valid parentheses that we can form by removing the minimum number of characters from the string.
+
+ 
+
+Expected Time Complexity: O(2|S|)
+Expected Auxiliary Space: O(1)
+
+
+
+# User function Template for python3
+from typing import List
+
+class Solution:
+    def removeInvalidParentheses(self, s: str) -> List[str]:
+        res = set()
+        
+        # Count the number of invalid ( and )
+        left_rem, right_rem = 0, 0
+        for char in s:
+            if char == '(':
+                left_rem += 1
+            elif char == ')':
+                if left_rem > 0:
+                    left_rem -= 1
+                else:
+                    right_rem += 1
+
+        def isValid(expr):
+            count = 0
+            for ch in expr:
+                if ch == '(':
+                    count += 1
+                elif ch == ')':
+                    count -= 1
+                    if count < 0:
+                        return False
+            return count == 0
+
+        def dfs(index, left_rem, right_rem, expr, visited):
+            if (index, left_rem, right_rem, expr) in visited:
+                return
+            visited.add((index, left_rem, right_rem, expr))
+
+            if left_rem == 0 and right_rem == 0:
+                if isValid(expr):
+                    res.add(expr)
+                return
+
+            for i in range(index, len(expr)):
+                if i != index and expr[i] == expr[i - 1]:
+                    continue  # skip duplicates
+
+                if expr[i] == '(' and left_rem > 0:
+                    dfs(i, left_rem - 1, right_rem, expr[:i] + expr[i + 1:], visited)
+                elif expr[i] == ')' and right_rem > 0:
+                    dfs(i, left_rem, right_rem - 1, expr[:i] + expr[i + 1:], visited)
+
+        dfs(0, left_rem, right_rem, s, set())
+        return sorted(list(res)) if res else [""]
