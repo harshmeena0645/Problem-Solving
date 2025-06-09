@@ -26,11 +26,10 @@ Output: -1
 from typing import List
 class Solution:
     if mat[xs][ys] == 0 or mat[xd][yd] == 0:
-            return -1
-        
-        visited = [[False for _ in range(m)] for _ in range(n)]
-        ans = dfs(xs, ys, visited, 0)
-        return ans if ans != -1 else -1
+        return -1
+    visited = [[False for _ in range(m)] for _ in range(n)]
+    ans = dfs(xs, ys, visited, 0)
+    return ans if ans != -1 else -1
 
     def longestPath(self, mat, n, m, xs, ys, xd, yd):
         dir_x = [-1, 1, 0, 0]
