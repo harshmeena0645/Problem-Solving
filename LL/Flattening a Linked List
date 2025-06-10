@@ -1,0 +1,113 @@
+Flattening a Linked List
+
+Given a linked list containing n head nodes where every node in the linked list contains two pointers:
+(i) next points to the next node in the list.
+(ii) bottom pointer to a sub-linked list where the current node is the head.
+Each of the sub-linked lists nodes and the head nodes are sorted in ascending order based on their data.
+Your task is to flatten the linked list such that all the nodes appear in a single level while maintaining the sorted order.
+
+Note:
+1. ↓ represents the bottom pointer and -> represents the next pointer.
+2. The flattened list will be printed using the bottom pointer instead of the next pointer.
+
+Examples:
+
+Input:
+
+Output: 5-> 7-> 8-> 10 -> 19-> 20-> 22-> 28-> 30-> 35-> 40-> 45-> 50.
+Explanation: 
+Bottom pointer of 5 is pointing to 7.
+Bottom pointer of 7 is pointing to 8.
+Bottom pointer of 8 is pointing to 10 and so on.
+Input:
+ 
+Output: 5-> 7-> 8-> 10-> 19-> 22-> 28-> 30-> 50
+Explanation:
+Bottom pointer of 5 is pointing to 7.
+Bottom pointer of 7 is pointing to 8.
+Bottom pointer of 8 is pointing to 10 and so on.
+
+
+
+class Solution:
+    def flatten(self, root):
+        """
+        Flattens a linked list containing n head nodes where every node in the linked list contains two pointers:
+        (i) next points to the next node in the list.
+        (ii) bottom pointer to a sub-linked list where the current node is the head.
+        Each of the sub-linked lists nodes and the head nodes are sorted in ascending order based on their data.
+        Your task is to flatten the linked list such that all the nodes appear in a single level while maintaining the sorted order.
+
+        Note:
+        1. ↓ represents the bottom pointer and -> represents the next pointer.
+        2. The flattened list will be printed using the bottom pointer instead of the next pointer.
+        """
+
+        if not root:
+            return root
+
+        # Flatten the list using iterative merging
+        curr = root
+        while curr:
+            if curr.bottom:
+                # Merge the bottom list with the next list
+                curr.next = self.mergeTwoLists(curr.next, curr.bottom)
+                curr.bottom = None  # Remove the bottom pointer
+
+            curr = curr.next
+
+        # Now, flatten the entire list by traversing using the 'next' pointers and converting them to 'bottom' pointers
+        curr = root
+        head = root # Store the head of the flattened list
+        prev = None
+        while curr:
+            next_node = curr.next
+            #curr.next = None # Remove the next pointer
+            #curr.bottom = None # Ensure bottom is None
+            if prev:
+                prev.bottom = curr
+            else:
+                head = curr # Update head if it's the first node
+            prev = curr
+            curr = next_node
+
+        return head
+
+    def mergeTwoLists(self, a, b):
+        """
+        Merges two sorted linked lists (using the next pointer).
+        """
+
+        if not a:
+            return b
+        if not b:
+            return a
+
+        result = None
+        tail = None
+
+        if a.data <= b.data:
+            result = a
+            a = a.next
+        else:
+            result = b
+            b = b.next
+
+        tail = result
+
+        while a and b:
+            if a.data <= b.data:
+                tail.next = a
+                a = a.next
+            else:
+                tail.next = b
+                b = b.next
+            tail = tail.next
+
+        if a:
+            tail.next = a
+        if b:
+            tail.next = b
+
+        # No need to convert 'next' pointers to 'bottom' pointers here
+        return result
