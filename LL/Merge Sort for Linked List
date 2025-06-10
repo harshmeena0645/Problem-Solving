@@ -1,39 +1,29 @@
 Merge Sort for Linked List
 
-Given a pointer/reference to the head of the linked list, the task is to sort the given linked list using Merge Sort.
-Note: If the length of the linked list is odd, then the extra node should go into the first list while splitting.
-
-Examples:
+Odd length-> 1 extra element add in 1st half
 
 Input: LinkedList: 3->5->2->4->1
 Output: 1->2->3->4->5
-Explanation: After sorting the given linked list, the resultant matrix will be 1->2->3->4->5.
 
 Input: LinkedList: 9->15->0
 Output: 0->9->15
-Explanation: After sorting the given linked list , resultant will be 0->9->15.
 
-Expected Time Complexity: O(n*log(n))
-Expected Auxiliary Space: O(n)
+Time Complexity: O(n*log(n))
+Auxiliary Space: O(n)
 
 
 class Solution:
-    #Function to sort the given linked list using Merge Sort.
     def mergeSort(self, head):
-        # code here
         if not head or not head.next:
             return head
 
-        # 1. Split the list into two halves
         middle = self.getMiddle(head)
         next_to_middle = middle.next
         middle.next = None
 
-        # 2. Recursively sort the two halves
         left = self.mergeSort(head)
         right = self.mergeSort(next_to_middle)
 
-        # 3. Merge the sorted halves
         sorted_list = self.merge(left, right)
         return sorted_list
 
