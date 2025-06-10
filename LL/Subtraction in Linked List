@@ -1,0 +1,112 @@
+Subtraction in Linked List
+
+You are given two linked lists representing two large positive numbers. The linked lists represent these two numbers, subtract the smaller number from the larger one and return the head of the linked list representing the result. Please take a look at the examples to get a better understanding of the task.
+
+The linked list does not contain leading zeros, except for the number zero itself.
+
+Examples:
+
+Input: LinkedList1: 1->0->0, LinkedList2: 1->2
+Output:  LinkedList: 8->8
+Explanation: First linked list represents 100 and the second one represents 12. 12 subtracted from 100 gives us 88 as the result. It is represented as 8->8 in the linked list.
+
+Input: LinkedList1: 6->3, LinkedList2: 7->1->0
+Output: LinkedList: 6->4->7
+Explanation: First linked list represents 63 and the second one represents 710. 63 subtracted from 710 gives us 647 as the result. It is represented as 6->4->7 in the linked list.
+
+
+
+class Solution:
+    def subLinkedList(self, head1, head2): 
+        # Code here
+        # return head of difference list
+        
+        # Remove leading zeros
+        while head1 and head1.data == 0 and head1.next:
+            head1 = head1.next
+        while head2 and head2.data == 0 and head2.next:
+            head2 = head2.next
+            
+        # Determine which list is larger
+        len1 = self.getLength(head1)
+        len2 = self.getLength(head2)
+        
+        if len1 < len2 or (len1 == len2 and self.isSmaller(head1, head2)):
+            head1, head2 = head2, head1
+            sign = -1
+        else:
+            sign = 1
+            
+        # Perform subtraction
+        result_head = self.subtractLists(head1, head2)
+        
+        # Remove leading zeros from result
+        while result_head and result_head.data == 0 and result_head.next:
+            result_head = result_head.next
+            
+        if not result_head:
+            return Node(0) # Result is zero
+        
+        return result_head
+
+    def getLength(self, head):
+        length = 0
+        while head:
+            length += 1
+            head = head.next
+        return length
+
+    def isSmaller(self, head1, head2):
+        while head1 and head2:
+            if head1.data < head2.data:
+                return True
+            elif head1.data > head2.data:
+                return False
+            head1 = head1.next
+            head2 = head2.next
+        return False # Lists are equal
+
+    def subtractLists(self, head1, head2):
+        head1 = self.reverseList(head1)
+        head2 = self.reverseList(head2)
+        
+        result_head = None
+        result_tail = None
+        borrow = 0
+        
+        while head1:
+            val1 = head1.data
+            val2 = head2.data if head2 else 0
+            
+            diff = val1 - val2 - borrow
+            
+            if diff < 0:
+                diff += 10
+                borrow = 1
+            else:
+                borrow = 0
+                
+            new_node = Node(diff)
+            if not result_head:
+                result_head = new_node
+                result_tail = new_node
+            else:
+                result_tail.next = new_node
+                result_tail = new_node
+                
+            head1 = head1.next
+            if head2:
+                head2 = head2.next
+                
+        result_head = self.reverseList(result_head)
+        return result_head
+
+    def reverseList(self, head):
+        prev = None
+        curr = head
+        while curr:
+            next_node = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_node
+        return prev
