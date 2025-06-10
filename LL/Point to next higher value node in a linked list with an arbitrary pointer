@@ -1,0 +1,138 @@
+Point to next higher value node in a linked list with an arbitrary pointer
+
+Given a singly linked list with every node having an additional arbitrary pointer that currently points to NULL. The task is to make the arbitrary pointer point to the next higher-value node.
+
+listwithArbit
+
+A Simple Solution is to traverse all nodes one by one, for every node, find the node that has the next greater value of the current node and change the next pointer. Time Complexity of this solution is O(n^2).
+
+Using Merge Sort - O(nlogn) Time and O(n) Space
+
+
+# Python program to point to next higher value
+# with an arbitrary pointer using merge sort approach
+class Node:
+    def __init__(self, x):
+        self.data = x
+        self.next = None
+        self.arbit = None
+
+
+# Function to merge two sorted lists
+def SortedMerge(left, right):
+  
+    # If one list is empty, return the other
+    if not left:
+        return right
+    if not right:
+        return left
+
+    result = None
+    curr = None
+
+    # Initialize result with the smaller node
+    if left.data <= right.data:
+        result = left
+        left = left.arbit
+    else:
+        result = right
+        right = right.arbit
+    curr = result
+
+    # Merge the two lists
+    while left and right:
+        if left.data <= right.data:
+            curr.arbit = left
+            left = left.arbit
+        else:
+            curr.arbit = right
+            right = right.arbit
+        curr = curr.arbit
+
+    # Attach remaining nodes
+    curr.arbit = left if left else right
+    return result
+
+
+# Function to split the list into two halves
+def split(head):
+  
+    # If list is empty or has one node
+    if not head or not head.arbit:
+        return None
+
+    slow = head
+    fast = head.arbit
+
+    # Move slow and fast pointers to find middle
+    while fast and fast.arbit:
+        slow = slow.arbit
+        fast = fast.arbit.arbit
+
+    # Split the list into two halves
+    second = slow.arbit
+    slow.arbit = None
+    return second
+
+
+# Recursive merge sort for arbit pointers
+def MergeSort(head):
+  
+    # If list is empty or has one node
+    if not head or not head.arbit:
+        return head
+
+    # Split the list into two halves
+    left = head
+    right = split(head)
+
+    # Recursively sort both halves
+    left = MergeSort(left)
+    right = MergeSort(right)
+
+    # Merge the two sorted halves
+    return SortedMerge(left, right)
+
+
+# Function to populate arbit pointers
+def populateArbit(head):
+    curr = head
+
+    # Initialize arbit pointers to next nodes
+    while curr:
+        curr.arbit = curr.next
+        curr = curr.next
+
+    # Sort the list using arbit pointers
+    return MergeSort(head)
+
+
+def printListArbit(node):
+    curr = node
+
+    while curr:
+        print(curr.data, end=" ")
+        curr = curr.arbit
+    print()
+
+
+if __name__ == "__main__":
+  
+    # Create a hardcoded linked list
+    # List: 5 -> 10 -> 2 -> 3
+    head = Node(5)
+    head.next = Node(10)
+    head.next.next = Node(2)
+    head.next.next.next = Node(3)
+
+    # Populate arbit pointers to next higher node
+    head = populateArbit(head)
+
+    printListArbit(head)
+
+
+
+Output
+2 3 5 10 
+Time Complexity: O(nlogn), as we are using the Merge Sort technique
+Auxiliary Space: O(n) , where n is number of elements in linked list.
