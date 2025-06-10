@@ -2,7 +2,6 @@ Flatten a multilevel linked list using level order traversal
 
 Given a linked list where in addition to the next pointer, each node has a child pointer, which may or may not point to a separate list. These child lists may have one or more children of their own to produce a multilevel linked list. Given the head of the first level of the list. The task is to flatten the list so that all the nodes appear in a single-level linked list. Flatten the list in a way that all nodes at the first level should come first, then nodes of the second level, and so on.
 
-Examples:
 
 Input: 
 2_5
@@ -10,8 +9,6 @@ Output: 1->4->6->2->5->7->3->8
 Explanation: The multilevel linked list is flattened as it has no child pointers.
 
 
-# Python Program to flatten list with 
-# next and child pointers
 
 class Node:
     def __init__(self, new_value):
@@ -19,40 +16,23 @@ class Node:
         self.next = None
         self.child = None
 
-# function that flattens 
-# a multilevel linked list
 def flatten_list(head):
-
-    # Base case
     if head is None:
         return
-
-    # Find tail node of first level
     tail = head
     while tail.next is not None:
-        tail = tail.next
-
-    # traverse through all nodes of first level 
+        tail = tail.next 
     curr = head
 
     while curr != None:
-
-        # If current node has a child
         if curr.child is not None:
-
-            # then append the child at the end of current list
             tail.next = curr.child
-
-            # and update the tail to new last node
             tmp = curr.child
             while tmp.next is not None:
                 tmp = tmp.next
             tail = tmp
-
-            # Remove link between curr and child node
             curr.child = None
 
-        # Change current node
         curr = curr.next
 
 def print_list(head):
@@ -63,13 +43,6 @@ def print_list(head):
     print()
 
 if __name__ == "__main__":
-  
-  	#Linked List - 
-  	# 1 -> 2 -> 3
-	# |    |   
-	# 4 -> 5   6
-	# |
-	# 7
     head = Node(1)
     head.next = Node(2)
     head.next.next = Node(3)
