@@ -22,23 +22,17 @@ class Solution:
     def zigzag(self, head_node):
         if not head_node or not head_node.next:
             return head_node
-
-        # This flag indicates the expected relation:
-        # True means a <= b, False means a >= b
         flag = True
         current = head_node
 
         while current and current.next:
             if flag:
-                # Expect current.data <= current.next.data
                 if current.data > current.next.data:
                     current.data, current.next.data = current.next.data, current.data
             else:
-                # Expect current.data >= current.next.data
                 if current.data < current.next.data:
                     current.data, current.next.data = current.next.data, current.data
 
-            # Flip the expected relation for next pair
             flag = not flag
             current = current.next
 
