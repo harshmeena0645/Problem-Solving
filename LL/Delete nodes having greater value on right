@@ -1,53 +1,41 @@
 Delete nodes having greater value on right
 
-Given a singly linked list, remove all nodes that have a node with a greater value anywhere to their right in the list. Return the head of the modified linked list.
 
-Examples:
-
-Input:
 LinkedList = 12->15->10->11->5->6->2->3
 Output: 15->11->6->3
+Explanation: 12,10,5,2 are elements which have greater elements in right so they deleted
 
-Explanation: Since, 12, 10, 5 and 2 are the elements which have greater elements on the following nodes. So, after deleting them, the linked list would like be 15, 11, 6, 3.
-Input:
 LinkedList = 10->20->30->40->50->60
 Output: 60
-
-Explanation: All the nodes except the last node has a greater value node on its right, so all the nodes except the last node must be removed. 
 
 
 
 class Solution:
     def compute(self,head):
-
         if not head:
             return None
-
-        # Reverse the linked list
         curr = head
         prev = None
+
         while curr:
             next_node = curr.next
             curr.next = prev
             prev = curr
             curr = next_node
         head = prev
-
-        # Traverse the reversed linked list and remove nodes with smaller values
         curr = head
-        max_val = head.data  # Changed head.val to head.data
+        max_val = head.data
         prev = head
         curr = curr.next
 
         while curr:
-            if curr.data < max_val:  # Changed curr.val to curr.data
+            if curr.data < max_val:
                 prev.next = curr.next
             else:
-                max_val = curr.data  # Changed curr.val to curr.data
+                max_val = curr.data
                 prev = curr
             curr = curr.next
 
-        # Reverse the linked list again
         curr = head
         prev = None
         while curr:
