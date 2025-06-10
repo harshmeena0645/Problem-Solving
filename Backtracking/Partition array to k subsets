@@ -1,14 +1,13 @@
 Partition array to k subsets
 
-Given an integer array arr[ ] and an integer k, the task is to check if the array arr[ ] could be divided into k non-empty subsets with equal sum of elements.
-Note: All elements of this array should be part of exactly one partition.
+Task is to check if the array could be divided into k non-empty subsets with equal sum of elements.
+All elements of this array should be part of exactly one partition.
 
-Examples:
-
-Input: arr[] = [2, 1, 4, 5, 6], k = 3
+arr[] = [2, 1, 4, 5, 6], k = 3
 Output: true
 Explanation: We can divide above array into 3 parts with equal sum as (2, 4), (1, 5), (6)
-Input: arr[] = [2, 1, 5, 5, 6], k = 3
+
+arr[] = [2, 1, 5, 5, 6], k = 3
 Output: false
 Explanation: It is not possible to divide above array into 3 parts with equal sum.
 
@@ -17,19 +16,15 @@ class Solution:
     def isKPartitionPossible(self, arr, k):
         total = sum(arr)
         
-        # If total sum is not divisible by k, return False
         if total % k != 0:
             return False
         
         target = total // k
         n = len(arr)
         used = [False] * n
-        
-        # Sort in descending order to optimize
         arr.sort(reverse=True)
         
         def backtrack(start, k, current_sum):
-            # If only one subset left, remaining elements will naturally make that up
             if k == 1:
                 return True
             
