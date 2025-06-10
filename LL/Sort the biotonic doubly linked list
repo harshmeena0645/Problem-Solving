@@ -3,10 +3,10 @@ Sort the biotonic doubly linked list
 Given a biotonic doubly linked list. The task is to sort the given linked list. A biotonic doubly linked list is a doubly linked list that is first increasing and then decreasing. A strictly increasing or a strictly decreasing list is also a biotonic doubly linked list.
 
 
-Input: Sort-the-biotonic-doubly-linked-list-2
+Input:Sort-the-biotonic-doubly-linked-list-2
 Output: 3 <-> 8 <-> 14 <-> 17 <-> 20
 
-Input: Sort-the-biotonic-doubly-linked-list-1
+Input:Sort-the-biotonic-doubly-linked-list-1
 Output: 1 <-> 2 <-> 4 <-> 5 <-> 6 <-> 7 <-> 10 <-> 12
 
 
