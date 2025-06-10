@@ -30,7 +30,7 @@ Output: []
 
 
 class Solution:
-    def mergeKLists(self, List[ListNode]):
+    def mergeKLists(self, lists):
         if not lists:
             return None
         if len(lists) == 1:
