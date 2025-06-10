@@ -1,0 +1,100 @@
+Sort the biotonic doubly linked list
+
+Given a biotonic doubly linked list. The task is to sort the given linked list. A biotonic doubly linked list is a doubly linked list that is first increasing and then decreasing. A strictly increasing or a strictly decreasing list is also a biotonic doubly linked list.
+
+Examples:
+
+Input: 
+
+Sort-the-biotonic-doubly-linked-list-2
+
+Output: 3 <-> 8 <-> 14 <-> 17 <-> 20
+
+Input:
+Sort-the-biotonic-doubly-linked-list-1
+Output: 1 <-> 2 <-> 4 <-> 5 <-> 6 <-> 7 <-> 10 <-> 12
+
+
+# Python program to sort bitonic DLL.
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.next = None
+        self.prev = None
+
+def print_list(head):
+    while head:
+        print(head.data, end=" ")
+        head = head.next
+    print()
+
+# Function to sort a bitonic doubly linked list
+def sort_bitonic_dll(head):
+    if not head or not head.next:
+        return head
+
+    # Find the last node
+    last = head
+    while last.next:
+        last = last.next
+
+    # Initialize pointers
+    front = head
+    result = None
+    tail = None
+
+    # Process nodes until all are added to the result list
+    while front and last and front != last and last.next != front:
+        if front.data < last.data:
+            new_node = Node(front.data)
+            front = front.next
+        else:
+            new_node = Node(last.data)
+            last = last.prev
+
+        # Add the new node to the result list
+        if result is None:
+            result = new_node
+            tail = result
+        else:
+            tail.next = new_node
+            new_node.prev = tail
+            tail = tail.next
+
+    # Handle the case where front and last pointers
+    # meet or cross
+    while front and front != last.next:
+        new_node = Node(front.data)
+        front = front.next
+        tail.next = new_node
+        new_node.prev = tail
+        tail = tail.next
+
+    while last and last.next != front:
+        new_node = Node(last.data)
+        last = last.prev
+        tail.next = new_node
+        new_node.prev = tail
+        tail = tail.next
+
+    return result
+
+
+# Create the doubly linked list: 2<->12<->11<->1
+head = Node(2)
+head.next = Node(12)
+head.next.prev = head
+head.next.next = Node(11)
+head.next.next.prev = head.next
+head.next.next.next = Node(1)
+head.next.next.next.prev = head.next.next
+
+sorted_head = sort_bitonic_dll(head)
+print_list(sorted_head)
+
+
+
+Output
+1 2 11 12 
+Time Complexity: O(n), where n is number of nodes in DLL.
+Auxiliary Space: O(n), for storing the sorted result
