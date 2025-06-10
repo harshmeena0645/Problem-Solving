@@ -8,15 +8,17 @@ Newspapers and magazines often have crypt-arithmetic puzzles of the form:
  MONEY
 -------- 
 
-Where the goal is to assign each letter a digit from 0 to 9 so that the arithmetic works out correctly. The rules are that all occurrences of a letter must be assigned the same digit, and no digit can be assigned to more than one letter. You are given three strings a, b, and sum, representing the crypt-arithmetic puzzles, your task is to solve the puzzle and print the three strings representing its solution.
+0 to 9
+all occurrences of a letter must be assigned the same digit
+no digit can be assigned to more than one letter
+print the three strings representing its solution.
 
-Note: If no possible solution exists, print "-1". If multiple solutions exist, print any.
+If no possible solution exists --> -1 print
+If multiple solutions exist, print any
 
-Example:
-
-Input: a = "send", b = "more", sum = "money"
+a = "send", b = "more", sum = "money"
 Output: 7531 0825 08356
-Explanation: 7531 + 0825 = 08356, and all the unique characters are assigned unique digits. 2817, 0368, 03185, is also the possible answer.
+2817, 0368, 03185 is also possible answer
 
 Input: a = "s", b = "p", sum = "f"
 Output: 2 1 3
@@ -41,7 +43,6 @@ def solvePuzzleHelper(a, b, sumStr, pos, carry, charToDigit, usedDigits):
 
     for digit in range(10):
         if not usedDigits[digit]:
-            # Prevent leading zero
             if digit == 0 and sumChar in firstLetters:
                 continue
             charToDigit[sumChar] = digit
@@ -75,7 +76,7 @@ def solvePuzzle(a, b, sumStr):
     usedDigits = [False] * 10
     uniqueChars = set()
     order = ""
-    firstLetters = {a[0], b[0], sumStr[0]}  # no leading zero
+    firstLetters = {a[0], b[0], sumStr[0]}
 
     for ch in a + b + sumStr:
         if ch not in uniqueChars:
@@ -83,7 +84,7 @@ def solvePuzzle(a, b, sumStr):
             order += ch
 
     if len(order) > 10:
-        return ["-1"]  # more than 10 unique letters
+        return ["-1"]
 
     if assignDigits(a, b, sumStr, 0, order, charToDigit, usedDigits):
         x = "".join(str(charToDigit[ch]) for ch in a)
@@ -92,40 +93,23 @@ def solvePuzzle(a, b, sumStr):
         return [x, y, z]
     return ["-1"]
 
-# Example Test Cases
-print(" ".join(solvePuzzle("send", "more", "money")))  # Example: 9567 1085 10652
-print(" ".join(solvePuzzle("s", "p", "f")))             # Example: 2 1 3 (or other valid mappings)
 
 
 
 ✅ Time Complexity
-Let:
-
-n = number of unique letters (at most 10).
-
-k = number of digits to assign = n.
-
+n = number of unique letters (at most 10)
+k = number of digits to assign = n
 We try all k! (factorial) digit assignments.
 
-So the worst-case time complexity is:
-
-👉 O(k!) = O(10!) = 3,628,800 (maximum 10 unique letters)
-⌛ Additional Cost:
-For each permutation:
+O(k!) = O(10!) = 3,628,800 (maximum 10 unique letters)
 
 We do a linear check of addition → O(L) where L = max(len(a), len(b), len(sum)).
 
-So full complexity:
-
-✅ Final Complexity:
 O(k! × L)
 → At worst: O(10! × L) → practically fast for puzzles with ≤10 letters.
 
 ✅ Space Complexity:
-O(k) for the charToDigit map.
-
-O(10) for usedDigits boolean array.
-
-O(L) for recursive call stack in worst case.
-
+O(k) for the charToDigit map
+O(10) for usedDigits boolean array
+O(L) for recursive call stack in worst case
 Space: O(k + L)
