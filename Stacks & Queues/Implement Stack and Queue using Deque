@@ -1,11 +1,5 @@
 Implement Stack and Queue using Deque
 
-Deque also known as double ended queue, as name suggests is a special kind of queue in which insertions and deletions can be done at the last as well as at the beginning.
-
-A link-list representation of deque is such that each node points to the next node as well as the previous node. So that insertion and deletions take constant time at both the beginning and the last.
-
-Now, deque can be used to implement a stack and queue. One simply needs to understand how deque can made to work as a stack or a queue.
-
 
 class node:
     def __init__(self,val):
@@ -106,27 +100,22 @@ class Queue:
             
 stk = Stack() 
 
- # push 7 and 8 at top of stack
 stk.push(7) 
 stk.push(8) 
 print("Stack: ") 
 stk.display() 
 
- # pop an element
 stk.pop() 
 print("Stack: ") 
 stk.display() 
 
- # Object of Queue
 que = Queue() 
 
- # Insert 12 and 13 in queue
 que.enqueue(12) 
 que.enqueue(13) 
 print("Queue: ") 
 que.display() 
 
- # Delete an element from queue
 que.dequeue() 
 print("Queue: ") 
 que.display() 
@@ -142,5 +131,6 @@ Queue: 12 13
 Queue: 13 
 Size of Stack is 1
 Size of Queue is 1
+
 Time Complexity: O(n)
 Auxiliary Space: O(n)
