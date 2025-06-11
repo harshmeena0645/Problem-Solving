@@ -1,0 +1,36 @@
+Valid Substring
+
+Given a string s consisting only of opening and closing parentheses ( and ), find the length of the longest valid (well-formed) parentheses substring.
+
+Note: The length of the smallest valid substring () is 2.
+
+Examples:
+
+Input: s = "(()("
+Output: 2
+Explanation: The longest valid substring is (). Its length is 2. 
+Input: s = "()(())("
+Output: 6
+Explanation: The longest valid substring is ()(()). Its length is 6.
+Input: s = "(()())"
+Output: 6
+Explanation: The longest valid substring is (()()). Its length is 6.
+
+
+
+class Solution:
+    def maxLen(ob, s):
+        stack = [-1]  # Base index
+        max_len = 0
+
+        for i in range(len(s)):
+            if s[i] == '(':
+                stack.append(i)
+            else:
+                stack.pop()
+                if stack:
+                    max_len = max(max_len, i - stack[-1])
+                else:
+                    stack.append(i)
+        
+        return max_len
