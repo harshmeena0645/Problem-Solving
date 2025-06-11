@@ -1,18 +1,11 @@
 Sort a Stack using Recursion
 
-Given a stack, the task is to sort it using recursion.
-
-Example: 
 
 Input: [3 2 1]
 Output: [3 2 1]
-Explanation: The given stack is sorted know 3 > 2 > 1
 
 Input: [11 2 32 3 41]
 Output: [41 32 11 3 2]
-
-The main idea is to repeatedly pop elements from the stack and sort the remaining stack. After sorting the rest of the stack, the popped element is inserted into its correct position using the sortedInsert function.
-The sortedInsert function ensures that the element is placed in the correct position in the already sorted stack. This process continues recursively until the stack is fully sorted in ascending order.
 
 
 
@@ -24,13 +17,11 @@ def sorted_insert(s, x):
     sorted_insert(s, x)
     s.append(temp)
 
-
 def sort(s):
     if s:
         x = s.pop()
         sort(s)
         sorted_insert(s, x)
-
 
 if __name__ == '__main__':
     s = []
@@ -42,7 +33,6 @@ if __name__ == '__main__':
     s.append(41)
 
     sort(s)
-
     while s:
         print(s.pop(), end=' ')
     print()
