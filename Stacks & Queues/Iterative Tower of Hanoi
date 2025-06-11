@@ -1,0 +1,50 @@
+Iterative Tower of Hanoi
+
+
+rod = ['S', 'A', 'D']
+stacks = [[], [], []]
+
+
+def moveDisk(a, b):
+    if not stacks[b] or (stacks[a] and stacks[a][-1] < stacks[b][-1]):
+        print(f"Move disk {stacks[a][-1]} from rod {rod[a]} to rod {rod[b]}")
+        stacks[b].append(stacks[a].pop())
+    else:
+        moveDisk(b, a)
+
+
+def towerOfHanoi(n):
+    print(f"Tower of Hanoi for {n} disks:")
+
+    src, aux, dest = 0, 1, 2
+    stacks[src] = list(range(n, 0, -1))
+
+    totalMoves = (1 << n) - 1
+    if n % 2 == 0:
+        aux, dest = dest, aux
+
+    for i in range(1, totalMoves + 1):
+        if i % 3 == 0:
+            moveDisk(aux, dest)
+        elif i % 3 == 1:
+            moveDisk(src, dest)
+        else:
+            moveDisk(src, aux)
+
+
+if __name__ == "__main__":
+    n = 3  # number of disks
+    towerOfHanoi(n)
+
+
+
+Output
+Tower of Hanoi for 3 disks:
+Move disk 1 from rod S to rod D
+Move disk 2 from rod S to rod A
+Move disk 1 from rod D to rod A
+Move disk 3 from rod S to rod D
+Move disk 1 from rod A to rod S
+Move disk 2 ...
+Time Complexity: O(2n) Since the iterative solution needs to generate and process all possible combinations of moves for n disks, the number of iterations grows exponentially with the number of disks.
+Auxiliary Space: O(n)
