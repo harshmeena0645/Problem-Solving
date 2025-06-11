@@ -1,35 +1,18 @@
 Next Smaller Element
 
-Given an array, print the Next Smaller Element (NSE) for every element. The NSE for an element x is the first smaller element on the right side of x in the array. For elements for which no smaller element exists (on the right side), then consider NSE as -1. 
-
-Examples:
 
 Input: [4, 8, 5, 2, 25]
 Output: [2, 5, 2, -1, -1]
 Explanation: 
-The first element smaller than 4 having index > 0 is 2.
-The first element smaller than 8 having index > 1 is 5.
-The first element smaller than 5 having index > 2 is 2.
-There are no elements smaller than 4 having index > 3.
-There are no elements smaller than 4 having index > 4.
 
 Input: [13, 7, 6, 12]
 Output: [7, 6, -1, -1]
-Explanation: 
-The first element smaller than 13 having index > 0 is 7.
-The first element smaller than 7 having index > 1 is 6.
-There are no elements smaller than 6 having index > 2.
-There are no elements smaller than 12 having index > 3. 
 
 [Naive Approach] Using Nested loops - O(n^2) Time O(1) Space
 
 
-
-# Function to print element and NSE pair for all elements of list
 def printNSE(arr):
-
     for i in range(0, len(arr), 1):
-
         next = -1
         for j in range(i + 1, len(arr), 1):
             if arr[i] > arr[j]:
@@ -38,11 +21,9 @@ def printNSE(arr):
             
         print(str(arr[i]) + " -- " + str(next))
 
-# Driver program to test above function
 arr = [11, 13, 21, 3]
 printNSE(arr)
 
-# This code is contributed by Sunny Karira
 
 
 Output
@@ -50,5 +31,6 @@ Output
 13 --> 3
 21 --> 3
 3 --> -1
+
 Time Complexity: O(N^2) where N is the size of the input array.
 Auxiliary Space: O(1)
