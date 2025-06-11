@@ -2,8 +2,6 @@ Queue based approach for first non-repeating character in a stream
 
 Given a stream of characters and we have to find first non repeating character each time a character is inserted to the stream. 
 
-Examples: 
-
 Input  : a a b c
 Output : a -1 b b
 
@@ -11,29 +9,16 @@ Input  : a a c
 Output : a -1 c
 
 
-# Python3 program for a Queue based approach 
-# to find first non-repeating character 
 from queue import Queue 
-
-# function to find first non 
-# repeating character of sa Stream 
 def firstnonrepeating(Str):
     global MAX_CHAR
     q = Queue()
     charCount = [0] * MAX_CHAR 
     
-    # traverse whole Stream
     for i in range(len(Str)):
-
-        # push each character in queue 
-        q.put(Str[i]) 
-
-        # increment the frequency count 
+        q.put(Str[i])  
         charCount[ord(Str[i]) - 
                   ord('a')] += 1
-
-        # check for the non repeating
-        # character 
         while (not q.empty()): 
             if (charCount[ord(q.queue[0]) - 
                           ord('a')] > 1): 
@@ -46,9 +31,6 @@ def firstnonrepeating(Str):
             print(-1, end = " ")
     print()
 
-# Driver Code
 MAX_CHAR = 26
 Str = "aabc"
 firstnonrepeating(Str)
-
-# This code is contributed by PranchalK
