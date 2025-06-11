@@ -1,0 +1,95 @@
+Implement k stacks in an array
+
+Given an array of size n, the task is to implement k stacks using a single array. We mainly need to perform the following type of queries on the stack.
+
+push(x, i) :  This operations pushes the element x into stack i 
+pop(i) : This operation pops the top of stack i
+
+Here i varies from 0 to k-1
+
+Naive Approach - Dividing Array into k Segments
+
+
+class kStacks:
+    def __init__(self, n, k):
+        self.n = n
+        self.k = k
+        self.arr = [0] * n
+        self.top = [-1] * k
+        self.next = list(range(1, n)) + [-1]
+        self.freeIndex = 0
+
+    # Function to push element x into m'th stack
+    def push(self, x, m):
+        
+        # Check if there is space available in the stack
+        if self.freeIndex == -1:
+            return False  
+
+        # Get the index of the free space
+        i = self.freeIndex
+
+        # Update freeIndex to the next free slot
+        self.freeIndex = self.next[i]
+
+        # Insert the element into the correct stack
+        self.next[i] = self.top[m]
+        self.top[m] = i
+        self.arr[i] = x
+
+        return True
+
+    # Function to pop top element from m'th stack
+    def pop(self, m):
+        
+        # Check if the stack is empty
+        if self.top[m] == -1:
+            return -1  
+
+        # Get the top element from stack m
+        i = self.top[m]
+
+        # Update the top of stack m
+        self.top[m] = self.next[i]
+
+        # Return the popped element and update the freeIndex
+        self.next[i] = self.freeIndex
+        self.freeIndex = i
+
+        return self.arr[i]
+
+if __name__ == '__main__':
+    n = 5
+    k = 4
+    s = kStacks(n, k)
+
+    queries = [
+        [1, 15, 0],
+        [1, 25, 1],
+        [1, 35, 2],
+        [1, 45, 3],
+        [1, 55, 0],
+        [2, 0],
+        [2, 1],
+        [1, 55, 0],
+        [2, 3]
+    ]
+
+    for q in queries:
+        if q[0] == 1:
+            if s.push(q[1], q[2]):
+                print(1, end=' ')
+            else:
+                print(0, end=' ')
+        else:
+            print(s.pop(q[1]), end=' ')
+
+
+
+Output
+1 1 1 1 0 15 25 1 45 
+Time Complexity:
+
+O(1) for push operation.
+O(1) for pop operation.
+Auxiliary Space: O(n), where n is the size of array.
