@@ -1,0 +1,65 @@
+Max Equal sum of 3 Stacks
+
+Given three stacks S1, S2 & S3 of size N1, N2 & N3 respectively, having only Positive Integers. The task is to find the possible equal maximum sum of the stacks with the removal of top elements allowed. Stacks are represented as an array, and the first index of the array represents the top element of the stack.
+
+Example 1:
+
+Input:
+N1 = 3, N2 = 4, N3 = 2
+S1 = {4,2,3}
+S2 = {1,1,2,3}
+S3 = {1,4}
+Output:
+5
+Explanation:
+We can pop 1 element from the 1st stack, and 2
+elements from the 2nd stack. Now remaining elements
+yield the equal sum of the three stacks, that is 5.
+Example 2:
+
+Input:
+N1 =2, N2 = 1, N3 = 3
+S1 = {4,7}
+S2 = {10}
+S3 = {1,2,3}
+Output:
+0
+Explanation:
+We will never get an equal sum after popping
+some elements, so the answer will be 0.
+Your Task:
+You don't need to read input or print anything. Your task is to complete the function maxEqualSum() which takes the arrays S1[], S2[], and S3[] and their sizes N1, N2, and N3 as inputs and returns the maximum equal sum we can obtain.
+
+Expected Time Complexity: O(N1+N2+N3)
+Expected Auxiliary Space: O(1)
+
+
+
+from typing import List
+
+class Solution:
+    def maxEqualSum(self, N1: int, N2: int, N3: int, S1: List[int], S2: List[int], S3: List[int]) -> int:
+        sum1 = sum(S1)
+        sum2 = sum(S2)
+        sum3 = sum(S3)
+        
+        i1 = i2 = i3 = 0  # pointers for each stack
+
+        while i1 < N1 and i2 < N2 and i3 < N3:
+            # If all sums are equal, return any one of them
+            if sum1 == sum2 == sum3:
+                return sum1
+            
+            # Remove top element from the stack with the highest sum
+            if sum1 >= sum2 and sum1 >= sum3:
+                sum1 -= S1[i1]
+                i1 += 1
+            elif sum2 >= sum1 and sum2 >= sum3:
+                sum2 -= S2[i2]
+                i2 += 1
+            else:
+                sum3 -= S3[i3]
+                i3 += 1
+
+        # If no common sum found
+        return 0
