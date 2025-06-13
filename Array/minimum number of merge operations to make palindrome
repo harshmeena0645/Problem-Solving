@@ -35,12 +35,10 @@ def findMinOps(arr, n):
             ans += 1
     return ans
 
-arr = [1, 4, 5, 9, 1]
+arr = list(map(int, input().split()))
 n = len(arr)
 print("Count of minimum operations is " + str(findMinOps(arr, n)))
 
-Output
-Count of minimum operations is 1
 
 Time Complexity: O(n)
 Auxiliary Space: O(1)
