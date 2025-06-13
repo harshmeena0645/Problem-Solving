@@ -18,13 +18,10 @@ class Solution:
         
         for i in range(1, len(nums)):
             num = nums[i]
-            
             if num < 0:
                 max_far, min_far = min_far, max_far
-            
             max_far = max(num, max_far * num)
             min_far = min(num, min_far * num)
-            
             global_max = max(global_max, max_far)
         
         return global_max
