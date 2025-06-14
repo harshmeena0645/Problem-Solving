@@ -1,0 +1,118 @@
+Paper Cut into Minimum Number of Squares
+
+Given a rectangular paper of dimensions a x b. The task is to cut the entire paper into the minimum number of square pieces. We can choose square pieces of any size, but they must be cut without overlapping or leaving any extra space.
+
+Examples: 
+
+Input: a = 5, b = 8
+
+Paper-cut-into-minimum-number-of-squares-1
+5 squares cut from Paper of size 5 X 8
+Output: 5
+Explanation: We can cut the paper into 5 squares: 1 square of size 5x5, 1 square of size 3x3, 1 square of size 2x2 and 2 squares of size 1x1.
+
+Input: a = 13, b = 11
+
+Paper-cut-into-minimum-number-of-squares-2
+6 squares cut from Paper of size 13 X 11
+Output: 6
+Explanation: We can cut the paper into 6 squares: 1 square of size 7x7, 1 square of size 6x6, 1 square of size 5x5, 2 squares of size 4x4 and 1 square of size 1x1.
+
+Input: a = 6, b = 7
+
+Paper-cut-into-minimum-number-of-squares-3
+5 squares cut from Paper of size 6 X 7
+Output: 5
+Explanation: We can cut the paper into 5 squares: 1 square of size 4x4, 2 squares of size 3x3 and 2 squares of size 3x3.
+
+
+
+
+def getKey(remSq, b):
+    base = 1
+    key = 0
+    for i in range(b):
+        key += remSq[i] * base
+        base = base * (b + 1)
+    return key
+
+# Recursive function to find the minimum number of square cuts
+# for a given remSq array
+def minCutUtil(remSq, a, b, memo):
+
+    # pointers to mark the start and end of range 
+    # with maximum remaining squares
+    start = 0
+
+    # Check if we have previously calculated the answer
+    # for the same state
+    key = getKey(remSq, b)
+    if key in memo:
+        return memo[key]
+
+    maxRemSq = 0
+
+    # Find the starting point of min height
+    for i in range(b):
+        if remSq[i] > maxRemSq:
+            maxRemSq = remSq[i]
+            start = i
+
+    # If max remaining squares = 0, then we have already
+    # cut the entire paper
+    if maxRemSq == 0:
+        return 0
+
+    end = start
+    newRemSq = remSq[:]
+
+    ans = float('inf')
+
+    # Find the ending point of min height
+    while end < b:
+
+        # length of edge of square from start till current end
+        squareEdge = end - start + 1
+
+        # If the current column does not have maximum remaining
+        # squares or if it's impossible to cut a square of
+        # size squareEdge, then break out of the loop
+        if newRemSq[end] != maxRemSq or \
+           newRemSq[end] - squareEdge < 0:
+            break
+
+        # If we can cut a square of size squareEdge, 
+        # update the remainingSquares
+        for i in range(start, end + 1):
+            newRemSq[i] = maxRemSq - squareEdge
+
+        # Find the solution for new remainingSquares
+        ans = min(ans, 1 + minCutUtil(newRemSq, a, b, memo))
+        end += 1
+
+    memo[key] = ans
+    return ans
+
+# Function to find the minimum number of squares we can cut 
+# using paper of size a X b
+def minCut(a, b):
+
+    # if the given rectangle is a square
+    if a == b:
+        return 1
+
+    # Initialize remaining squares = a for all the b columns
+    remSq = [a] * b
+
+    memo = {}
+    return minCutUtil(remSq, a, b, memo)
+
+if __name__ == "__main__":
+
+    # Sample Input
+    a = 13
+    b = 11
+
+    # Function call to get minimum number 
+    # of squares for axb
+    print(minCut(a, b))
