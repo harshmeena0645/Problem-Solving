@@ -17,20 +17,22 @@ Expected Auxiliary Space: O(1)
 
 class Solution:
     def smallestNumber(self, s, d):
-        if s > 9 * d or s < 1:
+        if s == 0:
+            return "0" if d == 1 else "-1"
+        if s > 9 * d:
             return "-1"
-        
+
         result = [0] * d
-        
-        for i in range(d - 1, -1, -1):
-            if s > 9:
+        s -= 1 
+
+        for i in range(d - 1, 0, -1):
+            if s >= 9:
                 result[i] = 9
                 s -= 9
             else:
-                if i == 0:
-                    result[i] = s
-                else:
-                    result[i] = s - 1
-                    s = 1
-        result[0] += s
-        return ''.join(map(str, result))
+                result[i] = s
+                s = 0
+
+        result[0] = s + 1 
+
+        return ''.join(str(digit) for digit in result)
