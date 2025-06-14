@@ -59,3 +59,9 @@ minimizeWithKSwaps(arr, n, k)
 # Print the final Array
 for i in range(n):
     print(arr[i], end = " ")
+
+
+Output
+2 7 6 9 1 
+Time complexity: O(N2) 
+Auxiliary space: O(1)
