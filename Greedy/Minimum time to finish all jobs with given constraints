@@ -1,0 +1,106 @@
+Minimum time to finish all jobs with given constraints
+
+Given an array job[], where each element represents the time required to complete a specific job. There are k identical assignees available to complete these jobs, and each assignee takes t units of time to complete one unit of a job. The task is to determine the minimum time required to complete all jobs while following these constraints: 
+
+Each assignee can only be assigned jobs that are contiguous in the given array. For example, an assignee can be assigned jobs (job[1], job[2], job[3]) but not (job[1], job[3]) (skipping job[2]).
+A single job cannot be divided between two assignees. Each job must be assigned to exactly one assignee.
+Examples:
+
+Input: job[] = {10, 7, 8, 12, 6, 8}, k = 4, t = 5
+Output: 75
+Explanation: The minimum time required to finish all the jobs is 75.
+
+Assign {10} to the first assignee.
+Assign {7, 8} to the second assignee.
+Assign {12} to the third assignee.
+Assign {6, 8} to the fourth assignee.
+Maximum time taken by any assignee is (12 * 5) = 75.
+
+Input: job[] = {4, 5, 10}, k = 2, t = 5
+Output: 50
+Explanation: The minimum time required to finish all the jobs is 50.
+
+Assign {4, 5} to the first assignee.
+Assign {10} to the second assignee.
+Maximum time taken by any assignee is (4 + 5) * 5 = 50.
+
+
+
+# Python program to find the minimum time required  
+# to finish all jobs using Binary Search  
+
+# Function to find the maximum job duration  
+def GetMax(job):  
+    res = job[0]  
+
+    # Find the maximum time among all jobs  
+    for i in range(1, len(job)):  
+        if job[i] > res:  
+            res = job[i]  
+    return res  
+
+# Function to check if jobs can be completed within  
+# 't' time using at most 'k' assignees  
+def IsPossible(job, t, k):  
+
+    # Number of assignees required  
+    cnt = 1  
+
+    # Time assigned to the current assignee  
+    curr = 0  
+
+    i = 0
+    while i < len(job):  
+
+        # If adding the current job exceeds 't',
+        # assign a new assignee  
+        if curr + job[i] > t:  
+            curr = 0  
+            cnt += 1  
+        else:  
+
+            # Otherwise, add job time to the  
+            # current assignee  
+            curr += job[i]  
+            i += 1  
+
+    return cnt <= k  
+
+# Function to find the minimum time required to  
+# finish all jobs  
+def FindMinTime(job, k, t):  
+    start, end = 0, 0  
+
+    # Compute the total time and the maximum  
+    # job duration  
+    for j in job:  
+
+        # Total sum of job times  
+        end += j  
+
+        # Maximum job duration  
+        start = max(start, j)  
+
+    # Initialize answer to the upper bound  
+    ans = end  
+
+    # Perform binary search to find the minimum  
+    # feasible time  
+    while start <= end:  
+        mid = (start + end) // 2  
+
+        # If jobs can be assigned within 'mid' time  
+        if IsPossible(job, mid, k):  
+            ans = min(ans, mid)  
+            end = mid - 1  
+        else:  
+            start = mid + 1  
+
+    # Return the minimum time required  
+    return ans * t  
+
+if __name__ == "__main__":   
+    job = [10, 7, 8, 12, 6, 8]  
+    k, t = 4, 5  
+
+    print(FindMinTime(job, k, t))
