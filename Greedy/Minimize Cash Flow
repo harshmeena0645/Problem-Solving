@@ -1,0 +1,86 @@
+Minimize Cash Flow
+
+Given a number of friends who have to give or take some amount of money from one another. Design an algorithm by which the total cash flow among all the friends is minimized. 
+
+Example 1:
+
+Input:
+N=3
+transaction [][]={{0,100,0}, {0,0,100}, {100,0,0}}
+Output:
+transaction [][]={{0,0,0},{0,0,0},{0,0,0}}
+Explanation:
+Since friend one has to give friend two which has to give friend three and which in turn has to give one. So it is better than no one will do anything to anyone.
+Example 2:
+
+Input:
+N=3
+transaction [][]={{0,100,0},{0,0,200},{0,0,0}}
+Output:
+transaction [][]={0,0,100},{0,0,100},{0,0,0}
+Explanation:
+The net flow is minimized.
+ 
+
+Your Task:  
+You don't need to read input or print anything. Your task is to complete the function minCashFlow() which takes the transaction array and number of friends as input parameters and returns the new transaction array as output;. Please note there can be multiple solutions possible, and the solution will be judged according to its net flow, and if it correctly follows the cash flow. If, you're solution returns -1, this means the cash flow is not following the actual flow of cash.
+
+ 
+
+Expected Time Complexity: O(N*N)
+Expected Auxiliary Space: O(N*N)
+
+
+
+
+
+from typing import List
+
+class Solution:
+    def getMin(self, arr):
+        min_index = 0
+        for i in range(1, len(arr)):
+            if arr[i] < arr[min_index]:
+                min_index = i
+        return min_index
+
+    def getMax(self, arr):
+        max_index = 0
+        for i in range(1, len(arr)):
+            if arr[i] > arr[max_index]:
+                max_index = i
+        return max_index
+
+    def minCashFlowRec(self, amount, ans):
+        mxCredit = self.getMax(amount)
+        mxDebit = self.getMin(amount)
+
+        # Base case: All amounts are settled
+        if amount[mxCredit] == 0 and amount[mxDebit] == 0:
+            return
+
+        # Find minimum of two amounts
+        min_amount = min(-amount[mxDebit], amount[mxCredit])
+        amount[mxCredit] -= min_amount
+        amount[mxDebit] += min_amount
+
+        # Record this transaction
+        ans[mxDebit][mxCredit] += min_amount
+
+        # Recurse
+        self.minCashFlowRec(amount, ans)
+
+    def minCashFlow(self, transaction: List[List[int]], n: int) -> List[List[int]]:
+        amount = [0] * n  # Net amount for each person
+
+        # Step 1: Calculate net amount to be paid or received
+        for p in range(n):
+            for i in range(n):
+                amount[p] += (transaction[i][p] - transaction[p][i])
+
+        # Step 2: Initialize result matrix
+        ans = [[0 for _ in range(n)] for _ in range(n)]
+
+        # Step 3: Minimize cash flow recursively
+        self.minCashFlowRec(amount, ans)
+        return ans
