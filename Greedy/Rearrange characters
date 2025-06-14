@@ -1,0 +1,49 @@
+Rearrange characters
+
+Given a string s with repeated characters, the task is to rearrange characters in a string such that no two adjacent characters are the same.
+Note: The string has only lowercase English alphabets and it can have multiple solutions. Return any one of them. If there is no possible solution, then print empty string ("").
+
+Examples:
+
+Input : s = "aaabc"
+Output: 1
+Explanation: "aaabc" can rearranged to "abaca" or "acaba" as no two adjacent characters are same in the output string.
+Input : s= "aaabb"
+Output: 1
+Explanation: "aaabb" can rearranged to "ababa" as no two adjacent characters are same in the output string.
+Input : s = "aaaabc"
+Output: 0
+Explanation: No combinations possible such that two adjacent characters are different.
+
+
+import heapq
+from collections import Counter
+
+class Solution:
+    def rearrangeString(self, s):
+        freq = Counter(s)
+        
+        # Build max-heap by negative frequency
+        max_heap = [(-count, char) for char, count in freq.items()]
+        heapq.heapify(max_heap)
+        
+        result = []
+        prev = (0, '')  # (frequency, character)
+
+        while max_heap:
+            count, char = heapq.heappop(max_heap)
+            result.append(char)
+
+            # Push previous character back if it still has remaining count
+            if prev[0] < 0:
+                heapq.heappush(max_heap, prev)
+
+            # Decrease frequency
+            count += 1
+            prev = (count, char)
+
+        rearranged = ''.join(result)
+
+        if len(rearranged) != len(s):
+            return ""
+        return rearranged
