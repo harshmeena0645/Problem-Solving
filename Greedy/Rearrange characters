@@ -1,0 +1,46 @@
+Rearrange characters
+
+Given a string s with repeated characters, the task is to rearrange characters in a string such that no two adjacent characters are the same.
+Note: The string has only lowercase English alphabets and it can have multiple solutions. Return any one of them. If there is no possible solution, then print empty string ("").
+
+Examples:
+
+Input : s = "aaabc"
+Output: 1
+Explanation: "aaabc" can rearranged to "abaca" or "acaba" as no two adjacent characters are same in the output string.
+Input : s= "aaabb"
+Output: 1
+Explanation: "aaabb" can rearranged to "ababa" as no two adjacent characters are same in the output string.
+Input : s = "aaaabc"
+Output: 0
+Explanation: No combinations possible such that two adjacent characters are different.
+
+
+from collections import deque, defaultdict
+
+class Solution:
+    def minimumEdgeReversal(self, edges, n, m, src, dst):
+        graph = defaultdict(list)
+
+        # Add original edges with cost 0, and reversed edges with cost 1
+        for u, v in edges:
+            graph[u].append((v, 0))  # original direction
+            graph[v].append((u, 1))  # reverse direction (reversal needed)
+
+        # 0-1 BFS
+        dist = [float('inf')] * (n + 1)
+        dist[src] = 0
+        dq = deque()
+        dq.append(src)
+
+        while dq:
+            node = dq.popleft()
+            for neighbor, weight in graph[node]:
+                if dist[node] + weight < dist[neighbor]:
+                    dist[neighbor] = dist[node] + weight
+                    if weight == 0:
+                        dq.appendleft(neighbor)
+                    else:
+                        dq.append(neighbor)
+
+        return dist[dst] if dist[dst] != float('inf') else -1
