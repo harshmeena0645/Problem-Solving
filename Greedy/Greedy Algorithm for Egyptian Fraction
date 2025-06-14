@@ -1,0 +1,44 @@
+Greedy Algorithm for Egyptian Fraction
+
+Every positive fraction can be represented as sum of unique unit fractions. A fraction is unit fraction if numerator is 1 and denominator is a positive integer, for example 1/3 is a unit fraction. Such a representation is called Egyptian Fraction as it was used by ancient Egyptians. 
+
+Following are a few examples: 
+
+Egyptian Fraction Representation of 2/3 is 1/2 + 1/6
+Egyptian Fraction Representation of 6/14 is 1/3 + 1/11 + 1/231
+Egyptian Fraction Representation of 12/13 is 1/2 + 1/3 + 1/12 + 1/156
+
+
+
+import math
+def egyptianFraction(nr, dr):
+
+    print("The Egyptian Fraction " +
+          "Representation of {0}/{1} is".
+                format(nr, dr), end="\n")
+    ef = []
+    while nr != 0:
+        x = math.ceil(dr / nr)
+        ef.append(x)
+        nr = x * nr - dr
+        dr = dr * x
+
+    for i in range(len(ef)):
+        if i != len(ef) - 1:
+            print(" 1/{0} +" . 
+                    format(ef[i]), end = " ")
+        else:
+            print(" 1/{0}" .
+                    format(ef[i]), end = " ")
+
+egyptianFraction(6, 14)
+
+
+
+Output
+Egyptian Fraction representation of 6/14 is
+1/3 + 1/11 + 1/231
+Time complexity: The time complexity of the given algorithm depends on the value of the input fraction.
+In the worst case, the algorithm will run for O(d) iterations, where d is the denominator of the input fraction.
+Therefore, the time complexity of the algorithm is O(d).
+Auxiliary Space:The space complexity of the given algorithm is O(1) as it uses only a fixed amount of extra space to store the variables used in the algorithm, regardless of the input size.
