@@ -18,10 +18,8 @@ nums = {1,2,3,1}, Queries = {{1,4},
 Output: {1,0,0}
 Explanation: For the 1st query, from l=1 to r=4
 1 have the frequency atleast 2.
-For the second query, from l=2 to r=4, no number has 
-the frequency atleast 2.
-For the third query, from l=4 to r=4, no number has 
-the frequency atleast 2.
+For second query, from l=2 to r=4, no number has frequency atleast 2.
+For third query, from l=4 to r=4, no number has frequency atleast 2.
 
 
 import math
@@ -37,7 +35,7 @@ class Solution:
         
         queries.sort(key=lambda x: (x[0]//block_size, x[1]))
         
-        freq = [0] * 1001  # as nums[i] <= 10^3
+        freq = [0] * 1001
         count_at_least_k = 0
         answers = [0] * q
         
@@ -75,6 +73,6 @@ class Solution:
         
         return answers
 
-Complexity:
+
 Time complexity: approx O((n + q) * sqrt(n))
 Space complexity: O(n)
