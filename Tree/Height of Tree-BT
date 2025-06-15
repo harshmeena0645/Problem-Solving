@@ -72,3 +72,11 @@ def tree_height(values):
 n = int(input())  
 values = input().split()  
 print(tree_height(values))
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+
+class Solution:
+    def maxDepth(self, root):
+        if not root:
+            return 0
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
