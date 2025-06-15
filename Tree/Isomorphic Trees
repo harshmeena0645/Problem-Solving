@@ -1,0 +1,53 @@
+Isomorphic Trees
+
+Given two Binary Trees. Check whether they are Isomorphic or not.
+
+Note: 
+Two trees are called isomorphic if one can be obtained from another by a series of flips, i.e. by swapping left and right children of several nodes. Any number of nodes at any level can have their children swapped. Two empty trees are isomorphic.
+For example, the following two trees are isomorphic with the following sub-trees flipped: 2 and 3, NULL and 6, 7 and 8.
+ISomorphicTrees
+
+Examples:
+
+Input: root1[] = [1, 2, 3, 4, 5, 7, 6, N, 7, 8], root2[] = [1, 3, 2, N, 6, 4, 5, 8, 7]
+
+ISomorphicTrees
+Output: true
+Input: root1[] = [1, 2, 3, 4], root2[] = [1, 3, 2, 4]
+     1            1  
+    / \          /    \  
+  2    3      3       2  
+ /           /  
+4          4
+Output: false
+Input: root1[] = [1, 2, 3, 4], root2[] = [1, 3, 2, N, N, N, 4]
+
+     1           1
+    /  \         /   \
+   2    3      3     2
+  /                    \
+ 4                        4
+Output: true
+
+
+
+class Solution:
+    # Return True if the given trees are isomorphic. Else return False.
+    def isIsomorphic(self, root1, root2): 
+        # Both roots are None
+        if root1 is None and root2 is None:
+            return True
+        
+        # Only one of them is None
+        if root1 is None or root2 is None:
+            return False
+        
+        # Data doesn't match
+        if root1.data != root2.data:
+            return False
+        
+        # Check both possibilities: swapped and not swapped
+        return (
+            (self.isIsomorphic(root1.left, root2.left) and self.isIsomorphic(root1.right, root2.right)) or
+            (self.isIsomorphic(root1.left, root2.right) and self.isIsomorphic(root1.right, root2.left))
+        )
