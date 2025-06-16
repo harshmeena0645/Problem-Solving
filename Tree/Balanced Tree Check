@@ -1,38 +1,33 @@
 Balanced Tree Check
 
-Given a binary tree, determine if it is height-balanced. A binary tree is considered height-balanced if the absolute difference in heights of the left and right subtrees is at most 1 for every node in the tree.
+A binary tree is considered height-balanced if the absolute difference in heights of the left and right subtrees is at most 1 for every node in the tree.
 
-Examples:
 
 Input: root[] = [10, 20, 30, 40, 60]
-
-   
 Output: true
-Explanation: The height difference between the left and right subtrees at all nodes is at most 1. Hence, the tree is balanced.
+The height difference between left and right subtrees at all nodes is at most 1.
+
 Input: root[] = [1, 2, 3, 4, N, N, N, 5]
-   
 Output: false
-Explanation: The height difference between the left and right subtrees at node 2 is 2, which exceeds 1. Hence, the tree is not balanced.
+The height difference between left and right subtrees at node 2 is 2,which exceeds 1.
+
 Input: root[] = [1, 2, N, N, 3]
-   
 Output: false
-Explanation: The height difference between the left and right subtrees at node 1 is 2, which exceeds 1. Hence, the tree is not balanced.
+The height difference between left and right subtrees at node 1 is 2, which exceeds 1.
 
 
 
 class Solution:
     def isBalanced(self, root):
+        height, balanced = check(root)
         def check(node):
             if not node:
                 return 0, True
 
             left_height, left_balanced = check(node.left)
             right_height, right_balanced = check(node.right)
-
-            # Calculate current node's balance status
             current_balanced = (abs(left_height - right_height) <= 1)
 
             return 1 + max(left_height, right_height), left_balanced and right_balanced and current_balanced
 
-        height, balanced = check(root)
         return balanced
