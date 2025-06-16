@@ -1,0 +1,60 @@
+Minimum swap required to convert binary tree to binary search tree
+
+Given an array arr[] which represents a Complete Binary Tree i.e, if index i is the parent, index 2*i + 1 is the left child and index 2*i + 2 is the right child.
+The task is to find the minimum number of swaps required to convert it into a Binary Search Tree. 
+
+Examples :
+
+Input: arr[] = [5, 6, 7, 8, 9, 10, 11]
+Output: 3
+Explanation: 
+Binary tree of the given array:
+ 
+Swap 1: Swap node 8 with node 5.
+Swap 2: Swap node 9 with node 10.
+Swap 3: Swap node 10 with node 7.
+ 
+So, minimum 3 swaps are required.
+Input: arr[] = [1, 2, 3]
+Explanation: 
+Binary tree of the given array:
+ 
+After swapping node 1 with node 2, obtain the below binary search tree:
+
+Output: 1
+
+
+
+
+class Solution:
+    def minSwaps(self, arr):
+        # Step 1: Get the inorder traversal of the binary tree (complete binary tree)
+        def inorder(index):
+            if index >= len(arr):
+                return []
+            return inorder(2 * index + 1) + [arr[index]] + inorder(2 * index + 2)
+        
+        inorder_arr = inorder(0)
+
+        # Step 2: Find minimum number of swaps to sort the inorder traversal
+        def min_swaps_to_sort(arr):
+            n = len(arr)
+            ans = 0
+            arrpos = list(enumerate(arr))
+            arrpos.sort(key=lambda it: it[1])
+            visited = [False] * n
+
+            for i in range(n):
+                if visited[i] or arrpos[i][0] == i:
+                    continue
+                cycle_size = 0
+                j = i
+                while not visited[j]:
+                    visited[j] = True
+                    j = arrpos[j][0]
+                    cycle_size += 1
+                if cycle_size > 0:
+                    ans += cycle_size - 1
+            return ans
+        
+        return min_swaps_to_sort(inorder_arr)
