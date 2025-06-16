@@ -1,15 +1,11 @@
 Diagonal Tree Traversal
 
-Given a Binary Tree, return the diagonal traversal of the binary tree.
-
 Consider lines of slope -1 passing between nodes. Given a Binary Tree, return a single list containing all diagonal elements in a binary tree belonging to same line.
 If the diagonal element are present in two different subtrees then left subtree diagonal element should be taken first and then right subtree. 
 
-Examples :
-
 Input : root = [8, 3, 10, 1, 6, N, 14, N, N, 4, 7, 13]
-            8
-         /     \
+           8
+         /   \
         3      10
       /   \      \
      1     6     14
@@ -30,8 +26,6 @@ Output: [1, 2, 3]
 
 
 from collections import deque
-
-# Node class
 class Node:
     def __init__(self, val):
         self.data = val
@@ -50,15 +44,11 @@ class Solution:
         while queue:
             node = queue.popleft()
 
-            # Traverse all nodes in the current diagonal
             while node:
                 result.append(node.data)
-
-                # If there is a left child, it will be part of next diagonal
                 if node.left:
                     queue.append(node.left)
 
-                # Move to the right child (same diagonal)
                 node = node.right
 
         return result
