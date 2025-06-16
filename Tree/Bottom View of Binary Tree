@@ -1,0 +1,58 @@
+Bottom View of Binary Tree
+
+Given a binary tree, return an array where elements represent the bottom view of the binary tree from left to right.
+
+Note: If there are multiple bottom-most nodes for a horizontal distance from the root, then the later one in the level order traversal is considered. For example, in the below diagram, 7 and 34 both are the bottommost nodes at a horizontal distance of 0 from the root, here 34 will be considered.
+
+For the above tree, the output should be 5 8 34 22 25
+
+Examples :
+
+Input: root[] = [1, 3, 2]
+
+Output: [3 1 2]
+Explanation: First case represents a tree with 3 nodes and 2 edges where root is 1, left child of 1 is 3 and right child of 1 is 2.
+
+Thus bottom view of the binary tree will be 3 1 2.
+Input: root[] = [10, 20, 30, 40, 60]
+         
+Output: [40 20 60 30]
+
+
+
+from collections import deque
+
+# Node structure
+class Node:
+    def __init__(self, val):
+        self.data = val
+        self.left = None
+        self.right = None
+
+class Solution:
+    def bottomView(self, root):
+        if not root:
+            return []
+
+        q = deque()  # (node, horizontal_distance)
+        hd_node = {}  # stores latest (bottom-most) node for each hd
+
+        q.append((root, 0))
+        min_hd = max_hd = 0
+
+        while q:
+            node, hd = q.popleft()
+
+            # Overwrite every time to ensure bottommost node
+            hd_node[hd] = node.data
+
+            min_hd = min(min_hd, hd)
+            max_hd = max(max_hd, hd)
+
+            if node.left:
+                q.append((node.left, hd - 1))
+            if node.right:
+                q.append((node.right, hd + 1))
+
+        # Return values in order from leftmost to rightmost
+        return [hd_node[hd] for hd in range(min_hd, max_hd + 1)]
