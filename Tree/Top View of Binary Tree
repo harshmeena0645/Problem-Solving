@@ -1,6 +1,5 @@
 Top View of Binary Tree
 
-The top view of a binary tree is the set of nodes visible when the tree is viewed from the top.
 
 Return the nodes from the leftmost node to the rightmost node.
 If two nodes are at the same position (horizontal distance) and are outside the shadow of the tree, consider the leftmost node only. 
