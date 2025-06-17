@@ -1,0 +1,38 @@
+Normal BST to Balanced BST
+
+Given a root of a Binary Search Tree, modify and return the given BST such that it is balanced and has minimum possible height. If there is more than one answer, return any of them.
+
+Note: The height of balanced BST returned by you will be compared with the expected height of the balanced tree.
+
+Input: root[] = [30, 20, N, 10, N]
+Output: 2
+Explanation: The above unbalanced BST is converted to balanced with the minimum possible height i.e. 2.
+
+Input: root[] = [4, 3, 5, 2, N, N, 6, 1, N, N, 7]
+Output: 3 
+Explanation: The above unbalanced BST is converted to balanced with the minimum possible height i.e. 3.
+
+
+
+class Solution:
+    def balanceBST(self, root):
+        nodes = []
+
+        def inorder(node):
+            if not node:
+                return
+            inorder(node.left)
+            nodes.append(node)
+            inorder(node.right)
+
+        inorder(root) 
+        def build_balanced_tree(start, end):
+            if start > end:
+                return None
+            mid = (start + end) // 2
+            node = nodes[mid]
+            node.left = build_balanced_tree(start, mid - 1)
+            node.right = build_balanced_tree(mid + 1, end)
+            return node
+
+        return build_balanced_tree(0, len(nodes) - 1)
