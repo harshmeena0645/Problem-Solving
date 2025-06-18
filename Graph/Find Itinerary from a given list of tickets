@@ -1,0 +1,80 @@
+Find Itinerary from a given list of tickets
+
+Given a list of tickets, find the itinerary in order using the given list.
+
+Note: It may be assumed that the input list of tickets is not cyclic and there is one ticket from every city except the final destination.
+
+Examples:
+
+Input: "Chennai" -> "Bangalore"
+            "Bombay" -> "Delhi"
+             "Goa"    -> "Chennai"
+             "Delhi"  -> "Goa"
+Output: Bombay->Delhi, Delhi->Goa, Goa->Chennai, Chennai->Bangalore
+
+Input: "New York" -> "Chicago"
+            "Denver" -> "San Francisco"
+            "Chicago" -> "Denver"
+            "San Francisco" -> "Los Angeles"
+Output: New York -> Chicago, Chicago -> Denver, Denver -> San Francisco, San Francisco -> Los Angeles
+
+
+
+# Function to perform DFS and topological sorting
+def topologicalSortUtil(v, mp, visited, st):
+    # mark current node as visited
+    visited[v] = 1
+
+    # recur for adjacent vertex
+    if v in mp and visited.get(mp[v], 0) == 0:
+        topologicalSortUtil(mp[v], mp, visited, st)
+
+    # push current vertex in stack
+    if v:
+        st.append(v)
+
+# Function to perform topological sort
+def topologicalSort(mp):
+    V = len(mp)
+
+    # stack to store the result
+    st = []
+    visited = {}
+
+    # Call the recursive helper function to store
+    # Topological Sort starting from all vertices
+    for i in mp:
+        if visited.get(i, 0) == 0:
+            topologicalSortUtil(i, mp, visited, st)
+
+    return st[::-1]
+
+def findItinerary(arr):
+    # map the list of tickets
+    mp = {i[0]: i[1] for i in arr}
+
+    res = topologicalSort(mp)
+
+    ans = []
+    for i in range(len(res) - 1):
+        ans.append([res[i], res[i + 1]])
+    return ans
+
+if __name__ == "__main__":
+    arr = [
+        ["Chennai", "Bangalore"],
+        ["Bombay", "Delhi"],
+        ["Goa", "Chennai"],
+        ["Delhi", "Goa"]
+    ]
+
+    res = findItinerary(arr)
+    for i in res:
+        print(i[0] + " -> " + i[1])
+
+
+Output
+Bombay -> Delhi
+Delhi -> Goa
+Goa -> Chennai
+Chennai -> Bangalore
