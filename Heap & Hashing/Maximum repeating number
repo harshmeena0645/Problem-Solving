@@ -1,0 +1,33 @@
+Maximum repeating number
+Given an array arr[]. The array contains numbers ranging from 0 to k-1 where k is a positive integer. Find the maximum repeating number in this array. If there are two or more maximum repeating numbers, return the element with the least value.
+
+Input: k = 3, arr[] = [2, 2, 1, 2]
+Output: 2
+Explanation: 2 is the most frequent element.
+Input: k = 3, arr[] = [2, 2, 1, 0, 0, 1]
+Output: 0
+Explanation: 0, 1, and 2 all have the same frequency of 2. But since 0 is the smallest, you need to return 0.
+
+
+class Solution:
+    def maxRepeating(self, k, arr):
+        freq = [0] * k
+        for num in arr:
+            freq[num] += 1
+
+        max_count = -1
+        result = -1
+        for i in range(k):
+            if freq[i] > max_count:
+                max_count = freq[i]
+                result = i
+            elif freq[i] == max_count and i < result:
+                result = i
+
+        return result
+
+
+⏱ Time & Space Complexity:
+Time Complexity: O(n + k)
+
+Space Complexity: O(k)
