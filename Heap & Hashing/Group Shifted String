@@ -1,0 +1,35 @@
+Group Shifted String
+
+Given an array of strings (all lowercase letters), the task is to group them in such a way that all strings in a group are shifted versions of each other.
+
+Two strings s1 and s2 are called shifted if the following conditions are satisfied:
+
+s1.length = s2.length
+s1[i] = s2[i] + m for 1 <= i <= s1.length  for a constant integer m
+Examples :
+
+Input: arr = ["acd", "dfg", "wyz", "yab", "mop", "bdfh", "a", "x", "moqs"]
+Output: [["acd", "dfg", "wyz", "yab", "mop"], ["bdfh", "moqs"], ["a", "x"]] 
+Explanation: All shifted strings are grouped together.
+Input: arr = ["geek", "for", "geeks"]
+Output: [["for"], ["geek"], ["geeks"]]
+Input: arr = ["aaa", "adb", "bbd", "dbc", "bca"]
+Output: [["aaa"], ["adb"], ["bbd"], ["bca"], ["dbc"]]
+
+
+
+from collections import defaultdict
+
+class Solution:
+    def groupShiftedString(self, arr):
+        groups = defaultdict(list)
+
+        for word in arr:
+            if len(word) == 1:
+                key = ('single',)  # Unique key for single-letter words
+            else:
+                # Create a tuple of differences modulo 26
+                key = tuple((ord(word[i+1]) - ord(word[i])) % 26 for i in range(len(word)-1))
+            groups[key].append(word)
+
+        return list(groups.values())
