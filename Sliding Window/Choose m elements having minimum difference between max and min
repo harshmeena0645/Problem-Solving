@@ -1,0 +1,42 @@
+Choose m elements having minimum difference between max and min
+Last Updated : 22 Oct, 2024
+Given an array arr[] of n integers. The task is to pick exactly m elements such that the maximum difference between any pair of these m elements in minimum.
+
+Examples:
+
+Input: arr[] = {7, 3, 2, 4, 9, 12, 56}, m = 3 
+Output: 2 
+Explanation: We pick {3, 2, 4}, we will get the minimum difference, that is 2. 
+
+Input: arr[] = {7, 3, 2, 4, 9, 12, 56}, m = 5 
+Output: 7
+Explanation: We pick {3, 2, 4, 9, 7}, we will get the minimum difference, that is 9 - 2 = 7. 
+
+Input : arr[] = {10, 100, 300, 200, 1000, 20, 30}
+        m = 3
+Output : 20
+We pick {10, 20, 30}.
+max(10, 20, 30) - min(10, 20, 30) = 30 - 10 = 20.
+
+✅ Optimal Approach: Sorting + Sliding Window
+🔸 Time Complexity: O(n log n)
+🔸 Space Complexity: O(1)
+
+def findMinDiff(arr, n, m):
+    # Step 1: Sort the array
+    arr.sort()
+    
+    # Step 2: Initialize result
+    min_diff = float('inf')
+    
+    # Step 3: Use sliding window of size m
+    for i in range(n - m + 1):
+        curr_diff = arr[i + m - 1] - arr[i]
+        min_diff = min(min_diff, curr_diff)
+        
+    return min_diff
+
+# Example usage
+arr = [7, 3, 2, 4, 9, 12, 56]
+m = 3
+print(findMinDiff(arr, len(arr), m))  # Output: 2
