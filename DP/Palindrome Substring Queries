@@ -1,0 +1,58 @@
+Palindrome Substring Queries
+
+Given a string str of length n and a 2d array queries[][], where each query queries[i] is of type [i, j]. For each query, your task is to check if the substring str[i:j] is a palindrome.
+
+Examples : 
+
+Input: str = "abaaabaaaba"
+queries[][] = [ [0, 10], [5, 8], [2, 5], [5, 9] ]
+Output: 1 0 0 1
+Explanation: Lets process all the queries one by one:
+a. [0, 10]: The substring is "abaaabaaaba" which is a palindrome.
+b. [5, 8]: The substring is "baaa" which is not a palindrome.
+c. [2, 5]: The substring is “aaab” which is not a palindrome. 
+d. [5, 9]: The substring is “baaab” which is a palindrome. 
+
+Input: str = "abdcaaa"
+queries[][] = [ [0, 1], [2, 2], [4, 6] ]
+Output: 0 1 1
+Explanation: Lets process all the queries one by one:
+a. [0, 1]: The substring is "ab" which is not a palindrome.
+b. [2, 2]: The substring is "baaa" which is not a palindrome.
+c. [4, 6]: The substring is “aaa” which is a palindrome. 
+
+
+class Solution:
+    def palindromeQueries(self, s, queries):
+        n = len(s)
+        dp = [[False]*n for _ in range(n)]
+
+        # Single characters are palindrome
+        for i in range(n):
+            dp[i][i] = True
+
+        # Two-character substrings
+        for i in range(n-1):
+            dp[i][i+1] = (s[i] == s[i+1])
+
+        # Fill the table for substrings > 2
+        for length in range(3, n+1):
+            for i in range(n - length + 1):
+                j = i + length - 1
+                dp[i][j] = (s[i] == s[j]) and dp[i+1][j-1]
+
+        # Answer queries in O(1)
+        result = []
+        for i, j in queries:
+            result.append(1 if dp[i][j] else 0)
+
+        return result
+
+
+
+✅ Approach 2: Preprocessing with DP (Efficient for large inputs)
+We can use Dynamic Programming to precompute a table dp[i][j] that tells whether s[i:j+1] is a palindrome or not.
+
+🔹 Preprocessing Time: O(n²)
+🔹 Query Time: O(1)
+🔹 Space: O(n²)
