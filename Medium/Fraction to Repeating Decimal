@@ -1,0 +1,49 @@
+Fraction to Repeating Decimal
+
+Given two integers a and b, the task is to convert the fraction a/b into decimal format. If the fractional part is repeating, enclose the repeating part in parentheses.
+
+Input: a = 1, b = 2
+Output: "0.5"
+Explanation: 1/3 = 0.5 with no repeating part.
+Input: a = 50, b = 22
+Output: "2.(27)"
+Explanation: 50/22 = 2.27272727.. Since fractional part (27) is repeating, it is enclosed in paranthesis.
+
+class Solution:
+    def calculateFraction(self, a, b):
+        if a == 0:
+            return "0"
+        
+        result = []
+
+        # Step 1: Handle sign
+        if (a < 0) ^ (b < 0):
+            result.append("-")
+        
+        a, b = abs(a), abs(b)
+
+        # Step 2: Integer part
+        result.append(str(a // b))
+        remainder = a % b
+
+        if remainder == 0:
+            return ''.join(result)
+
+        result.append(".")
+        remainder_map = {}
+
+        # Step 3: Process fractional part
+        while remainder != 0:
+            if remainder in remainder_map:
+                # Insert parentheses
+                idx = remainder_map[remainder]
+                result.insert(idx, "(")
+                result.append(")")
+                break
+
+            remainder_map[remainder] = len(result)
+            remainder *= 10
+            result.append(str(remainder // b))
+            remainder %= b
+
+        return ''.join(result)
