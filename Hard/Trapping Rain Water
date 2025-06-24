@@ -9,7 +9,6 @@ Output: 9
 
 
 
-
 class Solution(object):
     def trap(self, h):
         if not h or len(h) < 3:
