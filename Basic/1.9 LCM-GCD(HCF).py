@@ -20,12 +20,6 @@ Sample Input 0
 Sample Output 0
 2
 
-Sample Input 1
-3
-1 2 3
-Sample Output 1
-1
-
 --x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
 # GCD of Array
 
