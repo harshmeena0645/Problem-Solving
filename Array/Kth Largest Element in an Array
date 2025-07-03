@@ -31,9 +31,29 @@ def quickselect(nums, k):
         nums[p_index], nums[r] = nums[r], nums[p_index]
         return p_index
 
+
+
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        min_value = min(nums)
+        max_value = max(nums)
+
+        count = [0] * (max_value - min_value + 1)
+
+        for num in nums:
+            count[num - min_value] += 1
+        
+        remaining = k
+        for i in range(len(count) - 1, -1,-1):
+            remaining -= count[i] 
+
+            if remaining <= 0:
+                return i + min_value
+
 nums1 = list(map(int,input().split()))
 k1 = int(input())
 print(quickselect(nums1, k1))
+
 
 
 Complexity:-
