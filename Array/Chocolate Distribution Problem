@@ -9,10 +9,10 @@ arr = [3, 4, 1, 9, 56, 7, 9, 12], m = 5
 Output: 6
 sort array = arr = [1, 3, 4, 7, 9, 9, 12, 56]
 Select any m consecutive subarray
-[1, 3, 4, 7, 9] → diff = 9 - 1 = 8
-[3, 4, 7, 9, 9] → diff = 9 - 3 = 6 ✅ (minimum)
-[4, 7, 9, 9, 12] → diff = 12 - 4 = 8
-[7, 9, 9, 12, 56] → diff = 56 - 7 = 49
+[1,3,4,7,9] →diff = 9 - 1 = 8
+[3,4,7,9,9] →diff = 9 - 3 = 6 ✅ (minimum)
+[4,7,9,9,12] →diff = 12 - 4 = 8
+[7,9,9,12,56] →diff = 56 - 7 = 49
 ➡️ Answer = 6
 
 arr = [7, 3, 2, 4, 9, 12, 56], m = 3
@@ -33,7 +33,4 @@ class Solution:
         return min_diff
 
 
-⏱️ Time Complexity:
-Sorting: O(n log n)
-Loop: O(n)
-Total: O(n log n)
+⏱️ Time Complexity: O(n log n)
