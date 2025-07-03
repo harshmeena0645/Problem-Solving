@@ -57,6 +57,7 @@ print(quickselect(nums1, k1))
 
 
 Complexity:-
-Time: O(n)
+Time: Best,Average - O(n)
+      Worst - O(n^2)
 Space: O(1)
 
