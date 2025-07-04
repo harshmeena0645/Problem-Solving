@@ -28,3 +28,7 @@ class Solution(object):
             maxLength = max(maxLength, right - left + 1)
         
         return maxLength
+
+
+Time Complexity - O(n)
+Space Complexity- O(1)
