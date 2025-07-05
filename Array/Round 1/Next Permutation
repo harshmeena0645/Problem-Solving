@@ -24,3 +24,25 @@ class Solution(object):
             nums[i],nums[j] = nums[j],nums[i]
         
         nums[i + 1:] = reversed(nums[i + 1:])
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+
+class Solution:
+    def permute(self, nums):
+        if len(nums) == 1:
+            return [nums[:]]
+        
+        res = []
+
+        for _ in range(len(nums)):
+            n = nums.pop(0)
+            perms = self.permute(nums)
+
+            for p in perms:
+                p.append(n)
+            
+            res.extend(perms)
+            nums.append(n)
+        
+        return res
+            
