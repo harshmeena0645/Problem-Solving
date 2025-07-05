@@ -4,15 +4,15 @@ number of palindromic subsequences (need not necessarily be distinct)
 
 s = "abcd"
 Output: 4
-Explanation: palindromic subsequence are : 'a' ,'b', 'c' ,'d'
+Explanation: 'a' ,'b', 'c' ,'d'
 
 s = "aab"
 Output: 4
-Explanation: palindromic subsequence are : 'a', 'a', 'b', 'aa'
+Explanation: 'a', 'a', 'b', 'aa'
 
 s = "b"
 Output: 1
-Explanation: palindromic subsequence are : 'b'
+Explanation: 'b'
 
 
 class Solution:
