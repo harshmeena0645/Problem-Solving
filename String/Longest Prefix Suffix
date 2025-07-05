@@ -17,7 +17,7 @@ Output: 3
 
 def longestPrefixSuffix_simple(s):
     n = len(s)
-    for i in range(n - 1, 0, -1):  # from n-1 down to 1
+    for i in range(n - 1, 0, -1):
         if s[:i] == s[-i:]:
             return i
     return 0
