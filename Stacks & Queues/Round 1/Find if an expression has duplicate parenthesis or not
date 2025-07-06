@@ -2,15 +2,9 @@ Find if an expression has duplicate parenthesis or not
 
 Given a balanced expression, find if it contains duplicate parenthesis or not. A set of parenthesis are duplicate if the same subexpression is surrounded by multiple parenthesis. 
 
-Examples: 
 
-Below expressions have duplicate parenthesis - 
 ((a+b)+((c+d)))
 The subexpression "c+d" is surrounded by two
-pairs of brackets.
-
-(((a+(b)))+(c+d))
-The subexpression "a+(b)" is surrounded by two 
 pairs of brackets.
 
 (((a+(b))+c+d))
@@ -23,69 +17,35 @@ pairs of brackets but, it will not be counted as duplicate.
 
 Below expressions don't have any duplicate parenthesis -
 ((a+b)+(c+d)) 
-No subexpression is surrounded by duplicate
-brackets.
 
-
-
-# Python3 program to find duplicate 
-# parenthesis in a balanced expression 
-
-# Function to find duplicate parenthesis 
-# in a balanced expression 
+# Duplicate Parenthsis then "TRUE" else "FALSE"
+# Stores number of characters between closing and opening parenthesis if count is less than or equal to 1 then brackets are redundant else not
 def findDuplicateparenthesis(string): 
-
-    # create a stack of characters 
     Stack = [] 
-
-    # Iterate through the given expression 
     for ch in string:
-    
-        # if current character is 
-        # close parenthesis ')' 
         if ch == ')': 
-        
-            # pop character from the stack 
             top = Stack.pop() 
-
-            # stores the number of characters between 
-            # a closing and opening parenthesis 
-            # if this count is less than or equal to 1 
-            # then the brackets are redundant else not 
             elementsInside = 0
             while top != '(': 
-            
                 elementsInside += 1
                 top = Stack.pop() 
             
             if elementsInside < 1: 
                 return True
 
-        # push open parenthesis '(', operators 
-        # and operands to stack 
         else:
-            Stack.append(ch) 
-    
-    # No duplicates found 
+            Stack.append(ch)
     return False
 
-# Driver Code
 if __name__ == "__main__": 
-
-    # input balanced expression 
     string = "(((a+(b))+(c+d)))"
-
     if findDuplicateparenthesis(string) == True: 
         print("Duplicate Found") 
     else:
         print("No Duplicates Found") 
 
-# This code is contributed by Rituraj Jain
-
-
 
 Output: 
-
 Duplicate Found
 Time complexity of above solution is O(n). 
 
