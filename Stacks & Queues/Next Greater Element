@@ -29,3 +29,6 @@ class Solution:
             stack.append(arr[i])
 
         return res
+
+
+Time Complexity:- O(n)
