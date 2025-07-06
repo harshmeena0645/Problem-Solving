@@ -5,18 +5,16 @@ There are some natural number whose all permutation is greater than or equal to 
 Input : n = 15.
 Output : 14
 
-Explanation:
 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 
 13, 14, 15 are the numbers whose all 
-permutation is greater than the number
-itself. So, output 14.
+permutation is greater than the number itself. So, output 14.
 
 
 Input : n = 100.
 Output : 54
 
 
-
+# 	Stack-based DFS
 def countNumber(n):
     result = 0
     s = []
@@ -39,6 +37,16 @@ if __name__ == '__main__':
     n = 15
     print(countNumber(n))
 
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+
+# Loop + reverse + compare
+def countNumber(n):
+    count = 0
+    for i in range(1, n + 1):
+        reversed_num = int(str(i)[::-1])
+        if reversed_num >= i:
+            count += 1
+    return count
 
 
-Time Complexity : O(x) where x is number of elements printed in output.
+Time Complexity : Both of them O(n)
