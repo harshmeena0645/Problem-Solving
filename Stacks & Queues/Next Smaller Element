@@ -24,13 +24,26 @@ def printNSE(arr):
 arr = [11, 13, 21, 3]
 printNSE(arr)
 
+Time Complexity: O(N^2)
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+# Stack Operation
+def printNSE_optimized(arr):
+    n = len(arr)
+    res = [-1] * n
+    stack = []
+
+    for i in range(n - 1, -1, -1):
+        while stack and stack[-1] >= arr[i]:
+            stack.pop()
+        if stack:
+            res[i] = stack[-1]
+        stack.append(arr[i])
+
+    for i in range(n):
+        print(f"{arr[i]} -- {res[i]}")
+
+arr = [11, 13, 21, 3]
+printNSE_optimized(arr)
 
 
-Output
-11 --> 3
-13 --> 3
-21 --> 3
-3 --> -1
-
-Time Complexity: O(N^2) where N is the size of the input array.
-Auxiliary Space: O(1)
+Time Complexity: O(N)
