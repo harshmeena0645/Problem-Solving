@@ -14,7 +14,6 @@ Output: 757
 class Solution:
     def evaluate(self, arr):
         stack = []
-        
         for token in arr:
             if token in "+-*/":
                 b = stack.pop()
