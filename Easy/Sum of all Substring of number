@@ -18,8 +18,7 @@ class Solution:
         
         for i in range(n):
             num = int(s[i])
-            curr = prev * 10 + num * (i + 1)
-            total += curr
-            prev = curr
+            prev = prev * 10 + num * (i + 1)
+            total += prev
             
         return total
