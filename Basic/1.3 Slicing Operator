@@ -4,11 +4,13 @@ print(thislist)
 
 output ['apple', 'watermelon']
 
+
 thislist = ["apple", "banana", "cherry"]
-thislist[1:2] = ["blackcurrant", "watermelon"]
+thislist[1:2] = ["blackcurrant","watermelon"]
 print(thislist)
 
 output ['apple', 'blackcurrant', 'watermelon', 'cherry']
+
 
 thislist = ["apple", "banana", "cherry", "orange", "kiwi", "mango"]
 thislist[1:3] = ["blackcurrant", "watermelon"]
