@@ -6,7 +6,6 @@ class Solution(object):
         else:
             return True
 
-| Operation | Complexity |
-| --------- | ---------- |
-| Time      | `O(n)`     |
-| Space     | `O(n)`     |
+
+Time Complexity - O(n)
+Space Complexity - O(n)
