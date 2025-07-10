@@ -32,3 +32,15 @@ class Solution(object):
                 right = mid - 1
             else:
                 left = mid + 1
+def guess(num):
+    if num == pick:
+        return 0
+    elif num > pick:
+        return -1
+    else:
+        return 1
+                
+b=Solution()
+n = 10
+pick = 6
+print(b.guessNumber(n))
