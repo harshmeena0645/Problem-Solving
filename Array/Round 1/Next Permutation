@@ -24,6 +24,7 @@ class Solution(object):
             nums[i],nums[j] = nums[j],nums[i]
         
         nums[i + 1:] = reversed(nums[i + 1:])
+        return n
 
 --x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
 
