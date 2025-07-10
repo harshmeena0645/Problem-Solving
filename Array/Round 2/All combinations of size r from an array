@@ -34,7 +34,6 @@ def combinationUtil(ind, r, data, result, arr):
 
 
 def findCombination(arr, r):
-    n = len(arr)
     result = []
     data = []
     combinationUtil(0, r, data, result, arr)
