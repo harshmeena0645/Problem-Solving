@@ -8,7 +8,6 @@ txt = "aabaabaa", pat = "aaba"
 Output: 4
 
 
-
 class Solution:
     def search(self, pat, txt):
         p = len(pat)
@@ -16,7 +15,7 @@ class Solution:
         if p > t:
             return 0
         result = 0
-        
+
         def build_map(s):
             d = {}
             for ch in s:
