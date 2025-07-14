@@ -52,3 +52,40 @@ class Solution:
                 result += 1
 
         return result
+
+**Time Complexity:** `O(t * k)`, where `t = len(txt)` and
+`k` is the number of unique characters.
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+from collections import Counter
+
+class Solution:
+    def search(self, pat, txt):
+        p = len(pat)
+        t = len(txt)
+        if p > t:
+            return 0
+
+        result = 0
+        pat_map = Counter(pat)
+        window_map = Counter(txt[:p])
+
+        if window_map == pat_map:
+            result += 1
+
+        for i in range(p, t):
+            new = txt[i]
+            old = txt[i - p]
+
+            window_map[new] += 1
+            window_map[old] -= 1
+
+            if window_map[old] == 0:
+                del window_map[old]
+
+            if window_map == pat_map:
+                result += 1
+
+        return result
+
+Time complexity:- O(t × k) in worst case
