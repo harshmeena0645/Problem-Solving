@@ -36,3 +36,6 @@ class Solution:
                 i += 1
     
         return result
+
+Time Complexity: O(n)
+Space Complexity: O(k)
