@@ -1,10 +1,8 @@
 Choose m elements having minimum difference between max and min
-Last Updated : 22 Oct, 2024
+
 Given an array arr[] of n integers. The task is to pick exactly m elements such that the maximum difference between any pair of these m elements in minimum.
 
-Examples:
-
-Input: arr[] = {7, 3, 2, 4, 9, 12, 56}, m = 3 
+Input: arr[] = {7, 3, 2, 4, 9, 12, 56}, m = 3
 Output: 2 
 Explanation: We pick {3, 2, 4}, we will get the minimum difference, that is 2. 
 
