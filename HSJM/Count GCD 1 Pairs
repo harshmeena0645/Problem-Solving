@@ -3,6 +3,7 @@ def gcd(a, b):
         a, b = b, a % b
     return a
 
+count=0
 for i in range(len(arr)):
     for j in range(i + 1, len(arr)):
         if gcd(arr[i], arr[j]) == 1:
