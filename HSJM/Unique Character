@@ -1,4 +1,4 @@
-# Datansh
+# Travel Lyke
 
 def print_unique_characters(s):
     for char in s:
