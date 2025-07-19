@@ -1,3 +1,5 @@
+# Datansh
+
 def print_unique_characters(s):
     for char in s:
         if s.count(char) == 1:
