@@ -1,3 +1,5 @@
+# Datansh, Unthinkable
+
 def generate_pascals_triangle(n):
     for i in range(n):
         print(' ' * (n - i), end='')
