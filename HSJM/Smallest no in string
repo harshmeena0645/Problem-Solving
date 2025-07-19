@@ -1,4 +1,4 @@
-Smallest no. in String
+# Josh Technology
 
 def smallest_number(l):
     l = list(map(str, l))
