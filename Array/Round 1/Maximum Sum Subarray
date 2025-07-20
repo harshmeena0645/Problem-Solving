@@ -1,4 +1,4 @@
-Maximum Subarray
+Maximum Sum Subarray
 # Kadane's Algorithms 
 
 
@@ -9,17 +9,10 @@ Output:
 6
 
 Input:
-1
-1
-Output:
-1
-
-Input:
 5
 5 4 -1 7 8
 Output:
 23
-
 
 
 def maxSubArray(self, nums):
@@ -36,4 +29,3 @@ def maxSubArray(self, nums):
 n=int(input())
 l=list(map(int,input().split()))
 print(max_subarray(l))
-
