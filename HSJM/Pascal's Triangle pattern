@@ -10,3 +10,14 @@ def generate_pascals_triangle(n):
         print()
 
 generate_pascals_triangle(4)
+
+Time Complexity- O(n^2)
+
+Application:- 4C2 --> 6
+(4th row (0-index) , 2nd Col)
+
+1
+11
+121
+1331
+13631
