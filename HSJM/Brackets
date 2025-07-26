@@ -1,0 +1,47 @@
+# Unthinkable
+
+def count_bracket_reversals(expr):
+    if len(expr) % 2 != 0:
+        return -1
+
+    stack = []
+    for char in expr:
+        if char == '{':
+            stack.append(char)
+        else:  # char == '}'
+            if stack and stack[-1] == '{':
+                stack.pop()
+            else:
+                stack.append(char)
+
+    # Count unbalanced brackets
+    open_count = close_count = 0
+    for char in stack:
+        if char == '{':
+            open_count += 1
+        else:
+            close_count += 1
+
+    # Calculate minimum reversals
+    return (open_count + 1) // 2 + (close_count + 1) // 2
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X
+
+def isValid(s):
+    stack = []
+    bracket_map = {')': '(', ']': '[', '}': '{'}
+    
+    for char in s:
+        if char in bracket_map.values():
+            stack.append(char)
+        elif char in bracket_map:
+            if not stack or stack[-1] != bracket_map[char]:
+                return False
+            stack.pop()
+    return not stack
+
+# Example Usage
+print(isValid("()[]{}"))       # True
+print(isValid("([{}])"))       # True
+print(isValid("({[)]}"))       # False
+print(isValid("(({{[["))       # False
