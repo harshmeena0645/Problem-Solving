@@ -10,7 +10,6 @@ def fun(n,k,str):
 
 if __name__=="__main__":
     n=int(input())
-    k=int(input())
     str=input()
     output=fun(n,k,str)
     print(output)
