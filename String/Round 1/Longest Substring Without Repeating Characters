@@ -31,4 +31,25 @@ class Solution(object):
 
 
 Time Complexity - O(n)
-Space Complexity- O(1)
+Space Complexity- O(K)
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X
+
+def fun(n,k,str):
+    s=''.join(sorted(str))
+    sum=0
+    for i in range(n):
+        sum+=(n-i)*(ord(s[i])-96)
+    return sum
+
+
+if __name__=="__main__":
+    n=int(input())
+    k=int(input())
+    str=input()
+    output=fun(n,k,str)
+    print(output)
+
+
+Time Complexity - O(n^2)
+Space Complexity- O(n)
