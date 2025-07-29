@@ -1,0 +1,5 @@
+# Ask user to input elements
+arr = list(map(int, input("Enter the array elements separated by space: ").split()))
+
+# Print the array
+print("Your array is:", arr)
