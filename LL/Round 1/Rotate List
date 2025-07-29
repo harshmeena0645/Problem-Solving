@@ -1,0 +1,37 @@
+Rotate List
+
+Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+
+Input: head = [0,1,2], k = 4
+Output: [2,0,1]
+
+
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+    def rotateRight(self, head, k):
+        if not head:
+            return head
+        
+        length = 1
+        dummy = head
+        while dummy.next:
+            dummy = dummy.next
+            length += 1
+        
+        position = k % length
+        if position == 0:
+            return head
+        
+        current = head
+        for _ in range(length - position - 1):
+            current = current.next
+        
+        new_head = current.next
+        current.next = None
+        dummy.next = head
+        return new_head
