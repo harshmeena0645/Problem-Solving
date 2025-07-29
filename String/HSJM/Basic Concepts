@@ -1,0 +1,72 @@
+Input String :-
+
+s = input("Enter a string: ")
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Reverse String :-
+
+reversed_s = s[::-1]
+print("Reversed string:", reversed_s)
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Length of String :-
+
+print("Length of string:", len(s))
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Sort String :-
+
+sorted_s = ''.join(sorted(s))
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Character from ASCII Number :-
+
+ascii_num = int(input("Enter an ASCII number: "))
+print("Character is:", chr(ascii_num))
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+ASCII to each Character :-
+
+print("ASCII values:")
+for ch in s:
+    print(f"{ch} => {ord(ch)}")
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Count Occurrence of Character :-
+
+char = input("Enter a character to count: ")
+count = s.count(char)
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Replace Character 
+
+
+
+new_s = s.replace("a", "@")
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Split into Words :- 
+words = s.split()
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Join List into string :-
+joined = "-".join(words)
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Character Frequency :- 
+
+from collections import Counter
+freq = Counter(s)
+print("Character frequencies:")
+for k, v in freq.items():
+    print(f"{k}: {v}")
