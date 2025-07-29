@@ -1,0 +1,37 @@
+Remove Duplicates from Sorted List II
+
+Input: head = [1,2,3,3,4,4,5]
+Output: [1,2,5]
+
+Input: head = [1,1,1,2,3]
+Output: [2,3]
+
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+    def deleteDuplicates(self, head):
+        if not head or not head.next:
+            return head
+
+        dummy = ListNode(0, head)
+        prev = dummy
+        current = head
+
+        while current:
+            is_duplicate = False
+
+            while current.next and current.val == current.next.val:
+                is_duplicate = True
+                current = current.next
+
+            if is_duplicate:
+                prev.next = current.next
+            else:
+                prev = prev.next
+
+            current = current.next
+
+        return dummy.next
