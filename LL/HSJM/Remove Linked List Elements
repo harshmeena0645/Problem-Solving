@@ -1,0 +1,28 @@
+Remove Linked List Elements
+
+Input: head = [1,2,6,3,4,5,6], val = 6
+Output: [1,2,3,4,5]
+
+Input: head = [], val = 1
+Output: []
+
+Input: head = [7,7,7,7], val = 7
+Output: []
+
+
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution(object):
+    def removeElements(self, head, val):
+        ans = ListNode(0, head)
+        dummy = ans
+
+        while dummy:
+            while dummy.next and dummy.next.val == val:
+                dummy.next = dummy.next.next
+            dummy = dummy.next
+        
+        return ans.next
