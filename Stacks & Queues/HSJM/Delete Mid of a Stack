@@ -9,7 +9,6 @@ Input: s = [10, 20, 30, 40]
 Output: [40, 30, 10]
 
 
-# Stack Operations
 class Solution:
     def deleteMid(self, stack):
         def remove_mid(stack, curr, mid):
@@ -24,15 +23,7 @@ class Solution:
         mid = size // 2
         remove_mid(stack, 0, mid)
         return stack
---x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
-# List indexing and slicing method
-class Solution:
-    def deleteMid(self, stack):
-        mid = len(stack) // 2
-        del stack[mid]
-        return stack[::-1]
 
 
-
-Time Complexity :-	Both O(n)
-Space Complexity:-	O(n) (due to recursion)	, O(1)
+Time Complexity :-	O(n)
+Space Complexity:-	O(n) (due to recursion)
