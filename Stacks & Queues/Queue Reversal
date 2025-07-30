@@ -1,17 +1,8 @@
-Queue Reversal
-
 Reverse the Queue
 
 
 Input: q[] = [4 3 1 10 2 6]
 Output: [6, 2, 10, 1, 3, 4]
-
-Input: q[] = [4 3 2 1]
-Output: [1, 2, 3, 4]
-
-Input: q[] = [7, 9, 5, 12, 8]
-Output: [8, 12, 5, 9, 7]
-
 
 
 class Solution:
