@@ -2,11 +2,9 @@ Bottom View of Binary Tree
 
 Note: If there are multiple bottom-most nodes for a horizontal distance from the root, then the later one in the level order traversal is considered. For example, in the below diagram, 7 and 34 both are the bottommost nodes at a horizontal distance of 0 from the root, here 34 will be considered.
 
-For the above tree, the output should be 5 8 34 22 25
 
 Input: root[] = [1, 3, 2]
 Output: [3 1 2]
-Explanation: First case represents a tree with 3 nodes and 2 edges where root is 1, left child of 1 is 3 and right child of 1 is 2.
 
 Input: root[] = [10, 20, 30, 40, 60]
 Output: [40 20 60 30]
