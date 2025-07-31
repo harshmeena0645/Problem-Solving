@@ -8,12 +8,34 @@ Input:
 Output:
 3
 
-  3
- / \
- 9 20
-   / \
-  15  7
 
+
+class Solution:
+    def maxDepth(self, root):
+        if not root:
+            return 0
+        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+
+
+def tree_height(values):
+    values = [v for v in values if v != "null"]
+    l = len(values)
+    if l == 0:
+        return 0
+    if l == 1:
+        return 1
+    i = 1
+    while (2**i - 1) < l:
+        i += 1
+    return i
+
+n = int(input())  
+values = input().split()  
+print(tree_height(values))
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
 
 class Node:
     def __init__(self, key):
@@ -53,30 +75,3 @@ n = int(input())
 values = input().split()
 root = build_tree(values)
 print(max_depth(root))
-
---x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
-
-
-def tree_height(values):
-    values = [v for v in values if v != "null"]
-    l = len(values)
-    if l == 0:
-        return 0
-    if l == 1:
-        return 1
-    i = 1
-    while (2**i - 1) < l:
-        i += 1
-    return i
-
-n = int(input())  
-values = input().split()  
-print(tree_height(values))
-
---x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
-
-class Solution:
-    def maxDepth(self, root):
-        if not root:
-            return 0
-        return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
