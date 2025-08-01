@@ -1,6 +1,6 @@
 Input Array :-
 
-for with space : 4 5 6 7
+with space : 4 5 6 7
 arr = list(map(int, input("Enter the array elements separated by space: ").split()))
 
 No Space: 4567
