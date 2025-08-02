@@ -1,30 +1,29 @@
 Input Array :-
 
 with space : 4 5 6 7
-arr = list(map(int, input("Enter the array elements separated by space: ").split()))
+arr = list(map(int, input().split()))
 
 No Space: 4567
-num = input("Enter the number: ")
+num = input()
 arr = [int(digit) for digit in num]
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Input 2D Array :-
 
 Row By Row:-
 matrix = []
+rows=3
 for i in range(rows):
-    print(f"Enter row {i+1} elements separated by space:")
+    print()
     row = list(map(int, input().split()))
     matrix.append(row)
-
 for row in matrix:
     print(row)
 
-
+rows=3
+cols=2
 print(f"Enter {rows * cols} elements separated by space:")
 elements = list(map(int, input().split()))
-
 matrix = []
 idx = 0
 for i in range(rows):
@@ -35,7 +34,6 @@ for i in range(rows):
     matrix.append(row)
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Reverse Array :-
 
 arr.reverse()
@@ -52,20 +50,8 @@ while start < end:
     end -= 1
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
-Length of Array :-
-
-length = len(arr)
-
-length = 0
-for _ in arr:
-    length += 1
-
---X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
-Sort Array :-
-
-arr.sort()
+arr.sort()   (for list)
+sorted(arr)    (for all)
 
 Brute-force sort (Selection Sort)
 n = len(arr)
@@ -77,9 +63,6 @@ for i in range(n):
             arr[j] = temp
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
-Sum of Array :-
-
 sum(arr)
 
 total = 0
@@ -87,9 +70,6 @@ for value in arr:
     total += value
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
-Max, Min in Array :-
-
 max(arr)
 min(arr)
 
@@ -102,7 +82,6 @@ for value in arr:
         min_val = value
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Count Occurrence in Array :-
 
 arr.count(4)
@@ -114,13 +93,11 @@ for value in arr:
 print("Count of 4 is:", count)
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Join Array back to Number :-
 
 int("".join(map(str, arr)))
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Convert Digit to String :-
 
 str_arr = list(map(str, arr))
@@ -143,3 +120,43 @@ if __name__ == "__main__":
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
 
+my_list = [1, 2, 3, 4]
+my_list[0]       # returns 1
+my_list[-1]      # returns 4
+my_list[2] = 99     # [1, 2, 99, 4]
+my_list.append(5)     # [1, 2, 3, 4, 5]
+my_list.insert(1, 10)  # [1, 10, 2, 3, 4]
+my_list.extend([6, 7])  # [1, 2, 3, 4, 6, 7]
+my_list.remove(2)  # removes first occurrence of 2
+del my_list[2]      (Delete by value)
+my_list.pop(2)      (Delete by value)
+len(my_list)
+my_list.count(3)
+my_list.reverse()     (reverse a list)
+my_list[::-1]         (reverse a list)
+my_list.sort()        # ascending
+my_list.sort(reverse=True)  # descending
+my_list.clear()  # []      (clear a list)
+new_list = my_list.copy()      (Copy list)
+new_list = my_list[:]          (Copy list)
+3 in my_list  # True or False    (item exists in list)
+squares = [x**2 for x in my_list]      (list comprehension to square all items)
+evens = [x for x in my_list if x % 2 == 0]      (even numbers using list comprehension)
+''.join(['h', 'e', 'l', 'l', 'o'])  # 'hello'     (list of characters to a string)
+max(my_list)
+min(my_list)
+sum(my_list)
+my_list[1:4]  # from index 1 to 3
+my_list[::2]     # [1,3]     (2nd element in a list)
+flat = [item for sublist in [[1,2],[3,4]] for item in sublist]      (flatten a nested list)
+list(set(my_list))       (remove duplicates from a list)
+[1, 2] * 3      # [1, 2, 1, 2, 1, 2]
+my_list.index(3)         (find the index of an item)
+if not my_list:          (check list is empty)
+    print("Empty")
+my_list[0], my_list[1] = my_list[1], my_list[0]
+
+for idx, val in enumerate(my_list):
+    print(idx, val)
+
+list(zip([1, 2], ['a', 'b']))  # [(1, 'a'), (2, 'b')]
