@@ -7,12 +7,28 @@ Reverse String :-
 
 reversed_s = s[::-1]
 
+
+def reverse_string(s):
+    return ''.join(reversed(s))
+print(reverse_string("hello"))
+# Output: "olleh"
+
+
 reversed_s = ""
 for i in range(len(s) - 1, -1, -1):
     reversed_s += s[i]
 
---X--X--X--X--X--X--X--X--X--X--X--X--X--X--
 
+
+def reverse_string(s):
+    result = ""
+    for char in s:
+        result = char + result
+    return result
+print(reverse_string("hello"))
+# Output: "olleh"
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
 Length of String :-
 
 len(s)
@@ -22,7 +38,6 @@ for _ in s:
     length += 1
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Sort String :-
 
 sorted_s = ''.join(sorted(s))
@@ -37,13 +52,14 @@ for i in range(len(n)):
 sorted_s = ''.join(arr)
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Character from ASCII Number :-
+
 chr(ascii_num)
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
 
 ASCII to each Character :-
+
 for ch in s:
     print(f"{ch} => {ord(ch)}")
 
