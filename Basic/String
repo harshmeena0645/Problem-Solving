@@ -1,8 +1,7 @@
 Input String :-
-s = input("Enter a string: ")
+s = input()
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Reverse String :-
 
 reversed_s = s[::-1]
@@ -79,12 +78,10 @@ Split into Words :-
 words = s.split()
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Join List into string :-
 joined = "-".join(words)
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Character Frequency :- 
 
 from collections import Counter
