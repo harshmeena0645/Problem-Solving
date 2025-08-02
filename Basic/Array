@@ -1,0 +1,126 @@
+Input Array :-
+
+with space : 4 5 6 7
+arr = list(map(int, input("Enter the array elements separated by space: ").split()))
+
+No Space: 4567
+num = input("Enter the number: ")
+arr = [int(digit) for digit in num]
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Input 2D Array :-
+
+Row By Row:-
+matrix = []
+for i in range(rows):
+    print(f"Enter row {i+1} elements separated by space:")
+    row = list(map(int, input().split()))
+    matrix.append(row)
+
+for row in matrix:
+    print(row)
+
+
+print(f"Enter {rows * cols} elements separated by space:")
+elements = list(map(int, input().split()))
+
+matrix = []
+idx = 0
+for i in range(rows):
+    row = []
+    for j in range(cols):
+        row.append(elements[idx])
+        idx += 1
+    matrix.append(row)
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Reverse Array :-
+
+arr.reverse()
+
+reversed_arr = arr[::-1]
+
+start = 0
+end = len(arr) - 1
+while start < end:
+    temp = arr[start]
+    arr[start] = arr[end]
+    arr[end] = temp
+    start += 1
+    end -= 1
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Length of Array :-
+
+length = len(arr)
+
+length = 0
+for _ in arr:
+    length += 1
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Sort Array :-
+
+arr.sort()
+
+Brute-force sort (Selection Sort)
+n = len(arr)
+for i in range(n):
+    for j in range(i + 1, n):
+        if arr[i] > arr[j]:
+            temp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = temp
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Sum of Array :-
+
+sum(arr)
+
+total = 0
+for value in arr:
+    total += value
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Max, Min in Array :-
+
+max(arr)
+min(arr)
+
+max_val = arr[0]
+min_val = arr[0]
+for value in arr:
+    if value > max_val:
+        max_val = value
+    if value < min_val:
+        min_val = value
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Count Occurrence in Array :-
+
+arr.count(4)
+
+count = 0
+for value in arr:
+    if value == 4:
+        count += 1
+print("Count of 4 is:", count)
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Join Array back to Number :-
+
+int("".join(map(str, arr)))
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+Convert Digit to String :-
+
+str_arr = list(map(str, arr))
