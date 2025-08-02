@@ -13,6 +13,13 @@ s = "one-two-three"
 result = s.split("-", 1)
 # ['one', 'two-three']
 
+joined=1-2-3-4
+split_list = joined.split("-")
+print(split_list)  # Output: ['1', '2', '3', '4']
+nums_back = [int(num) for num in split_list]
+print(nums_back)   # Output: [1, 2, 3, 4]
+
+
 ✅ join() Function
 separator.join(iterable)
 
@@ -23,6 +30,20 @@ result = " ".join(words)
 items = ['apple', 'banana', 'grape']
 result = ",".join(items)
 # apple,banana,grape
+
+nums = [1, 2, 3, 4]
+# Convert each number to string
+string_nums = [str(num) for num in nums]
+joined = "-".join(string_nums)
+print(joined)  # Output: 1-2-3-4
+
+
+nums = [5, 10, 15]
+as_str = ",".join(str(n) for n in nums)
+# Output: 5,10,15
+as_list = [int(n) for n in as_str.split(",")]
+print(as_list)      # Output: [5, 10, 15]
+
 
 
 | Function  | Works On           | Output          | Key Use                           |
