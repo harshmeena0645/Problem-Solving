@@ -1,0 +1,31 @@
+✅ split() Function
+string.split(separator, maxsplit)
+
+s = "Hello World from Python"
+result = s.split()      # Default split on whitespace
+# ['Hello', 'World', 'from', 'Python']
+
+s = "apple,banana,grape"
+result = s.split(",")
+# ['apple', 'banana', 'grape']
+
+s = "one-two-three"
+result = s.split("-", 1)
+# ['one', 'two-three']
+
+✅ join() Function
+separator.join(iterable)
+
+words = ['Hello', 'World', 'Python']
+result = " ".join(words)
+# Hello World Python
+
+items = ['apple', 'banana', 'grape']
+result = ",".join(items)
+# apple,banana,grape
+
+
+| Function  | Works On           | Output          | Key Use                           |
+| --------- | ------------------ | --------------- | --------------------------------- |
+| `split()` | String             | List of strings | Break string into parts           |
+| `join()`  | List (or iterable) | String          | Combine list into a single string |
