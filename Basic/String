@@ -76,3 +76,57 @@ freq = Counter(s)
 print("Character frequencies:")
 for k, v in freq.items():
     print(f"{k}: {v}")
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+s = "Hello"
+print(len(s)) # 5
+print(s[0])  # H
+print(s[1:3])  # el
+print(s[::-1])  # olleH
+print('e' in s)  # True
+print(s.lower())  # hello
+print(s.upper())  # HELLO
+print(s.capitalize())  # Harsh  (1st char of string)
+print(s.title())  # Harsh (1st char of each word)
+print(s.swapcase())  # hArSh
+print(s.count('a'))  # 1
+print(s.find("s"))  # 3 (1st occurrence of a substring)
+print(s.rfind("l"))  # 9 (Last index of substring)
+print(s.find("z"))  # -1 (not found)
+print(s.index("z"))  # Raises ValueError
+print(s.replace("Harsh", "Python"))  # Python
+print(s.strip())  # 'harsh' ("  harsh  ")
+print(s.lstrip())  # Output: 'Harsh  '  ("  Harsh  ")
+print(s.rstrip())  # '  Harsh' ("  Harsh  ")
+print(s.split())  # ['I', 'love', 'Python']   ("I love Python")
+words = ["I", "love", "Python"]
+print(" ".join(words))  # I love Python   (["I", "love", "Python"])
+print(s.isalpha())  # True    ("Hello")
+print(s.isdigit())  # True    ("12345")
+print(s.isalnum())  # True    ("Hello123")
+print(s.isupper())  # True    ("HELLO")
+print(s.islower())  # True    ("hello")
+print(s.isidentifier())  # True    ("my_var")    (Check string is valid identifier)
+print(s.startswith("Py"))  # True     ("Python")
+print(s.endswith("on"))  # True   ("Python")
+print(s.center(10, "-"))  # --Hello---    (center a string within a given width)
+print(s.ljust(10, "*"))  # Output: Hello*****      ("Hello")    (left-justify a string with padding)
+print(s.rjust(10, "*"))  # Output: *****Hello    ("Hello")      (right-justify a string with padding)
+print(f"My name is {name} and I am {age} years old.")       (f-string)
+print("My name is {} and I am {} years old.".format(name, age))       (format())
+s = 'She said "Hello"'  # or use escape    (How do you include quotes inside a string)
+s = "She said \"Hello\""                   (How do you include quotes inside a string)
+print("Line1\nLine2")        (\n for new line)
+print("Name\tAge")        (\t for tab)
+s = """This is     ( multi-line string )
+a multi-line       ( multi-line string )
+string"""          ( multi-line string )
+\n	--> New line
+\t	--> Tab space
+\\	--> Backslash \
+print(s * 3)  # Hi Hi Hi    ("Hi ")       (repeat a string multiple times)
+print("apple" < "banana")      # True      (compare two strings alphabetically)
+print(list(s))      # ['a', 'b', 'c']    ("abc")
+print(s == "")      # True      ("")
+print(not s)    # True          ("")
