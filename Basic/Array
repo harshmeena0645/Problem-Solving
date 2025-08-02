@@ -124,3 +124,22 @@ int("".join(map(str, arr)))
 Convert Digit to String :-
 
 str_arr = list(map(str, arr))
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
+class PrimeChecker:
+    def __init__(self, number):
+        self.number = number
+    def is_prime(self):
+        return True
+
+if __name__ == "__main__":
+    num = int(input("Enter a number: "))
+    checker = PrimeChecker(num)
+    if checker.is_prime():
+        print(f"{num} is a Prime Number")
+    else:
+        print(f"{num} is NOT a Prime Number")
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
