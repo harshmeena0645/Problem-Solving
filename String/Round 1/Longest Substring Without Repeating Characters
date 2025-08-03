@@ -14,6 +14,20 @@ s = "bbbbb"
 Output: 1
 
 
+
+s=input()
+res=[]
+maxx=0
+for i in s:
+    if i not in res:
+        res.append(i)
+        maxx=max(maxx,len(res))
+    else:
+        res=[i]
+print(maxx)
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--
+
 class Solution(object):
     def lengthOfLongestSubstring(self, s):
         charSet = set()
