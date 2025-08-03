@@ -7,6 +7,14 @@ s = "rat", t = "car"
 Output: false
 
 
+
+if sorted(s)==sorted(t):
+    print("True")
+else :
+    print("False")
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--
+
 class Solution:
     def isAnagram(self,s,t):  
         if len(s) != len(t):
@@ -21,7 +29,7 @@ class Solution:
             counter[char] -= 1
         return True
 
---x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--
 
 class Solution(object):
     def isAnagram(self, s, t):
