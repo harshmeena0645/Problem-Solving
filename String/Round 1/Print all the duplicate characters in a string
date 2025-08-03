@@ -9,6 +9,17 @@ k, count = 2
 s, count = 2
 
 
+from collections import Counter
+s = input()
+count = Counter(s)
+sorted_items = sorted(count.items(), key=lambda x: x[1], reverse=True)
+count = dict(sorted_items)
+for i in count:
+    if count[i] > 1:
+        print(i,", count =", count[i])
+
+--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--x--
+
 def printDuplicates(str):
     char_list = list(str)
     char_list.sort()
@@ -22,7 +33,6 @@ def printDuplicates(str):
         if count > 1:
             print(char_list[i], ", count = ", count)
         i += 1
-
 str = "test string"
 printDuplicates(str)
 
