@@ -13,6 +13,21 @@ Output: 2
 [2, -2] has sum = 0,divisible by 2.
 
 
+# Brute Force
+def fun(arr, k):
+    max_len = 0
+    n = len(arr)
+    for i in range(n):
+        total = 0
+        for j in range(i, n):
+            total += arr[j]
+            if total % k == 0:
+                max_len = max(max_len, j - i + 1)
+
+    return max_len
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X
+
 class Solution:
     def longestSubarrayDivK(self, arr, k):
         index = {}
