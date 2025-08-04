@@ -9,16 +9,18 @@ Output: [[""]]
 strs = ["a"]
 Output: [["a"]]
 
- class Solution(object):
-    def groupAnagrams(self, strs):
-        anagram_map = {}
 
-        for word in strs:
-            key = ''.join(sorted(word))
-            if key in anagram_map:
-                anagram_map[key].append(word)
-            else:
-                anagram_map[key] = [word]
-            # {"abt": ["bat"], "aet": ["eat", "tea", "ate"], "ant": ["tan","nat"]}
 
-        return list(anagram_map.values())
+def val(s):
+    d = {}
+    for word in s:
+        key = ''.join(sorted(word))
+        if key in d:
+            d[key].append(word)
+        else:
+            d[key] = [word]
+    res = sorted(d.values(), key=lambda x: len(x))
+    return res
+
+s = ["eat","tea","tan","ate","nat","bat"]
+print(val(s))
