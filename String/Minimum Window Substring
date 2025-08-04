@@ -13,6 +13,41 @@ Input: s = "a", t = "aa"
 Output: ""
 
 
+
+
+# Brute force 
+from collections import Counter
+
+def contains_all_chars(substring, t_count):
+    s_count = Counter(substring)
+    for char in t_count:
+        if s_count[char] < t_count[char]:
+            return False
+    return True
+
+def min_window(s, t):
+    if not s or not t:
+        return ""
+
+    n = len(s)
+    t_count = Counter(t)
+    min_len = float('inf')
+    result = ""
+
+    for i in range(n):
+        for j in range(i, n):
+            window = s[i:j+1]
+            if contains_all_chars(window, t_count):
+                if (j - i + 1) < min_len:
+                    min_len = j - i + 1
+                    result = window
+
+    return result
+
+
+
+
+
 from collections import Counter
 class Solution:
     def minWindow(self,s,t):
