@@ -12,6 +12,28 @@ s = "AABABBA", k = 1
 Output: 4 (AABBBBA)
 
 
+#Brute Force
+def characterReplacement(s, k):
+    n = len(s)
+    max_len = 0
+
+    for i in range(n):
+        freq = [0] * 26  # Frequency of A-Z
+        max_count = 0
+        for j in range(i, n):
+            idx = ord(s[j]) - ord('A')
+            freq[idx] += 1
+            max_count = max(max_count, freq[idx])
+            window_len = j - i + 1
+            changes_needed = window_len - max_count
+            if changes_needed <= k:
+                max_len = max(max_len, window_len)
+
+    return max_len
+
+
+
+
 class Solution(object):
     def characterReplacement(self, s, k):
         count = [0] * 26
