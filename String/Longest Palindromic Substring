@@ -7,6 +7,28 @@ Explanation: "aba" is also a valid answer.
 Input: s = "cbbd"
 Output: "bb"
 
+
+# Brute force
+def is_palindrome(s):
+    return s == s[::-1]
+
+def longest_palindromic_substring(s):
+    n = len(s)
+    max_len = 0
+    longest = ""
+
+    for i in range(n):
+        for j in range(i, n):
+            substring = s[i:j+1]
+            if is_palindrome(substring) and len(substring) > max_len:
+                longest = substring
+                max_len = len(substring)
+
+    return longest
+
+
+
+
 class Solution(object):
     def longestPalindrome(self, s):
         res = ""
