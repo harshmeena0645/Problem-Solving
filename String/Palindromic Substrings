@@ -11,6 +11,24 @@ Output: 6
 Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 
 
+# Brute Force
+def countSubstrings(s):
+    n = len(s)
+    count = 0
+
+    for i in range(n):
+        for j in range(i, n):
+            substring = s[i:j+1]
+            if substring == substring[::-1]:  # check palindrome
+                count += 1
+
+    return count
+
+
+
+
+
+
 class Solution:
     def countSubstrings(self, S):
         ans, n, i = 0, len(S), 0
