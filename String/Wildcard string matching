@@ -17,6 +17,30 @@ Explanation: Replace '?' and '*' in wild string with
 
 
 
+# Brute Force
+def is_match(wild, pattern):
+    def match(i, j):
+        if i == len(wild) and j == len(pattern):
+            return True
+        if i == len(wild):
+            return False
+        if j == len(pattern):
+            return all(wild[k] == '*' for k in range(i, len(wild)))
+
+        if wild[i] == '*':
+            return match(i + 1, j) or match(i, j + 1)
+        if wild[i] == '?' or wild[i] == pattern[j]:
+            return match(i + 1, j + 1)
+
+        return False
+
+    return match(0, 0)
+
+
+
+
+
+
 class Solution:
     def match(self, wild, pattern):
         i = 0 
