@@ -22,6 +22,41 @@ Line number 3: From word no. 3 to 3
 Same explaination as above total cost = (4 - 3)2 + (4 - 2)2 = 5.  
 
 
+
+# Brute Force
+import sys
+def solve(arr, n, k, index):
+    if index == n:
+        return 0  # No cost for last line
+
+    min_cost = sys.maxsize
+    total_len = 0
+
+    for j in range(index, n):
+        total_len += arr[j]
+
+        if j > index:
+            total_len += 1  # space between words
+
+        if total_len > k:
+            break
+
+        if j == n - 1:
+            cost = 0  # No cost for last line
+        else:
+            extra_space = k - total_len
+            cost = extra_space ** 2
+
+        total = cost + solve(arr, n, k, j + 1)
+        min_cost = min(min_cost, total)
+
+    return min_cost
+
+
+
+
+
+
 class Solution:
     def solveWordWrap(self, arr, k):
         n = len(arr)
