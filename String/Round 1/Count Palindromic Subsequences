@@ -6,6 +6,10 @@ s = "abcd"
 Output: 4
 Explanation: 'a' ,'b', 'c' ,'d'
 
+s = "aaa"
+Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+
 s = "aab"
 Output: 4
 Explanation: 'a', 'a', 'b', 'aa'
