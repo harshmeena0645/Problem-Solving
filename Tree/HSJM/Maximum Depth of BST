@@ -1,0 +1,31 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def insert_bst(root, value):
+    if root is None:
+        return Node(value)
+    if value < root.data:
+        root.left = insert_bst(root.left, value)
+    elif value > root.data:
+        root.right = insert_bst(root.right, value)
+    return root
+
+def depth(root):
+    if root is None:
+        return 0
+    return 1 + max(depth(root.left), depth(root.right))
+
+def build_bst_from_list(values):
+    root = None
+    for val in values:
+        if val is not None:
+            root = insert_bst(root, val)
+    return root
+
+values = [2, 1, "null", 3, "null", 5]
+values = [None if v == "null" else v for v in values]
+root = build_bst_from_list(values)
+print("Max Depth:", depth(root))
