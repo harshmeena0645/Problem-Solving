@@ -1,0 +1,26 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+        
+def maxx(root):
+    if root is None:
+        return float('-inf')
+    return max(root.data, maxx(root.left), maxx(root.right))
+
+def minn(root):
+    if root is None:
+        return float('inf')
+    return min(root.data, minn(root.left), minn(root.right))
+
+root = Node(10)
+root.left = Node(4)
+root.right = Node(8)
+root.left.left = None
+root.left.right = Node(11)
+root.right.left = None
+root.right.right = Node(0)
+
+print("Max No.:", maxx(root))
+print("Min No.:", minn(root))
