@@ -1,90 +1,89 @@
 Traversal Inorder, Preorder, Postorder, Levelorder in BT
 
-Input: root = [1,null,2,3]
-Output: [1,3,2]
-
-Input: root = [1,2,3,4,5,null,8,null,null,6,7,9]
-Output: [4,2,6,5,7,1,3,9,8]
-
-Input: root = []
-Output: []
-
-Input: root = [1]
-Output: [1]
-
- 
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
 
 
-
-class Solution:
-    def preorderTraversal(self, root):
-        res = []
-        def preorder(node):
-            if not node:
-                return
-            
-            res.append(node.val)
-            preorder(node.left)
-            preorder(node.right)
+class Node:
+    def __init__(self,data,left=None,right=None):
+        self.data=data
+        self.left=left
+        self.right=right
         
+class Solution:
+    def preorder_Traversel(self,root):
+        def preorder(key):
+            if not key:
+                return
+            res.append(key.data)
+            preorder(key.left)
+            preorder(key.right)
+            
+        res=[]
         preorder(root)
         return res
-
-
-
-class Solution:
-    def inorderTraversal(self, root):
-        res = []
-        def inorder(node):
-            if not node:
+    
+    def inorder_Traversel(self,root):
+        def inorder(key):
+            if not key:
                 return
-            
-            inorder(node.left)
-            res.append(node.val)
-            inorder(node.right)
+            inorder(key.left)
+            res.append(key.data)
+            inorder(key.right)
         
+        res=[]
         inorder(root)
         return res
-
-
-
-class Solution:
-    def postorderTraversal(self, root):
-        res = []
-        def postorder(node):
-            if not node:
+    
+    def postorder_Traversel(self,root):
+        def postorder(key):
+            if not key:
                 return
-            
-            postorder(node.left)
-            postorder(node.right)
-            res.append(node.val)
-        
+            postorder(key.left)
+            postorder(key.right)
+            res.append(key.data)
+        res=[]
         postorder(root)
         return res
-
-
-
-class Solution:
-    def levelOrder(self, root):
-        res = []
-        
-        def bfs(nodes):
-            if not nodes:
+    
+    def level_Traversel(self,root):
+        def bfs(key):
+            if not key:
                 return
-            res.append([node.val for node in nodes])
-            next_level = []
-            for node in nodes:
-                if node.left:
-                    next_level.append(node.left)
-                if node.right:
-                    next_level.append(node.right)
+            res.append([k.data for k in key])
+            next_level=[]
+            for k in key:
+                if k.left:
+                    next_level.append(k.left)
+                if k.right:
+                    next_level.append(k.right)
             bfs(next_level)
-        
+        res=[]
         bfs([root] if root else [])
         return res
+
+def create_tree(values):
+    if not values or values[0] is None:
+        return None
+    root=Node(values[0])
+    queue=[root]
+    i=1
+    while queue and i<len(values):
+        key=queue.pop(0)
+        if i<len(values) and values[0] is not None:
+            key.left=Node(values[i])
+            queue.append(key.left)
+        i+=1
+        if i<len(values) and values[i] is not None:
+            key.right=Node(values[i])
+            queue.append(key.right)
+        i+=1
+    return root
+
+
+values = [3, 9, 20, "null", 8,"null", 15, 7]
+values = [None if v == "null" else v for v in values]
+root = create_tree(values)
+sol = Solution()
+print("Pre Order:", sol.preorder_Traversel(root))
+print("In Order:", sol.inorder_Traversel(root))
+print("Post Order:", sol.postorder_Traversel(root))
+print("Level Order:", sol.level_Traversel(root))
