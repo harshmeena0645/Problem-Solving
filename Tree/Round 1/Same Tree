@@ -10,14 +10,13 @@ Output: false
 Input: p = [1,2,1], q = [1,1,2]
 Output: false
 
-class Solution(object):
+
+
+
+class Solution:
     def isSameTree(self, p, q):
         if not p and not q:
             return True
-        
-        # One of them is None, or values differ
-        if not p or not q or p.val != q.val:
+        if not p or not q or p.data != q.data:
             return False
-        
-        # Check left and right subtrees
         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
