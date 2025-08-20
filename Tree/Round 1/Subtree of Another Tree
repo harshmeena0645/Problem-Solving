@@ -7,15 +7,11 @@ Input: root = [3,4,5,1,2,null,null,null,null,0], subRoot = [4,1,2]
 Output: false
 
 
-# class TreeNode(object):
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
-class Solution(object):
+
+class Solution:
     def isSubtree(self, root, subRoot):
         def ser(n):
             if not n:
                 return ',#'
-            return ',' + str(n.val) + ser(n.left) + ser(n.right)
+            return ',' + str(n.data) + ser(n.left) + ser(n.right)
         return ser(subRoot) in ser(root)
