@@ -1,19 +1,46 @@
 Lowest Common Ancestor
 
-def findLCA(self, root, p, q):
-        if root is None:
-            return None
-        if root.item == p or root.item == q:
-            return root
 
-        left_lca = self.findLCA(root.left, p, q)
-        right_lca = self.findLCA(root.right, p, q)
 
-        if left_lca and right_lca:
-            return root
 
-        return left_lca if left_lca else right_lca
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
 
-def common(self, p, q):
-    lca = self.findLCA(self.root, p, q)
-    return lca.item if lca else None
+def lca(root, n1, n2):
+    if root is None:
+        return None
+    if root.data == n1 or root.data == n2:
+        return root
+    left_lca = lca(root.left, n1, n2)
+    right_lca = lca(root.right, n1, n2)
+    if left_lca and right_lca:
+        return root
+    return left_lca if left_lca else right_lca
+
+def create_BT(values):
+    if not values or values[0] is None:
+        return None
+    root = Node(values[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(values):
+        key = queue.pop(0)
+        if i < len(values) and values[i] is not None:
+            key.left = Node(values[i])
+            queue.append(key.left)
+        i += 1
+        if i < len(values) and values[i] is not None:
+            key.right = Node(values[i])
+            queue.append(key.right)
+        i += 1
+    return root
+
+values = [2, 4, 1, "null", -2, "null", 5]
+values = [None if v == "null" else v for v in values]
+root = create_BT(values)
+n1, n2 = -2, 5
+ancestor = lca(root, n1, n2)
+print(f"LCA of {n1} and {n2} is:", ancestor.data if ancestor else "Not Found")
