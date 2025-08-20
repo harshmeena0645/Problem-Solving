@@ -1,3 +1,18 @@
+n=int(input())
+l=list(map(int,input().split()))
+res=" ".join(map(str,s))
+matrix = [list(map(int, input().split())) for _ in range(n)]
+values = input().split()
+
+list_1=['1', '2', '3', '4']
+nums_back = [ int(num) for num in list_1 ]                                                                  nums = [1, 2, 3, 4]
+string_nums = [str(num) for num in nums]                                
+
+# Input: "10 20 30"
+values = input().split()  # → ['10', '20', '30']
+
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
+
 Input Array :-
 
 with space : 4 5 6 7
@@ -160,3 +175,103 @@ for idx, val in enumerate(my_list):
     print(idx, val)
 
 list(zip([1, 2], ['a', 'b']))  # [(1, 'a'), (2, 'b')]
+
+
+
+
+
+🔥 Top Python Interview Questions
+
+2️⃣ Check Even or Odd
+
+4️⃣ Swap Two Numbers
+
+5️⃣ Count Frequency of Elements
+
+6️⃣ Reverse a String
+
+9️⃣ Check Prime Number
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+print(is_prime(7))  # Output: True
+
+🔟 Factorial of a Number
+
+
+1️⃣1️⃣ Find Second Largest Number
+
+1️⃣2️⃣ Check for Anagram
+
+1️⃣3️⃣ Reverse Each Word in a Sentence
+sentence = "I love Python"
+print(' '.join(word[::-1] for word in sentence.split()))  # Output: I evol nohtyP
+
+1️⃣4️⃣ Find Missing Number in an Array (1 to N)
+def missing_number(lst, n):
+    total = n * (n + 1) // 2
+    return total - sum(lst)
+print(missing_number([1, 2, 4, 5], 5))  # Output: 3
+
+1️⃣5️⃣ First Non-Repeating Character
+def first_unique_char(s):
+    for char in s:
+        if s.count(char) == 1:
+            return char
+print(first_unique_char("aabbcde"))  # Output: c
+
+
+1️⃣6️⃣ Find All Pairs with Given Sum
+def find_pairs(lst, target):
+    return [(x, y) for x in lst for y in lst if x + y == target and x < y]
+print(find_pairs([1, 2, 3, 4, 5, 6], 7))  # Output: [(1, 6), (2, 5), (3, 4)]
+
+1️⃣7️⃣ Armstrong Number
+def is_armstrong(num):
+    return num == sum(int(digit) ** 3 for digit in str(num))
+print(is_armstrong(153))  # Output: True
+
+1️⃣8️⃣ Merge Two Sorted Lists
+
+1️⃣9️⃣ Longest Substring Without Repeating Characters
+def longest_substring(s):
+    char_set = set()
+    left = max_len = 0
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left += 1
+        char_set.add(s[right])
+        max_len = max(max_len, right - left + 1)
+    return max_len
+
+print(longest_substring("abcabcbb"))  # Output: 3
+
+2️⃣0️⃣ Number of Islands in a Grid
+def num_islands(grid):
+    def dfs(i, j):
+        if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]) or grid[i][j] == '0':
+            return
+        grid[i][j] = '0'
+        dfs(i+1, j)
+        dfs(i-1, j)
+        dfs(i, j+1)
+        dfs(i, j-1)
+
+    count = 0
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
+            if grid[i][j] == '1':
+                dfs(i, j)
+                count += 1
+    return count
+
+print(num_islands([
+    ["1", "1", "0", "0"],
+    ["1", "1", "0", "0"],
+    ["0", "0", "1", "0"],
+    ["0", "0", "0", "1"]]))  # Output: 3
