@@ -4,28 +4,18 @@ s = input()
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
 Reverse String :-
 
-reversed_s = s[::-1]
+s = "hello"
+rev = s[::-1]
 
+rev = ""
+for ch in s:
+    rev = ch + rev
 
-def reverse_string(s):
-    return ''.join(reversed(s))
-print(reverse_string("hello"))
-# Output: "olleh"
-
+rev = "".join(reversed(s))
 
 reversed_s = ""
 for i in range(len(s) - 1, -1, -1):
     reversed_s += s[i]
-
-
-
-def reverse_string(s):
-    result = ""
-    for char in s:
-        result = char + result
-    return result
-print(reverse_string("hello"))
-# Output: "olleh"
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
 Length of String :-
@@ -73,7 +63,6 @@ Replace Character :-
 new_s = s.replace("a", "@")
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
 Split into Words :-
 words = s.split()
 
@@ -97,22 +86,27 @@ print(len(s)) # 5
 print(s[0])  # H
 print(s[1:3])  # el
 print(s[::-1])  # olleH
+
 print('e' in s)  # True
+
 print(s.lower())  # hello
 print(s.upper())  # HELLO
 print(s.capitalize())  # Harsh  (1st char of string)
 print(s.title())  # Harsh (1st char of each word)
 print(s.swapcase())  # hArSh
+
 print(s.count('a'))  # 1
 print(s.find("s"))  # 3 (1st occurrence of a substring)
 print(s.rfind("l"))  # 9 (Last index of substring)
 print(s.find("z"))  # -1 (not found)
 print(s.index("z"))  # Raises ValueError
+
 print(s.replace("Harsh", "Python"))  # Python
 print(s.strip())  # 'harsh' ("  harsh  ")
 print(s.lstrip())  # Output: 'Harsh  '  ("  Harsh  ")
 print(s.rstrip())  # '  Harsh' ("  Harsh  ")
 print(s.split())  # ['I', 'love', 'Python']   ("I love Python")
+
 words = ["I", "love", "Python"]
 print(" ".join(words))  # I love Python   (["I", "love", "Python"])
 print(s.isalpha())  # True    ("Hello")
@@ -120,6 +114,7 @@ print(s.isdigit())  # True    ("12345")
 print(s.isalnum())  # True    ("Hello123")
 print(s.isupper())  # True    ("HELLO")
 print(s.islower())  # True    ("hello")
+
 print(s.isidentifier())  # True    ("my_var")    (Check string is valid identifier)
 print(s.startswith("Py"))  # True     ("Python")
 print(s.endswith("on"))  # True   ("Python")
