@@ -1,18 +1,20 @@
 n=int(input())
 l=list(map(int,input().split()))
 res=" ".join(map(str,s))
+
 matrix = [list(map(int, input().split())) for _ in range(n)]
 values = input().split()
 
-list_1=['1', '2', '3', '4']
-nums_back = [ int(num) for num in list_1 ]                                                                  nums = [1, 2, 3, 4]
-string_nums = [str(num) for num in nums]                                
+list=['1', '2', '3', '4']
+nums_back = [ int(num) for num in list ]
+
+nums = [1, 2, 3, 4]
+string_nums = [ str(num) for num in nums ]
 
 # Input: "10 20 30"
 values = input().split()  # → ['10', '20', '30']
 
---X--X--X--X--X--X--X--X--X--X--X--X--X--X--
-
+--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--X--
 Input Array :-
 
 with space : 4 5 6 7
@@ -32,8 +34,6 @@ for i in range(rows):
     print()
     row = list(map(int, input().split()))
     matrix.append(row)
-for row in matrix:
-    print(row)
 
 rows=3
 cols=2
@@ -105,7 +105,6 @@ count = 0
 for value in arr:
     if value == 4:
         count += 1
-print("Count of 4 is:", count)
 
 --X--X--X--X--X--X--X--X--X--X--X--X--X--X--
 Join Array back to Number :-
@@ -138,38 +137,52 @@ if __name__ == "__main__":
 my_list = [1, 2, 3, 4]
 my_list[0]       # returns 1
 my_list[-1]      # returns 4
+
 my_list[2] = 99     # [1, 2, 99, 4]
 my_list.append(5)     # [1, 2, 3, 4, 5]
 my_list.insert(1, 10)  # [1, 10, 2, 3, 4]
 my_list.extend([6, 7])  # [1, 2, 3, 4, 6, 7]
+
 my_list.remove(2)  # removes first occurrence of 2
 del my_list[2]      (Delete by value)
 my_list.pop(2)      (Delete by value)
+
 len(my_list)
 my_list.count(3)
+
 my_list.reverse()     (reverse a list)
 my_list[::-1]         (reverse a list)
+
 my_list.sort()        # ascending
 my_list.sort(reverse=True)  # descending
+
 my_list.clear()  # []      (clear a list)
 new_list = my_list.copy()      (Copy list)
 new_list = my_list[:]          (Copy list)
+
 3 in my_list  # True or False    (item exists in list)
+
 squares = [x**2 for x in my_list]      (list comprehension to square all items)
 evens = [x for x in my_list if x % 2 == 0]      (even numbers using list comprehension)
+
 ''.join(['h', 'e', 'l', 'l', 'o'])  # 'hello'     (list of characters to a string)
+
 max(my_list)
 min(my_list)
 sum(my_list)
+
 my_list[1:4]  # from index 1 to 3
 my_list[::2]     # [1,3]     (2nd element in a list)
 flat = [item for sublist in [[1,2],[3,4]] for item in sublist]      (flatten a nested list)
+
 list(set(my_list))       (remove duplicates from a list)
 [1, 2] * 3      # [1, 2, 1, 2, 1, 2]
 my_list.index(3)         (find the index of an item)
+
 if not my_list:          (check list is empty)
     print("Empty")
-my_list[0], my_list[1] = my_list[1], my_list[0]
+
+my_list[0], my_list[1] = my_list[1], my_list[0]        (Swap without 3rd variable)
 
 for idx, val in enumerate(my_list):
     print(idx, val)
@@ -182,13 +195,37 @@ list(zip([1, 2], ['a', 'b']))  # [(1, 'a'), (2, 'b')]
 
 🔥 Top Python Interview Questions
 
+✅ Armstrong Number
+153 → 1**3+5**3+3**3=153
+9474 → 9**4+4**4+7**4+4**4 = 9474
+
 2️⃣ Check Even or Odd
 
 4️⃣ Swap Two Numbers
 
 5️⃣ Count Frequency of Elements
+arr = [1, 2, 2, 3, 1, 4, 2, 3, 5]
+freq = {}
+for num in arr:
+    if num in freq:
+        freq[num] += 1
+    else:
+        freq[num] = 1
+for key, value in freq.items():
+    print(key, ":", value)
+
+freq = Counter(arr)
+print(freq)
 
 6️⃣ Reverse a String
+s = "hello"
+rev = s[::-1]
+
+rev = ""
+for ch in s:
+    rev = ch + rev
+
+rev = "".join(reversed(s))
 
 9️⃣ Check Prime Number
 def is_prime(num):
@@ -198,14 +235,23 @@ def is_prime(num):
         if num % i == 0:
             return False
     return True
-print(is_prime(7))  # Output: True
 
 🔟 Factorial of a Number
+def factorial_rec(n):
+    if n < 0:
+        raise ValueError
+    if n in (0, 1):
+        return 1
+    return n * factorial_rec(n - 1)
 
+import math
+print(math.factorial(5))  # 120
 
 1️⃣1️⃣ Find Second Largest Number
+By Sort then arr[-2]
 
 1️⃣2️⃣ Check for Anagram
+String is Equal or not (Alphabet order not matter)
 
 1️⃣3️⃣ Reverse Each Word in a Sentence
 sentence = "I love Python"
