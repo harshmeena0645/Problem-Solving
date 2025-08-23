@@ -1,7 +1,6 @@
 Rat in the maze 1
 
 
-
 Input:
 4
 4
@@ -31,47 +30,24 @@ Output:
 
 
 
-def is_safe(maze, x, y, n):
-    return 0 <= x < n and 0 <= y < n and maze[x][y] == 1
-
-def solve_maze_util(maze, x, y, sol, n):
-    if x == n - 1 and y == n - 1 and maze[x][y] == 1:
-        sol[x][y] = 1
-        return True
-
-    if is_safe(maze, x, y, n):
-        sol[x][y] = 1
-
-        # Move right
-        if solve_maze_util(maze, x, y + 1, sol, n):
-            return True
-
-        # Move down
-        if solve_maze_util(maze, x + 1, y, sol, n):
-            return True
-
-        # Backtrack
-        sol[x][y] = 0
-        return False
-
-    return False
-
-def solve_maze(maze, n):
-    sol = [[0] * n for _ in range(n)]
-    if maze[0][0] == 0 or maze[n-1][n-1] == 0 or not solve_maze_util(maze, 0, 0, sol, n):
-        for _ in range(n):
-            print('0 ' * n)
-        return
-
-    for row in sol:
-        print(' '.join(str(x) for x in row))
-
-
-n = int(input())
-m = int(input())
-maze = []
-for _ in range(n):
-    row = list(map(int, input().split()))
-    maze.append(row)
-
-solve_maze(maze, n)
+class Solution:
+    def ratInMaze(self, maze):
+        def Traverse(i,j,res):
+            if i<0 or j<0 or i>=n or j>=m or maze[i][j]!=1:
+                return 
+            if i==n-1 and j==m-1:
+                result.append(res)
+                return
+            maze[i][j]=-1
+            Traverse(i-1,j,res+"U")
+            Traverse(i+1,j,res+"D")
+            Traverse(i,j-1,res+"L")
+            Traverse(i,j+1,res+"R")
+            maze[i][j]=1
+                
+        result=[]
+        n=len(maze)
+        m=len(maze[0])
+        if maze[0][0]==1:
+            Traverse(0,0,"")
+        return sorted(result)
